@@ -74,6 +74,15 @@
   .btn-secondary { @apply btn border-line bg-transparent text-ink hover:border-accent hover:text-accent; }
   .btn-inverse   { @apply btn border-canvas bg-canvas text-ink hover:border-accent hover:bg-accent hover:text-canvas; }
 
+  /* Ambient sound toggle: four hairline bars that breathe while music plays */
+  .sound-btn { @apply grid h-10 w-10 place-items-center border border-line text-ink transition-colors duration-400 ease-craft hover:border-accent hover:text-accent; }
+  .sound-bars { @apply flex h-3.5 items-end gap-[3px]; }
+  .sound-bars i { @apply block h-1 w-px bg-current transition-all duration-400; }
+  .sound-btn[aria-pressed='true'] .sound-bars i { animation: sound-bar 1.6s ease-in-out infinite; }
+  .sound-btn[aria-pressed='true'] .sound-bars i:nth-child(2) { animation-delay: -.4s; }
+  .sound-btn[aria-pressed='true'] .sound-bars i:nth-child(3) { animation-delay: -.9s; }
+  .sound-btn[aria-pressed='true'] .sound-bars i:nth-child(4) { animation-delay: -1.2s; }
+
   /* Cards: 1px cells; an accent rule draws across the top on hover */
   .card { @apply relative flex flex-col p-8 lg:p-10; }
   .card::after {
@@ -141,4 +150,9 @@
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+}
+
+@keyframes sound-bar { 0%, 100% { height: 4px; } 50% { height: 14px; } }
+@media (prefers-reduced-motion: reduce) {
+  .sound-btn[aria-pressed='true'] .sound-bars i { animation: none; height: 10px; }
 }
