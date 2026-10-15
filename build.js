@@ -5,6 +5,7 @@
 // Partials are included with {{> name}} or {{> name class="w-full"}}.
 // No dependencies: run with `node build.js` (npm run build also compiles the CSS).
 
+const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
 
@@ -28,6 +29,21 @@ const walk = (dir) =>
 
 const layout = partial('layout');
 
+// Assets are cached for a week, so their URLs carry a content hash: a change ships a new URL.
+// The CSS is compiled after this script, so its hash covers everything Tailwind reads.
+const fingerprint = (files) => {
+  const h = crypto.createHash('sha1');
+  files.forEach((f) => h.update(fs.readFileSync(f)));
+  return h.digest('hex').slice(0, 8);
+};
+const cssVersion = fingerprint([
+  path.join(SRC, 'input.css'),
+  path.join(__dirname, 'tailwind.config.js'),
+  ...walk(PAGES).sort(),
+  ...walk(PARTIALS).sort(),
+]);
+const jsVersion = fingerprint([path.join(OUT, 'assets', 'main.js')]);
+
 for (const file of walk(PAGES)) {
   const raw = fs.readFileSync(file, 'utf8');
   const match = raw.match(/^<!--\s*(\{[\s\S]*?\})\s*-->\s*/);
@@ -43,7 +59,9 @@ for (const file of walk(PAGES)) {
     .replace(/\{\{title\}\}/g, meta.title)
     .replace(/\{\{description\}\}/g, meta.description)
     .replace(/\{\{path\}\}/g, urlPath);
-  html = includePartials(html);
+  html = includePartials(html)
+    .replace('/assets/styles.css"', `/assets/styles.css?v=${cssVersion}"`)
+    .replace('/assets/main.js"', `/assets/main.js?v=${jsVersion}"`);
   if (meta.nav) html = html.replace(new RegExp(`data-nav="${meta.nav}"`, 'g'), `data-nav="${meta.nav}" aria-current="page"`);
 
   const outFile = path.join(OUT, urlPath, 'index.html');
