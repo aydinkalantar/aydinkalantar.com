@@ -1,0 +1,11 @@
+{
+  "name": "aydinkalantar-site",
+  "private": true,
+  "scripts": {
+    "build": "node build.js && tailwindcss -i ./src/input.css -o ./public/assets/styles.css --minify",
+    "dev": "node build.js && tailwindcss -i ./src/input.css -o ./public/assets/styles.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "3.4.17"
+  }
+}
