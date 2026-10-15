@@ -6,6 +6,61 @@ OUT = str(pathlib.Path(__file__).resolve().parent / 'pages' / 'case-studies')
 def ul(items):
     return '<ul>\n' + '\n'.join(f'                <li>{i}</li>' for i in items) + '\n              </ul>'
 
+CL_SHOWCASE = '''
+      <!-- Catch Lead films: explainer plus social shorts -->
+      <section class="border-t border-line py-16 lg:py-22">
+        <div class="grid-asym items-end">
+          <div class="md:col-span-3">
+            <p class="label">In motion</p>
+          </div>
+          <div class="md:col-span-8 md:col-start-5">
+            <h3 class="display-md reveal">Explained in forty seconds, sold in ten.</h3>
+            <p class="body reveal mt-4 max-w-prose">An explainer for the website and a set of short vertical films for social, each built around the same moment: a customer reaching out after hours and getting an answer instead of silence.</p>
+          </div>
+        </div>
+        <div class="mt-12">
+          <figure class="reveal">
+            <div class="overflow-hidden border border-line bg-ink p-px">
+              <video data-autoplay muted loop class="block aspect-video w-full object-cover" playsinline controls preload="none" poster="/assets/work/catch-lead/short-missed-call-poster.jpg" aria-label="Catch Lead promo film: a roofer misses a call, and the AI sales agent answers and books the job">
+                <source src="/assets/work/catch-lead/short-missed-call.mp4" type="video/mp4">
+                <a class="link" href="/assets/work/catch-lead/short-missed-call.mp4">Download the video</a>
+              </video>
+            </div>
+            <figcaption class="media-caption"><span>Promo · Missed call, booked job</span><span>0:10</span></figcaption>
+          </figure>
+        </div>
+        <div class="mt-12 grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-6 lg:gap-10 max-w-sm sm:max-w-none mx-auto">
+          <figure class="reveal">
+            <div class="overflow-hidden border border-line bg-ink p-px">
+              <video class="block aspect-[9/16] w-full object-cover" playsinline controls preload="metadata" poster="/assets/work/catch-lead/how-it-works-poster.jpg" aria-label="Catch Lead explainer film: how the AI sales agent turns missed messages into closed deals">
+                <source src="/assets/work/catch-lead/how-it-works.mp4" type="video/mp4">
+                <a class="link" href="/assets/work/catch-lead/how-it-works.mp4">Download the video</a>
+              </video>
+            </div>
+            <figcaption class="media-caption"><span>How it works · Explainer, with sound</span><span>0:40</span></figcaption>
+          </figure>
+          <figure class="reveal">
+            <div class="overflow-hidden border border-line bg-ink p-px">
+              <video data-autoplay muted loop class="block aspect-[9/16] w-full object-cover" playsinline controls preload="none" poster="/assets/work/catch-lead/short-law-firm-poster.jpg" aria-label="Catch Lead short: a visitor gets an instant answer from a law firm website at night and becomes a qualified lead">
+                <source src="/assets/work/catch-lead/short-law-firm.mp4" type="video/mp4">
+                <a class="link" href="/assets/work/catch-lead/short-law-firm.mp4">Download the video</a>
+              </video>
+            </div>
+            <figcaption class="media-caption"><span>Short · Law firm, after hours</span><span>0:10</span></figcaption>
+          </figure>
+          <figure class="reveal">
+            <div class="overflow-hidden border border-line bg-ink p-px">
+              <video data-autoplay muted loop class="block aspect-[9/16] w-full object-cover" playsinline controls preload="none" poster="/assets/work/catch-lead/short-leaking-leads-poster.jpg" aria-label="Catch Lead short: the voice agent greets a visitor and offers to book an appointment">
+                <source src="/assets/work/catch-lead/short-leaking-leads.mp4" type="video/mp4">
+                <a class="link" href="/assets/work/catch-lead/short-leaking-leads.mp4">Download the video</a>
+              </video>
+            </div>
+            <figcaption class="media-caption"><span>Short · Stop leaking leads</span><span>0:12</span></figcaption>
+          </figure>
+        </div>
+      </section>
+'''
+
 VF_SHOWCASE = '''
       <!-- Made with the product: muted reel that plays while in view -->
       <section class="border-t border-line py-16 lg:py-22">
@@ -156,7 +211,7 @@ CASES = [
               <!-- ADD METRICS: sign-ups, renders generated, conversion from free credits to paid -->'''),
   ]),
  dict(
-  slug='catch-lead', num='02', name='Catch Lead', url='https://catchlead.dev', domain='catchlead.dev',
+  slug='catch-lead', num='02', after_solution=CL_SHOWCASE, name='Catch Lead', url='https://catchlead.dev', domain='catchlead.dev',
   schematic='schematic-cl', fig='Chat and voice assistant on a client site',
   title='Catch Lead case study · Aydin Kalantar',
   desc='How Catch Lead gives service businesses an AI sales agent that answers by chat or voice, quotes from real prices and books appointments.',
