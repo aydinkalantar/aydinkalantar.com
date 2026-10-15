@@ -16,6 +16,7 @@ CL_SHOWCASE = '''
           <div class="md:col-span-8 md:col-start-5">
             <h3 class="display-md reveal">One tap, and Max picks up.</h3>
             <p class="body reveal mt-4 max-w-prose">Running live for a Los Angeles apparel printer. A single button sits on the page; visitors talk or type, Max remembers returning customers, takes the details, and asks for a rating when the conversation ends.</p>
+            <p class="meta reveal mt-4">Try it here: the assistant in the corner of this site is Catch Lead.</p>
           </div>
         </div>
         <div class="mt-12 grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-6 lg:gap-10 max-w-sm sm:max-w-none mx-auto">
