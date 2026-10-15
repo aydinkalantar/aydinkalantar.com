@@ -383,7 +383,9 @@ CASES = [
               <h3>Practice first</h3>
               <p>Every account starts with $10,000 of paper money at live prices, so people can watch a strategy behave before risking anything.</p>
               <h3>A careful connection flow</h3>
-              <p>Users create a trade-only API key locked to Auto Alpha's IP address, and two-factor sign-in is required before any real-money trade.</p>
+              <p>Users create a trade-only API key locked to Auto Alpha's IP address, and two-factor sign-in is required before any real-money trade. Keys with withdrawal rights are refused, stored keys are encrypted with AES-256, and incoming TradingView webhooks are validated and protected against replay before any order goes out.</p>
+              <h3>Honest testing, in the open</h3>
+              <p>Strategies are designed on 2018 to 2023 data, then judged on 2024 onward and on other coins. Each one carries a stress-test badge for four checks: other coins, settings sensitivity, later years and triple trading costs. A public page lists where backtests flatter, and backtest, simulated and real-money figures are never mixed.</p>
               <h3>Visible guardrails and stop controls</h3>
               <p>Late signals are dropped rather than chased, stop-losses sit on the exchange itself, and leverage is capped at 1×. Users can pause new entries, let open trades close, or stop everything at market in one action.</p>
               <h3>Pricing that explains itself</h3>
