@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ------------------------------------------------------------------
+   aydinkalantar.com design system
+   Rule: the accent (#A65B32) appears only on interactive states
+   (hover, focus, active, selection). At rest, everything is ink on
+   canvas, separated by 1px stone hairlines. No shadows.
+------------------------------------------------------------------- */
+
+@layer base {
+  :root {
+    /* Typography */
+    --font-heading: 'Space Grotesk';
+    --font-body: 'Inter';
+
+    /* Color tokens as RGB channels so Tailwind opacity modifiers work (e.g. bg-ink/90) */
+    --color-canvas: 250 250 247;      /* #FAFAF7 */
+    --color-ink: 26 26 24;            /* #1A1A18 */
+    --color-ink-soft: 92 92 87;       /* #5C5C57 */
+    --color-ink-faint: 143 143 136;   /* #8F8F88 */
+    --color-slate-soft: 68 68 63;     /* #44443F body text, 9.6:1 on canvas */
+    --color-line: 229 229 223;        /* #E5E5DF */
+    --color-line-dark: 51 51 47;      /* #33332F */
+    --color-accent: 166 91 50;        /* #A65B32 */
+    --color-accent-deep: 140 74 38;   /* #8C4A26 */
+  }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body { @apply bg-canvas font-sans text-[1.0625rem] font-normal leading-relaxed text-slate-soft antialiased; }
+  h1, h2, h3, h4, h5, h6 { @apply font-heading font-bold tracking-tight text-ink; }
+  ::selection { @apply bg-accent text-canvas; }
+  :focus-visible { @apply outline outline-1 outline-offset-4 outline-accent; }
+}
+
+@layer components {
+  /* Layout ------------------------------------------------------- */
+  .container-site { @apply mx-auto w-full max-w-site px-4 sm:px-6 lg:px-10; }
+  .section        { @apply py-22 lg:py-36; }
+  .grid-asym      { @apply grid grid-cols-1 gap-y-12 md:grid-cols-12 md:gap-x-6 lg:gap-x-8; }
+  .hairline-grid  { @apply grid gap-px border border-line bg-line; }  /* cells share one 1px rule */
+  .hairline-grid > * { @apply bg-canvas; }
+
+  /* Type --------------------------------------------------------- */
+  .label      { @apply font-sans text-label font-medium uppercase text-ink-soft; }
+  .heading    { @apply font-heading font-bold tracking-tight text-ink; }
+  .display-xl { @apply heading text-display-xl; }
+  .display-lg { @apply heading text-display-lg; }
+  .display-md { @apply heading text-display-md; }
+  .body       { @apply font-sans leading-relaxed text-slate-soft; }
+  .lede       { @apply body max-w-prose text-lg; }
+  .meta       { @apply font-sans text-xs tabular-nums tracking-wide text-ink-soft; }
+
+  /* Links & buttons --------------------------------------------- */
+  .link {
+    @apply underline decoration-line decoration-1 underline-offset-[6px] transition-colors duration-400 ease-craft
+           hover:text-accent hover:decoration-accent;
+  }
+  .nav-link {
+    @apply inline-flex items-center gap-1.5 py-2 text-[0.9375rem] text-ink transition-colors duration-400 ease-craft hover:text-accent;
+  }
+  .nav-link[aria-current='page'] { @apply underline decoration-1 underline-offset-8; }
+  .mobile-link { @apply block px-4 py-3.5 transition-colors hover:text-accent; }
+  .mobile-link[aria-current='page'] { @apply underline decoration-1 underline-offset-4; }
+  .site-row { @apply flex items-center justify-between gap-4 py-4 transition-colors hover:text-accent; }
+  .arrow { @apply inline-block text-[0.8em] transition-transform duration-400 ease-craft; }
+  .group:hover .arrow, .nav-link:hover .arrow { @apply -translate-y-0.5 translate-x-0.5; }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-3 rounded-sm border px-7 py-3.5 text-[0.9375rem] font-medium
+           transition-colors duration-400 ease-craft;
+  }
+  .btn-primary   { @apply btn border-ink bg-ink text-canvas hover:border-accent hover:bg-accent active:bg-accent-deep; }
+  .btn-secondary { @apply btn border-line bg-transparent text-ink hover:border-accent hover:text-accent; }
+  .btn-inverse   { @apply btn border-canvas bg-canvas text-ink hover:border-accent hover:bg-accent hover:text-canvas; }
+
+  /* Cards: 1px cells; an accent rule draws across the top on hover */
+  .card { @apply relative flex flex-col p-8 lg:p-10; }
+  .card::after {
+    content: '';
+    @apply absolute inset-x-0 top-0 h-px origin-left scale-x-0 bg-accent transition-transform duration-900 ease-craft;
+  }
+  .card:hover::after, .card:focus-visible::after { @apply scale-x-100; }
+  .card-title { @apply display-md transition-colors duration-400 ease-craft; }
+  .card:hover .card-title { @apply text-accent; }
+
+  .tag {
+    @apply inline-flex items-center border border-line px-2.5 py-1 font-sans text-[0.6875rem] font-medium uppercase
+           tracking-[0.08em] text-ink-soft;
+  }
+
+  /* Imagery: offset hairline frame with corner registration marks */
+  .frame { @apply relative; }
+  .frame::before { content: ''; @apply pointer-events-none absolute -inset-3 border border-line sm:-inset-4; }
+  .frame-marks { @apply pointer-events-none absolute -inset-3 sm:-inset-4; }
+  .frame-marks::before, .frame-marks::after { content: ''; @apply absolute h-3 w-3 border-ink; }
+  .frame-marks::before { @apply -left-px -top-px border-l border-t; }
+  .frame-marks::after  { @apply -bottom-px -right-px border-b border-r; }
+
+  /* Media slot: holds a schematic now, a photo later (swap the inner element for <img>) */
+  .media { @apply relative overflow-hidden border border-line bg-canvas; }
+  .media > img { @apply block h-full w-full object-cover; }
+  .media-caption { @apply meta mt-4 flex justify-between gap-4; }
+
+  /* Long-form case study text */
+  .prose-case { @apply body max-w-prose; }
+  .prose-case > * + * { @apply mt-5; }
+  .prose-case h3 { @apply heading mt-12 text-xl; }
+  .prose-case ul { @apply space-y-3 border-t border-line pt-5; }
+  .prose-case li { @apply relative pl-6; }
+  .prose-case li::before { content: ''; @apply absolute left-0 top-[0.8em] h-px w-3 bg-ink; }
+  .prose-case strong { @apply font-medium text-ink; }
+
+  /* Definition grid for project facts */
+  .facts { @apply hairline-grid grid-cols-2 lg:grid-cols-4; }
+  .facts > div { @apply p-5; }
+  .facts dt { @apply label; }
+  .facts dd { @apply mt-2 text-ink; }
+
+  /* Dark surface (obsidian), used for the craft section and footer */
+  .surface-ink { @apply bg-ink text-canvas/70; }
+  .surface-ink :is(h1, h2, h3, .heading, .display-xl, .display-lg, .display-md) { @apply text-canvas; }
+  .surface-ink .label, .surface-ink .meta { @apply text-ink-faint; }
+  .surface-ink .tag { @apply border-line-dark text-ink-faint; }
+  .surface-ink .nav-link { @apply text-canvas hover:text-accent; }
+
+  /* Blueprint grid: the software-architecture half of the brand */
+  .blueprint {
+    background-image:
+      linear-gradient(to right, rgb(var(--color-line)) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(var(--color-line)) 1px, transparent 1px);
+    background-size: 96px 96px;
+    background-position: -1px -1px;
+  }
+}
+
+/* Scroll reveal: content is only hidden once JS runs, and never under reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .js .reveal { opacity: 0; transform: translateY(14px); transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1); }
+  .js .reveal.is-visible { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}

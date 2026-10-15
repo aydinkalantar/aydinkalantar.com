@@ -1,0 +1,11 @@
+// Cloudflare Workers config: serves the built site in public/ as static assets.
+// Build command: npm run build · Deploy command: npx wrangler deploy
+{
+  "name": "aydinkalantar-com",
+  "compatibility_date": "2026-10-01",
+  // Gives every pull request its own preview link
+  "preview_urls": true,
+  "assets": {
+    "directory": "./public"
+  }
+}
