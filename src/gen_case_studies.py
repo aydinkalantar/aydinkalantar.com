@@ -278,6 +278,61 @@ VF_SHOWCASE = '''
       </section>
 '''
 
+AA_HERO = '''      <figure class="container-site reveal py-16 lg:py-22">
+        <div class="border border-line bg-ink p-px">
+          <picture>
+            <source srcset="/assets/work/auto-alpha/strategies-desktop.webp" type="image/webp">
+            <img src="/assets/work/auto-alpha/strategies-desktop.jpg" width="2000" height="1041" alt="Auto Alpha strategies page: cards for Gaussian Channel, KeltnerPulse Pro and GaussBreaker, each with a backtest labelled hypothetical, risk level, worst drop and simulated record" class="block h-auto w-full">
+          </picture>
+        </div>
+        <figcaption class="media-caption"><span>Fig. 01</span><span>Strategy library · every return labelled hypothetical, worst drop beside it</span></figcaption>
+      </figure>
+'''
+
+AA_SHOWCASE = '''
+      <!-- Auto Alpha on a phone -->
+      <section class="border-t border-line py-16 lg:py-22">
+        <div class="grid-asym items-end">
+          <div class="md:col-span-3">
+            <p class="label">On a phone</p>
+          </div>
+          <div class="md:col-span-8 md:col-start-5">
+            <h3 class="display-md reveal">Check it, pause it, stop it, from anywhere.</h3>
+            <p class="body reveal mt-4 max-w-prose">The full dashboard works one-handed. Live, paper and testnet sit one tap apart, the stop controls are never more than a thumb away, and the hypothetical label follows every number onto the small screen.</p>
+          </div>
+        </div>
+        <div class="mt-12 grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-6 lg:gap-10 max-w-sm sm:max-w-none mx-auto">
+          <figure class="reveal">
+            <div class="overflow-hidden rounded-[1.75rem] border border-line bg-ink p-1.5">
+              <picture>
+                <source srcset="/assets/work/auto-alpha/mobile-portfolio.webp" type="image/webp">
+                <img src="/assets/work/auto-alpha/mobile-portfolio.jpg" width="640" height="1330" alt="Auto Alpha mobile portfolio: live account card, balance chart, Pause entries and Stop all buttons, and a running strategy" loading="lazy" class="block h-auto w-full rounded-[1.4rem]">
+              </picture>
+            </div>
+            <figcaption class="media-caption"><span>01 · Portfolio</span><span>Pause or stop in one tap</span></figcaption>
+          </figure>
+          <figure class="reveal">
+            <div class="overflow-hidden rounded-[1.75rem] border border-line bg-ink p-1.5">
+              <picture>
+                <source srcset="/assets/work/auto-alpha/mobile-strategy.webp" type="image/webp">
+                <img src="/assets/work/auto-alpha/mobile-strategy.jpg" width="640" height="1330" alt="Auto Alpha mobile strategy detail for KeltnerPulse Pro: version chips, risk level, worst drop and a hypothetical results notice" loading="lazy" class="block h-auto w-full rounded-[1.4rem]">
+              </picture>
+            </div>
+            <figcaption class="media-caption"><span>02 · Strategy</span><span>Risk before return</span></figcaption>
+          </figure>
+          <figure class="reveal">
+            <div class="overflow-hidden rounded-[1.75rem] border border-line bg-ink p-1.5">
+              <picture>
+                <source srcset="/assets/work/auto-alpha/mobile-strategies.webp" type="image/webp">
+                <img src="/assets/work/auto-alpha/mobile-strategies.jpg" width="640" height="1330" alt="Auto Alpha mobile strategy library with filters by coin and a Gaussian Channel card labelled backtest hypothetical" loading="lazy" class="block h-auto w-full rounded-[1.4rem]">
+              </picture>
+            </div>
+            <figcaption class="media-caption"><span>03 · Library</span><span>Filter, compare, allocate</span></figcaption>
+          </figure>
+        </div>
+      </section>
+'''
+
 VF_HERO = '''      <figure class="container-site grid-asym reveal items-start py-16 lg:py-22">
         <div class="md:col-span-9">
           <div class="border border-line bg-ink p-px">
@@ -361,7 +416,7 @@ CASES = [
               <!-- ADD METRICS: businesses onboarded, conversations handled, bookings created -->'''),
   ]),
  dict(
-  slug='auto-alpha', num='03', name='Auto Alpha', url='https://autoalpha.trade', domain='autoalpha.trade',
+  slug='auto-alpha', num='03', hero=AA_HERO, after_solution=AA_SHOWCASE, name='Auto Alpha', url='https://autoalpha.trade', domain='autoalpha.trade',
   schematic='schematic-aa', fig='Strategy dashboard: key figures, equity curve, trade list',
   title='Auto Alpha case study · Aydin Kalantar',
   desc='How Auto Alpha designs trust into automated crypto trading: risk shown beside return, every trade visible, and funds that never leave the exchange.',
