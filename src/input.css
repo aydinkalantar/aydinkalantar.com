@@ -180,6 +180,61 @@
   .js .reveal { opacity: 0; transform: translateY(14px); transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1); }
   .js .reveal.is-visible { opacity: 1; transform: none; }
 }
+
+/* ------------------------------------------------------------------
+   Motion. Quiet and material: words rise into place, images are laid
+   down like a veneer sheet, registration marks settle on their frame,
+   a light sheen crosses artwork on hover. All of it switches off under
+   reduced motion, and nothing moves without the visitor scrolling or
+   pointing.
+------------------------------------------------------------------- */
+:root { --ease-craft: cubic-bezier(.2,.7,.2,1); }
+@media (prefers-reduced-motion: no-preference) {
+  /* Headings: each word rises out of its own line mask (main.js wraps the words). */
+  .js .reveal.split { opacity: 1; transform: none; }
+  .split .w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .12em; margin-bottom: -.12em; }
+  .split .w > span { display: inline-block; transform: translateY(110%); transition: transform 1s var(--ease-craft); transition-delay: calc(var(--i, 0) * 45ms); }
+  .split.is-visible .w > span { transform: none; }
+
+  /* Images and films unveil top to bottom, settling from a slight zoom. */
+  .js .reveal :is(img, video) {
+    clip-path: inset(0 0 100% 0); scale: 1.08;
+    transition: clip-path 1.2s var(--ease-craft), scale 1.8s var(--ease-craft), transform .9s var(--ease-craft), opacity .9s var(--ease-craft);
+  }
+  .js .reveal.is-visible :is(img, video) { clip-path: inset(0); scale: 1; }
+
+  /* Frame registration marks slide into the corners. */
+  .js .reveal .frame-marks::before, .js .reveal .frame-marks::after { opacity: 0; transition: transform 1.1s var(--ease-craft) .35s, opacity 1.1s var(--ease-craft) .35s; }
+  .js .reveal .frame-marks::before { transform: translate(-12px, -12px); }
+  .js .reveal .frame-marks::after { transform: translate(12px, 12px); }
+  .js .reveal.is-visible .frame-marks::before, .js .reveal.is-visible .frame-marks::after { opacity: 1; transform: none; }
+
+  /* Sheen: a band of light crosses the piece on hover, like light on a lacquered panel. */
+  .sheen { position: relative; }
+  .sheen::after {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(105deg, transparent 35%, rgb(255 255 255 / .22) 50%, transparent 65%);
+    transform: translateX(-120%); transition: transform 1.2s var(--ease-craft);
+  }
+  .group:hover .sheen::after, .sheen:hover::after { transform: translateX(120%); }
+
+  /* Reading progress: a 1px rule under the header fills as the page scrolls (browsers with scroll timelines). */
+  @supports (animation-timeline: scroll()) {
+    .scroll-progress {
+      position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; background: rgb(var(--color-ink));
+      transform-origin: left; transform: scaleX(0); animation: scroll-progress linear both; animation-timeline: scroll(root);
+    }
+  }
+
+  /* Page to page: the header stays, the page fades through. */
+  @view-transition { navigation: auto; }
+  header#top { view-transition-name: site-header; }
+  ::view-transition-old(root) { animation: vt-out .22s ease both; }
+  ::view-transition-new(root) { animation: vt-in .5s var(--ease-craft) both; }
+}
+@keyframes scroll-progress { to { transform: scaleX(1); } }
+@keyframes vt-out { to { opacity: 0; } }
+@keyframes vt-in { from { opacity: 0; transform: translateY(10px); } }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }

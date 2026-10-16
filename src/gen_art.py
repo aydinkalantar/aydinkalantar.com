@@ -87,7 +87,7 @@ def card(w, n):
     coll = COLLECTIONS[w['collection']]['name']
     return f'''        <li class="reveal" data-collection="{w['collection']}">
           <a href="/art/works/{w['slug']}/" class="group block">
-            <div class="overflow-hidden border border-line">
+            <div class="sheen overflow-hidden border border-line">
               {picture(w, 'aspect-[4/5] w-full transition-transform duration-900 ease-craft group-hover:scale-[1.03]')}
             </div>
             <div class="mt-4 flex items-baseline justify-between gap-4">
