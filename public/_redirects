@@ -1,0 +1,16 @@
+# Old art.aydinkalantar.com (WordPress/WooCommerce) addresses, kept so their Google rankings carry over.
+# A Cloudflare redirect rule sends art.aydinkalantar.com/<path> to aydinkalantar.com/art/<path>; these map that onto the new gallery.
+/art/product-category/custom* /art/commissions/ 301
+/art/product-category/portraits* /art/?c=portraits 301
+/art/product-category/abstract* /art/?c=abstract 301
+/art/product-category/* /art/ 301
+/art/product/:slug/* /art/works/:slug/ 301
+/art/product/:slug /art/works/:slug/ 301
+/art/shop* /art/ 301
+/art/contact* /art/commissions/ 301
+/art/about* /about/ 301
+/art/ideas-for-breakfest* /art/ 301
+/art/blog* /art/ 301
+/art/cart* /art/ 301
+/art/checkout* /art/ 301
+/art/my-account* /art/ 301

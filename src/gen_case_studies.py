@@ -284,7 +284,7 @@ VF_SHOWCASE = '''
             <div class="aspect-[16/10] overflow-hidden border border-line bg-ink">
               <picture>
                 <source srcset="/assets/work/gallery/red-hoodie.webp" type="image/webp">
-                <img src="/assets/work/gallery/red-hoodie.jpg" alt="Hoodie generated with Virtual Fashion: brand mark on a red pullover, garage set" loading="lazy" class="h-full w-full object-cover">
+                <img src="/assets/work/gallery/red-hoodie.jpg" width="1344" height="768" alt="Hoodie generated with Virtual Fashion: brand mark on a red pullover, garage set" loading="lazy" class="h-full w-full object-cover">
               </picture>
             </div>
             <figcaption class="media-caption"><span>Hoodie</span><span>Brand mark on a red pullover, garage set</span></figcaption>
@@ -309,7 +309,7 @@ VF_SHOWCASE = '''
             <div class="aspect-[16/10] overflow-hidden border border-line bg-ink">
               <picture>
                 <source srcset="/assets/work/gallery/distressed-tee.webp" type="image/webp">
-                <img src="/assets/work/gallery/distressed-tee.jpg" alt="Distressed tee generated with Virtual Fashion: penthouse, city view" loading="lazy" class="h-full w-full object-cover">
+                <img src="/assets/work/gallery/distressed-tee.jpg" width="1600" height="893" alt="Distressed tee generated with Virtual Fashion: penthouse, city view" loading="lazy" class="h-full w-full object-cover">
               </picture>
             </div>
             <figcaption class="media-caption"><span>Distressed tee</span><span>Penthouse, city view</span></figcaption>
@@ -318,7 +318,7 @@ VF_SHOWCASE = '''
             <div class="aspect-[16/10] overflow-hidden border border-line bg-ink">
               <picture>
                 <source srcset="/assets/work/gallery/bucket-hat.webp" type="image/webp">
-                <img src="/assets/work/gallery/bucket-hat.jpg" alt="Bucket hat generated with Virtual Fashion: bedroom, natural light" loading="lazy" class="h-full w-full object-cover">
+                <img src="/assets/work/gallery/bucket-hat.jpg" width="1376" height="768" alt="Bucket hat generated with Virtual Fashion: bedroom, natural light" loading="lazy" class="h-full w-full object-cover">
               </picture>
             </div>
             <figcaption class="media-caption"><span>Bucket hat</span><span>Bedroom, natural light</span></figcaption>
@@ -343,7 +343,7 @@ VF_SHOWCASE = '''
             <div class="aspect-[16/10] overflow-hidden border border-line bg-ink">
               <picture>
                 <source srcset="/assets/work/gallery/long-sleeve.webp" type="image/webp">
-                <img src="/assets/work/gallery/long-sleeve.jpg" alt="Long-sleeve tee generated with Virtual Fashion: mid-century living room" loading="lazy" class="h-full w-full object-cover">
+                <img src="/assets/work/gallery/long-sleeve.jpg" width="1344" height="768" alt="Long-sleeve tee generated with Virtual Fashion: mid-century living room" loading="lazy" class="h-full w-full object-cover">
               </picture>
             </div>
             <figcaption class="media-caption"><span>Long-sleeve tee</span><span>Mid-century living room</span></figcaption>

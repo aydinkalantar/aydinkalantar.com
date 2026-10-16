@@ -6,6 +6,8 @@
   // Gives every pull request its own preview link
   "preview_urls": true,
   "assets": {
-    "directory": "./public"
+    "directory": "./public",
+    // Unknown addresses get the friendly 404 page (public/404.html) with links back into the site
+    "not_found_handling": "404-page"
   }
 }

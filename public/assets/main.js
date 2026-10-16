@@ -70,6 +70,50 @@ if (reels.length && 'IntersectionObserver' in window && !window.matchMedia('(pre
   reels.forEach((v) => reelObserver.observe(v));
 }
 
+// Gallery filters: chips with data-filter show one collection; ?c=<collection> opens the gallery filtered.
+const chips = document.querySelectorAll('[data-filter]');
+if (chips.length) {
+  const cards = document.querySelectorAll('#works-grid > [data-collection]');
+  const show = (id) => {
+    if (![...chips].some((c) => c.dataset.filter === id)) id = 'all';
+    chips.forEach((c) => c.setAttribute('aria-pressed', String(c.dataset.filter === id)));
+    cards.forEach((card) => { card.hidden = id !== 'all' && card.dataset.collection !== id; if (!card.hidden) card.classList.add('is-visible'); });
+  };
+  chips.forEach((c) => c.addEventListener('click', () => {
+    show(c.dataset.filter);
+    const url = new URL(location.href);
+    if (c.dataset.filter === 'all') url.searchParams.delete('c'); else url.searchParams.set('c', c.dataset.filter);
+    history.replaceState(null, '', url);
+  }));
+  const wanted = new URLSearchParams(location.search).get('c');
+  if (wanted) show(wanted);
+}
+
+// Featured slider: native swipe/scroll with snap points; arrows and dots move it. It never advances on its own.
+document.querySelectorAll('[data-slider]').forEach((root) => {
+  const track = root.querySelector('[data-slider-track]');
+  const slides = [...track.children];
+  const dots = [...root.querySelectorAll('[data-slide-to]')];
+  let current = 0;
+  const go = (i) => {
+    current = (i + slides.length) % slides.length;
+    track.scrollTo({ left: slides[current].offsetLeft, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  };
+  const mark = (i) => { current = i; dots.forEach((d, n) => d.setAttribute('aria-current', String(n === i))); };
+  mark(0);
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => entries.forEach((en) => { if (en.isIntersecting) mark(slides.indexOf(en.target)); }), { root: track, threshold: 0.6 });
+    slides.forEach((s) => io.observe(s));
+  }
+  root.querySelectorAll('[data-slide-step]').forEach((b) => b.addEventListener('click', () => go(current + Number(b.dataset.slideStep))));
+  dots.forEach((d) => d.addEventListener('click', () => go(Number(d.dataset.slideTo))));
+  track.tabIndex = 0;
+  track.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') { e.preventDefault(); go(current + 1); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); go(current - 1); }
+  });
+});
+
 // Ambient music: off by default (browsers block sound that starts on its own).
 // The toggle fades a looping track in and out, and the choice is remembered between pages.
 (() => {

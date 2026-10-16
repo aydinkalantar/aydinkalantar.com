@@ -145,6 +145,36 @@
   }
 }
 
+/* Dark theme for the marquetry gallery: the same tokens, inverted, so warm wood reads against a dark wall.
+   Ink bands (.surface-ink) inside it drop one step deeper. */
+.theme-dark {
+  --color-canvas: 22 22 20;         /* #161614 */
+  --color-ink: 245 244 238;         /* #F5F4EE */
+  --color-ink-soft: 168 168 160;    /* #A8A8A0 */
+  --color-ink-faint: 120 120 113;   /* #787871 */
+  --color-slate-soft: 196 196 188;  /* #C4C4BC body text */
+  --color-line: 51 51 47;           /* #33332F */
+  --color-line-dark: 51 51 47;
+  --color-accent: 201 122 78;       /* #C97A4E, lighter so it holds contrast on dark */
+  --color-accent-deep: 166 91 50;
+}
+.theme-dark .theme-light {          /* light copy set over the pale gallery-wall photos */
+  --color-canvas: 250 250 247;
+  --color-ink: 26 26 24;
+  --color-ink-soft: 92 92 87;
+  --color-slate-soft: 68 68 63;
+  --color-line: 210 210 202;
+  --color-accent: 166 91 50;
+  --color-accent-deep: 140 74 38;
+  color: rgb(var(--color-slate-soft));
+}
+.theme-dark .surface-ink {
+  --color-canvas: 250 250 247;
+  --color-ink: 13 13 12;            /* #0D0D0C */
+  --color-ink-faint: 143 143 136;
+  --color-line-dark: 44 44 40;
+}
+
 /* Scroll reveal: content is only hidden once JS runs, and never under reduced motion. */
 @media (prefers-reduced-motion: no-preference) {
   .js .reveal { opacity: 0; transform: translateY(14px); transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1); }

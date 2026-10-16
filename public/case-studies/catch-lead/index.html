@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/styles.css?v=d338f5b0">
+  <link rel="stylesheet" href="/assets/styles.css?v=d2b5d6a0">
   <script>document.documentElement.classList.replace('no-js','js')</script>
   <script type="application/ld+json">
 {
@@ -112,7 +112,7 @@
         <a class="nav-link" data-nav="portfolio" href="/portfolio/">Portfolio</a>
         <a class="nav-link" data-nav="case-studies" aria-current="page" href="/case-studies/">Case Studies</a>
         <a class="nav-link" data-nav="about" href="/about/">About</a>
-        <a class="nav-link" href="https://art.aydinkalantar.com" target="_blank" rel="noopener">Marquetry Art <span aria-hidden="true" class="arrow">↗</span></a>
+        <a class="nav-link" data-nav="art" href="/art/">Marquetry Art</a>
         <button type="button" data-sound class="sound-btn " aria-pressed="false" aria-label="Play ambient music" title="Ambient music"><span class="sound-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span></button>
         <a href="#contact" class="btn-secondary !px-5 !py-2.5">Contact</a>
       </nav>
@@ -134,13 +134,15 @@
           <li><a class="mobile-link" data-nav="portfolio" href="/portfolio/">Portfolio</a></li>
           <li><a class="mobile-link" data-nav="case-studies" aria-current="page" href="/case-studies/">Case Studies</a></li>
           <li><a class="mobile-link" data-nav="about" href="/about/">About</a></li>
+          <li><a class="mobile-link" data-nav="art" href="/art/">Marquetry Art</a></li>
+          <li><a class="mobile-link" data-nav="commissions" href="/art/commissions/">Commissions</a></li>
         </ul>
         <p class="label mb-4">Live sites</p>
         <ul class="divide-y divide-line border-y border-line">
           <li><a class="site-row group" href="https://virtualfashion.app" target="_blank" rel="noopener"><span>Virtual Fashion</span><span class="meta group-hover:text-accent">virtualfashion.app <span class="arrow">↗</span></span></a></li>
           <li><a class="site-row group" href="https://catchlead.dev" target="_blank" rel="noopener"><span>Catch Lead</span><span class="meta group-hover:text-accent">catchlead.dev <span class="arrow">↗</span></span></a></li>
           <li><a class="site-row group" href="https://autoalpha.trade" target="_blank" rel="noopener"><span>Auto Alpha</span><span class="meta group-hover:text-accent">autoalpha.trade <span class="arrow">↗</span></span></a></li>
-          <li><a class="site-row group" href="https://art.aydinkalantar.com" target="_blank" rel="noopener"><span>Marquetry Art</span><span class="meta group-hover:text-accent">art.aydinkalantar.com <span class="arrow">↗</span></span></a></li>
+          <li><a class="site-row group" href="/art/"><span>Marquetry Art</span><span class="meta group-hover:text-accent">Gallery <span class="arrow">→</span></span></a></li>
         </ul>
         <a href="#contact" class="btn-primary mt-8 w-full">Contact</a>
       </nav>
@@ -504,6 +506,7 @@
             <li><a class="nav-link py-1" href="/portfolio/">Portfolio</a></li>
             <li><a class="nav-link py-1" href="/case-studies/">Case Studies</a></li>
             <li><a class="nav-link py-1" href="/about/">About</a></li>
+            <li><a class="nav-link py-1" href="/art/">Marquetry Art</a></li>
           </ul>
         </nav>
         <nav aria-label="Live sites" class="sm:col-span-2">
@@ -512,7 +515,7 @@
             <li class="border-b border-line-dark"><a class="nav-link group w-full justify-between py-3" href="https://virtualfashion.app" target="_blank" rel="noopener">Virtual Fashion <span class="meta group-hover:text-accent">virtualfashion.app <span class="arrow">↗</span></span></a></li>
             <li class="border-b border-line-dark"><a class="nav-link group w-full justify-between py-3" href="https://catchlead.dev" target="_blank" rel="noopener">Catch Lead <span class="meta group-hover:text-accent">catchlead.dev <span class="arrow">↗</span></span></a></li>
             <li class="border-b border-line-dark"><a class="nav-link group w-full justify-between py-3" href="https://autoalpha.trade" target="_blank" rel="noopener">Auto Alpha <span class="meta group-hover:text-accent">autoalpha.trade <span class="arrow">↗</span></span></a></li>
-            <li class="border-b border-line-dark"><a class="nav-link group w-full justify-between py-3" href="https://art.aydinkalantar.com" target="_blank" rel="noopener">Marquetry Art <span class="meta group-hover:text-accent">art.aydinkalantar.com <span class="arrow">↗</span></span></a></li>
+            <li class="border-b border-line-dark"><a class="nav-link group w-full justify-between py-3" href="/art/">Marquetry Art <span class="meta group-hover:text-accent">Gallery <span class="arrow">→</span></span></a></li>
           </ul>
         </nav>
       </div>
@@ -525,7 +528,7 @@
     </div>
   </footer>
 
-  <script src="/assets/main.js?v=074ce2cb" defer></script>
+  <script src="/assets/main.js?v=ac5d932c" defer></script>
   <!-- Voice chats with Max open the microphone: report when that starts and ends, so main.js can quiet the music. Must run before the widget loads. -->
   <script>(function(){var md=navigator.mediaDevices;if(!md||!md.getUserMedia||!window.MediaStreamTrack)return;var live=new Set();var emit=function(){window.dispatchEvent(new CustomEvent("ak:voice",{detail:{active:live.size>0}}))};var drop=function(t){if(live.delete(t))emit()};window.akVoiceActive=function(){return live.size>0};var ask=md.getUserMedia.bind(md);md.getUserMedia=function(c){return ask(c).then(function(s){var a=s.getAudioTracks();a.forEach(function(t){live.add(t);t.addEventListener("ended",function(){drop(t)})});if(a.length)emit();return s})};var stop=MediaStreamTrack.prototype.stop;MediaStreamTrack.prototype.stop=function(){stop.call(this);drop(this)}})()</script>
   <!-- Catch Lead agent: answers visitor questions about Aydin's work -->
