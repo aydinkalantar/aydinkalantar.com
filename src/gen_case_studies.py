@@ -7,6 +7,35 @@ def ul(items):
     return '<ul>\n' + '\n'.join(f'                <li>{i}</li>' for i in items) + '\n              </ul>'
 
 CL_SHOWCASE = '''
+      <!-- Catch Lead agent: greeting and conversation panel -->
+      <section class="border-t border-line py-16 lg:py-22">
+        <div class="grid-asym items-end">
+          <div class="md:col-span-3">
+            <p class="label">The agent</p>
+          </div>
+          <div class="md:col-span-8 md:col-start-5">
+            <h3 class="display-md reveal">Meet Max: a greeting, then a conversation.</h3>
+            <p class="body reveal mt-4 max-w-prose">The orb waits quietly at the foot of the page. A short greeting offers two ways in, typing or talking, and the panel opens into a chat with quick replies for the questions every business gets.</p>
+          </div>
+        </div>
+        <div class="mt-12 grid grid-cols-1 items-end gap-10 sm:grid-cols-2 sm:gap-6 lg:gap-10 max-w-sm sm:max-w-3xl mx-auto">
+          <figure class="reveal">
+            <picture>
+              <source srcset="/assets/work/catch-lead/agent-greeting.webp" type="image/webp">
+              <img src="/assets/work/catch-lead/agent-greeting.jpg" width="656" height="906" alt="Catch Lead greeting card from Max over a page: Ask me anything about prices or booking, with Ask a question and Talk buttons above the orb" loading="lazy" class="block h-auto w-full">
+            </picture>
+            <figcaption class="media-caption"><span>A · Greeting</span><span>Type or talk, the visitor chooses</span></figcaption>
+          </figure>
+          <figure class="reveal">
+            <picture>
+              <source srcset="/assets/work/catch-lead/agent-panel.webp" type="image/webp">
+              <img src="/assets/work/catch-lead/agent-panel.jpg" width="596" height="860" alt="Catch Lead chat panel: Max greets the visitor, who asks for a quote this week, with quick replies Get a quote, Services and Book a time" loading="lazy" class="block h-auto w-full">
+            </picture>
+            <figcaption class="media-caption"><span>B · Conversation</span><span>Quick replies for common questions</span></figcaption>
+          </figure>
+        </div>
+      </section>
+
       <!-- Catch Lead product: the agent on a live client site, then the owner's dashboard -->
       <section class="border-t border-line py-16 lg:py-22">
         <div class="grid-asym items-end">
@@ -19,6 +48,15 @@ CL_SHOWCASE = '''
             <p class="meta reveal mt-4">Try it here: the assistant in the corner of this site is Catch Lead.</p>
           </div>
         </div>
+        <figure class="reveal mt-12">
+          <div class="border border-line bg-ink p-px">
+            <picture>
+              <source srcset="/assets/work/catch-lead/instant-preview.webp" type="image/webp">
+              <img src="/assets/work/catch-lead/instant-preview.jpg" width="1600" height="975" alt="Catch Lead instant preview: a Los Angeles screen printing company's homepage with the Max orb added at the bottom, generated from the site's address" loading="lazy" class="block h-auto w-full">
+            </picture>
+          </div>
+          <figcaption class="media-caption"><span>Instant preview</span><span>Paste a website address and see Max on it in seconds, before signing up</span></figcaption>
+        </figure>
         <div class="mt-12 grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-6 lg:gap-10 max-w-sm sm:max-w-none mx-auto">
           <figure class="reveal">
             <div class="overflow-hidden rounded-[1.75rem] border border-line bg-canvas p-1.5">
@@ -278,6 +316,72 @@ VF_SHOWCASE = '''
       </section>
 '''
 
+AA_HERO = '''      <figure class="container-site reveal py-16 lg:py-22">
+        <div class="border border-line bg-ink p-px">
+          <picture>
+            <source srcset="/assets/work/auto-alpha/strategies-desktop.webp" type="image/webp">
+            <img src="/assets/work/auto-alpha/strategies-desktop.jpg" width="2000" height="1041" alt="Auto Alpha strategies page: cards for Gaussian Channel, KeltnerPulse Pro and GaussBreaker, each with a backtest labelled hypothetical, risk level, worst drop and simulated record" class="block h-auto w-full">
+          </picture>
+        </div>
+        <figcaption class="media-caption"><span>Fig. 01</span><span>Strategy library · every return labelled hypothetical, worst drop beside it</span></figcaption>
+      </figure>
+'''
+
+AA_SHOWCASE = '''
+      <!-- Auto Alpha on a phone -->
+      <section class="border-t border-line py-16 lg:py-22">
+        <div class="grid-asym items-end">
+          <div class="md:col-span-3">
+            <p class="label">On a phone</p>
+          </div>
+          <div class="md:col-span-8 md:col-start-5">
+            <h3 class="display-md reveal">Check it, pause it, stop it, from anywhere.</h3>
+            <p class="body reveal mt-4 max-w-prose">The full dashboard works one-handed. Live, paper and testnet sit one tap apart, the stop controls are never more than a thumb away, and the hypothetical label follows every number onto the small screen.</p>
+          </div>
+        </div>
+        <div class="mt-12 grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-6 lg:gap-10 max-w-sm sm:max-w-none mx-auto">
+          <figure class="reveal">
+            <div class="overflow-hidden rounded-[1.75rem] border border-line bg-ink p-1.5">
+              <picture>
+                <source srcset="/assets/work/auto-alpha/mobile-portfolio.webp" type="image/webp">
+                <img src="/assets/work/auto-alpha/mobile-portfolio.jpg" width="640" height="1330" alt="Auto Alpha mobile portfolio: live account card, balance chart, Pause entries and Stop all buttons, and a running strategy" loading="lazy" class="block h-auto w-full rounded-[1.4rem]">
+              </picture>
+            </div>
+            <figcaption class="media-caption"><span>01 · Portfolio</span><span>Pause or stop in one tap</span></figcaption>
+          </figure>
+          <figure class="reveal">
+            <div class="overflow-hidden rounded-[1.75rem] border border-line bg-ink p-1.5">
+              <picture>
+                <source srcset="/assets/work/auto-alpha/mobile-strategy.webp" type="image/webp">
+                <img src="/assets/work/auto-alpha/mobile-strategy.jpg" width="640" height="1330" alt="Auto Alpha mobile strategy detail for KeltnerPulse Pro: version chips, risk level, worst drop and a hypothetical results notice" loading="lazy" class="block h-auto w-full rounded-[1.4rem]">
+              </picture>
+            </div>
+            <figcaption class="media-caption"><span>02 · Strategy</span><span>Risk before return</span></figcaption>
+          </figure>
+          <figure class="reveal">
+            <div class="overflow-hidden rounded-[1.75rem] border border-line bg-ink p-1.5">
+              <picture>
+                <source srcset="/assets/work/auto-alpha/mobile-strategies.webp" type="image/webp">
+                <img src="/assets/work/auto-alpha/mobile-strategies.jpg" width="640" height="1330" alt="Auto Alpha mobile strategy library with filters by coin and a Gaussian Channel card labelled backtest hypothetical" loading="lazy" class="block h-auto w-full rounded-[1.4rem]">
+              </picture>
+            </div>
+            <figcaption class="media-caption"><span>03 · Library</span><span>Filter, compare, allocate</span></figcaption>
+          </figure>
+        </div>
+      </section>
+'''
+
+CL_HERO = '''      <figure class="container-site reveal py-16 lg:py-22">
+        <div class="border border-line bg-canvas p-px">
+          <video data-autoplay class="block aspect-[1600/830] w-full" muted loop playsinline controls preload="none" poster="/assets/work/catch-lead/desktop-demo-poster.jpg" aria-label="Screen recording: a visitor taps the orb on the Catch Lead website and Max answers by voice, explaining the product and the free trial">
+            <source src="/assets/work/catch-lead/desktop-demo.mp4" type="video/mp4">
+            <a class="link" href="/assets/work/catch-lead/desktop-demo.mp4">Download the recording</a>
+          </video>
+        </div>
+        <figcaption class="media-caption"><span>Fig. 01</span><span>Max answering by voice on a live site · unmute for sound · 0:19</span></figcaption>
+      </figure>
+'''
+
 VF_HERO = '''      <figure class="container-site grid-asym reveal items-start py-16 lg:py-22">
         <div class="md:col-span-9">
           <div class="border border-line bg-ink p-px">
@@ -330,7 +434,7 @@ CASES = [
               <!-- ADD METRICS: sign-ups, renders generated, conversion from free credits to paid -->'''),
   ]),
  dict(
-  slug='catch-lead', num='02', after_solution=CL_SHOWCASE, name='Catch Lead', url='https://catchlead.dev', domain='catchlead.dev',
+  slug='catch-lead', num='02', hero=CL_HERO, after_solution=CL_SHOWCASE, name='Catch Lead', url='https://catchlead.dev', domain='catchlead.dev',
   schematic='schematic-cl', fig='Chat and voice assistant on a client site',
   title='Catch Lead case study · Aydin Kalantar',
   desc='How Catch Lead gives service businesses an AI sales agent that answers by chat or voice, quotes from real prices and books appointments.',
@@ -361,7 +465,7 @@ CASES = [
               <!-- ADD METRICS: businesses onboarded, conversations handled, bookings created -->'''),
   ]),
  dict(
-  slug='auto-alpha', num='03', name='Auto Alpha', url='https://autoalpha.trade', domain='autoalpha.trade',
+  slug='auto-alpha', num='03', hero=AA_HERO, after_solution=AA_SHOWCASE, name='Auto Alpha', url='https://autoalpha.trade', domain='autoalpha.trade',
   schematic='schematic-aa', fig='Strategy dashboard: key figures, equity curve, trade list',
   title='Auto Alpha case study · Aydin Kalantar',
   desc='How Auto Alpha designs trust into automated crypto trading: risk shown beside return, every trade visible, and funds that never leave the exchange.',
@@ -383,7 +487,9 @@ CASES = [
               <h3>Practice first</h3>
               <p>Every account starts with $10,000 of paper money at live prices, so people can watch a strategy behave before risking anything.</p>
               <h3>A careful connection flow</h3>
-              <p>Users create a trade-only API key locked to Auto Alpha's IP address, and two-factor sign-in is required before any real-money trade.</p>
+              <p>Users create a trade-only API key locked to Auto Alpha's IP address, and two-factor sign-in is required before any real-money trade. Keys with withdrawal rights are refused, stored keys are encrypted with AES-256, and incoming TradingView webhooks are validated and protected against replay before any order goes out.</p>
+              <h3>Honest testing, in the open</h3>
+              <p>Strategies are designed on 2018 to 2023 data, then judged on 2024 onward and on other coins. Each one carries a stress-test badge for four checks: other coins, settings sensitivity, later years and triple trading costs. A public page lists where backtests flatter, and backtest, simulated and real-money figures are never mixed.</p>
               <h3>Visible guardrails and stop controls</h3>
               <p>Late signals are dropped rather than chased, stop-losses sit on the exchange itself, and leverage is capped at 1×. Users can pause new entries, let open trades close, or stop everything at market in one action.</p>
               <h3>Pricing that explains itself</h3>
