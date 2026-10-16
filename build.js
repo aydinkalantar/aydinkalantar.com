@@ -63,6 +63,8 @@ for (const file of walk(PAGES)) {
   html = includePartials(html)
     .replace('/assets/styles.css"', `/assets/styles.css?v=${cssVersion}"`)
     .replace('/assets/main.js"', `/assets/main.js?v=${jsVersion}"`);
+  // Dark pages (the marquetry gallery) swap the color tokens; see .theme-dark in src/input.css.
+  if (meta.theme === 'dark') html = html.replace('<body class="', '<body class="theme-dark ').replace('content="#FAFAF7"', 'content="#161614"');
   if (meta.nav) html = html.replace(new RegExp(`data-nav="${meta.nav}"`, 'g'), `data-nav="${meta.nav}" aria-current="page"`);
 
   const outFile = path.join(OUT, urlPath, 'index.html');

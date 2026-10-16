@@ -30,7 +30,7 @@ works.sort(key=lambda w: (list(COLLECTIONS).index(w['collection']), not w.get('p
 
 
 def meta_comment(title, description, nav='art'):
-    return '<!-- ' + json.dumps({'title': title, 'description': description, 'nav': nav, 'contact': 'Looking for a piece, or one of your own?'}) + ' -->\n'
+    return '<!-- ' + json.dumps({'title': title, 'description': description, 'nav': nav, 'contact': 'Looking for a piece, or one of your own?', 'theme': 'dark'}) + ' -->\n'
 
 
 def mailto(subject):
