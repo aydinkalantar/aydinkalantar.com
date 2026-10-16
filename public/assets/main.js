@@ -17,6 +17,28 @@
   menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setMenu(false)));
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
 
+  // Large headings: wrap each word so it can rise out of its own mask (see .split in input.css).
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.reveal:is(.display-xl, .display-lg, .display-md)').forEach((h) => {
+      let i = 0;
+      const walk = (node) => [...node.childNodes].forEach((n) => {
+        if (n.nodeType === 1) return walk(n);
+        if (n.nodeType !== 3 || !n.textContent.trim()) return;
+        const frag = document.createDocumentFragment();
+        n.textContent.split(/(\s+)/).forEach((part) => {
+          if (!part) return;
+          if (/^\s+$/.test(part)) { frag.append(part); return; }
+          const w = document.createElement('span'); w.className = 'w';
+          const inner = document.createElement('span'); inner.textContent = part; inner.style.setProperty('--i', i++);
+          w.append(inner); frag.append(w);
+        });
+        n.replaceWith(frag);
+      });
+      walk(h);
+      h.classList.add('split');
+    });
+  }
+
   const items = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver((entries) => {

@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/styles.css?v=d2b5d6a0">
+  <link rel="stylesheet" href="/assets/styles.css?v=f3006cf9">
   <script>document.documentElement.classList.replace('no-js','js')</script>
   <script type="application/ld+json">
 {
@@ -102,6 +102,7 @@
   <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-ink focus:px-4 focus:py-2 focus:text-canvas">Skip to content</a>
 
   <header id="top" class="sticky top-0 z-40 border-b border-transparent transition-colors duration-400 [&.is-scrolled]:border-line [&.is-scrolled]:bg-canvas/90 [&.is-scrolled]:backdrop-blur-md">
+    <span class="scroll-progress" aria-hidden="true"></span>
     <div class="container-site flex h-16 items-center justify-between lg:h-20">
       <a href="/" class="group flex items-center gap-3" aria-label="Aydin Kalantar, home">
         <span class="grid h-9 w-9 place-items-center rounded-full border border-ink font-heading text-[0.95rem] font-bold leading-none tracking-tight text-ink transition-colors duration-400 group-hover:border-accent group-hover:text-accent">ak</span>
@@ -186,7 +187,7 @@
         <ul class="mt-10 grid gap-x-6 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
         <li class="reveal" data-collection="abstract">
           <a href="/art/works/abstract-flow/" class="group block">
-            <div class="overflow-hidden border border-line">
+            <div class="sheen overflow-hidden border border-line">
               <picture><source srcset="/assets/art/abstract-flow.webp" type="image/webp"><img src="/assets/art/abstract-flow.jpg" width="648" height="810" alt="Abstract Flow, natural wood veneer marquetry wall art by Aydin Kalantar" loading="lazy" decoding="async" class="aspect-[4/5] w-full transition-transform duration-900 ease-craft group-hover:scale-[1.03] object-cover"></picture>
             </div>
             <div class="mt-4 flex items-baseline justify-between gap-4">
@@ -198,7 +199,7 @@
         </li>
         <li class="reveal" data-collection="portraits">
           <a href="/art/works/jesus-christ/" class="group block">
-            <div class="overflow-hidden border border-line">
+            <div class="sheen overflow-hidden border border-line">
               <picture><source srcset="/assets/art/jesus-christ.webp" type="image/webp"><img src="/assets/art/jesus-christ.jpg" width="648" height="810" alt="Jesus Christ, natural wood veneer marquetry portrait by Aydin Kalantar" loading="lazy" decoding="async" class="aspect-[4/5] w-full transition-transform duration-900 ease-craft group-hover:scale-[1.03] object-cover"></picture>
             </div>
             <div class="mt-4 flex items-baseline justify-between gap-4">
@@ -210,7 +211,7 @@
         </li>
         <li class="reveal" data-collection="portraits">
           <a href="/art/works/mona-lisa/" class="group block">
-            <div class="overflow-hidden border border-line">
+            <div class="sheen overflow-hidden border border-line">
               <picture><source srcset="/assets/art/mona-lisa.webp" type="image/webp"><img src="/assets/art/mona-lisa.jpg" width="648" height="810" alt="Mona Lisa, natural wood veneer marquetry portrait by Aydin Kalantar" loading="lazy" decoding="async" class="aspect-[4/5] w-full transition-transform duration-900 ease-craft group-hover:scale-[1.03] object-cover"></picture>
             </div>
             <div class="mt-4 flex items-baseline justify-between gap-4">
@@ -295,7 +296,7 @@
     </div>
   </footer>
 
-  <script src="/assets/main.js?v=ac5d932c" defer></script>
+  <script src="/assets/main.js?v=aea93a92" defer></script>
   <!-- Voice chats with Max open the microphone: report when that starts and ends, so main.js can quiet the music. Must run before the widget loads. -->
   <script>(function(){var md=navigator.mediaDevices;if(!md||!md.getUserMedia||!window.MediaStreamTrack)return;var live=new Set();var emit=function(){window.dispatchEvent(new CustomEvent("ak:voice",{detail:{active:live.size>0}}))};var drop=function(t){if(live.delete(t))emit()};window.akVoiceActive=function(){return live.size>0};var ask=md.getUserMedia.bind(md);md.getUserMedia=function(c){return ask(c).then(function(s){var a=s.getAudioTracks();a.forEach(function(t){live.add(t);t.addEventListener("ended",function(){drop(t)})});if(a.length)emit();return s})};var stop=MediaStreamTrack.prototype.stop;MediaStreamTrack.prototype.stop=function(){stop.call(this);drop(this)}})()</script>
   <!-- Catch Lead agent: answers visitor questions about Aydin's work -->
