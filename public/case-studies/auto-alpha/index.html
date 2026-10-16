@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/styles.css?v=9dc7a39d">
+  <link rel="stylesheet" href="/assets/styles.css?v=732f79f0">
   <script>document.documentElement.classList.replace('no-js','js')</script>
   <script type="application/ld+json">
 {
@@ -196,57 +196,40 @@
         </div>
       </section>
 
-      <section id="challenge" class="scroll-mt-20 border-t border-line py-16 lg:py-22">
+      <section id="challenges" class="scroll-mt-20 border-t border-line py-16 lg:py-22">
         <div class="grid-asym">
           <div class="md:col-span-3">
-            <p class="label md:sticky md:top-28"><span class="text-ink-faint">02</span>&nbsp;&nbsp;Challenge</p>
+            <p class="label md:sticky md:top-28"><span class="text-ink-faint">02</span>&nbsp;&nbsp;Challenges</p>
           </div>
           <div class="reveal md:col-span-8 md:col-start-5">
             <div class="prose-case">
-              <p>Automated trading products tend to lead with their best return and bury the risk. People are asked to connect real money to a system they cannot see inside.</p>
-              <p>The challenge was to make a product whose <strong>trust is earned through transparency</strong>, and to make dense performance data readable for people who are not quants.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="approach" class="scroll-mt-20 border-t border-line py-16 lg:py-22">
-        <div class="grid-asym">
-          <div class="md:col-span-3">
-            <p class="label md:sticky md:top-28"><span class="text-ink-faint">03</span>&nbsp;&nbsp;Approach</p>
-          </div>
-          <div class="reveal md:col-span-8 md:col-start-5">
-            <div class="prose-case">
-              <p>I set a few rules for every screen before designing any of them.</p>
               <ul>
-                <li><strong>Show the drop next to the gain.</strong> Worst drop in testing sits beside every return figure.</li>
-                <li><strong>Label every hypothetical.</strong> Backtests and simulated records are always marked as such.</li>
-                <li><strong>Show every trade, losses included.</strong></li>
-                <li><strong>Make stopping easier than starting.</strong></li>
-                <li><strong>The money never moves.</strong> Connections are trade-only, with withdrawals disabled.</li>
+                <li><strong>Trust before money.</strong> People are asked to connect real money to a system they cannot see inside.</li>
+                <li><strong>Products that hide the risk.</strong> Automated trading tools tend to lead with their best return and bury the losses.</li>
+                <li><strong>Dense data for non-experts.</strong> Equity curves, drawdowns and trade logs had to be readable by people who are not quants.</li>
+                <li><strong>Security of exchange keys.</strong> The product places trades on the user's own exchange account, so a leaked key or forged signal must never be able to move funds.</li>
               </ul>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="solution" class="scroll-mt-20 border-t border-line py-16 lg:py-22">
+      <section id="ui-ux-solutions" class="scroll-mt-20 border-t border-line py-16 lg:py-22">
         <div class="grid-asym">
           <div class="md:col-span-3">
-            <p class="label md:sticky md:top-28"><span class="text-ink-faint">04</span>&nbsp;&nbsp;Solution</p>
+            <p class="label md:sticky md:top-28"><span class="text-ink-faint">03</span>&nbsp;&nbsp;UI/UX solutions</p>
           </div>
           <div class="reveal md:col-span-8 md:col-start-5">
             <div class="prose-case">
+              <p>I set a few rules before designing any screen: show the drop next to the gain, label every hypothetical, show every trade (losses included), and make stopping easier than starting.</p>
               <h3>Strategy cards</h3>
               <p>Each card puts backtest return, the period covered, risk level, worst drop and the simulated record since launch in one compact frame, so strategies can be compared honestly at a glance. Detail pages add a log-scale equity curve and an every-trade ledger.</p>
               <h3>Practice first</h3>
               <p>Every account starts with $10,000 of paper money at live prices, so people can watch a strategy behave before risking anything.</p>
-              <h3>A careful connection flow</h3>
-              <p>Users create a trade-only API key locked to Auto Alpha's IP address, and two-factor sign-in is required before any real-money trade. Keys with withdrawal rights are refused, stored keys are encrypted with AES-256, and incoming TradingView webhooks are validated and protected against replay before any order goes out.</p>
-              <h3>Honest testing, in the open</h3>
-              <p>Strategies are designed on 2018 to 2023 data, then judged on 2024 onward and on other coins. Each one carries a stress-test badge for four checks: other coins, settings sensitivity, later years and triple trading costs. A public page lists where backtests flatter, and backtest, simulated and real-money figures are never mixed.</p>
-              <h3>Visible guardrails and stop controls</h3>
-              <p>Late signals are dropped rather than chased, stop-losses sit on the exchange itself, and leverage is capped at 1×. Users can pause new entries, let open trades close, or stop everything at market in one action.</p>
+              <h3>A guided, careful connection</h3>
+              <p>Connecting an exchange is a step-by-step flow that explains each setting, such as why the key must be trade-only, before anything is saved.</p>
+              <h3>Stop controls in reach</h3>
+              <p>Users can pause new entries, let open trades close, or stop everything at market in one action, from the desktop or a phone.</p>
               <h3>Pricing that explains itself</h3>
               <p>A calculator compares the profit-share plan with the flat monthly plan for the user's own numbers and shows where one becomes cheaper than the other.</p>
             </div>
@@ -293,6 +276,28 @@
             </div>
             <figcaption class="media-caption"><span>03 · Library</span><span>Filter, compare, allocate</span></figcaption>
           </figure>
+        </div>
+      </section>
+
+      <section id="technical-solutions" class="scroll-mt-20 border-t border-line py-16 lg:py-22">
+        <div class="grid-asym">
+          <div class="md:col-span-3">
+            <p class="label md:sticky md:top-28"><span class="text-ink-faint">04</span>&nbsp;&nbsp;Technical solutions</p>
+          </div>
+          <div class="reveal md:col-span-8 md:col-start-5">
+            <div class="prose-case">
+              <h3>Funds never leave the exchange</h3>
+              <p>Users create a trade-only API key locked to Auto Alpha's IP address. Keys with withdrawal rights are refused, stored keys are encrypted with AES-256, and two-factor sign-in is required before any real-money trade.</p>
+              <h3>Signals that can't be forged or replayed</h3>
+              <p>Incoming TradingView webhooks are validated and protected against replay before any order goes out, and signals that arrive late are dropped rather than chased.</p>
+              <h3>Risk limits at the exchange</h3>
+              <p>Stop-losses are placed on the exchange itself, so they hold even if Auto Alpha is offline, and leverage is capped at 1×.</p>
+              <h3>Honest testing</h3>
+              <p>Strategies are designed on 2018 to 2023 data, then judged on 2024 onward and on other coins. Each one carries a stress-test badge for four checks: other coins, settings sensitivity, later years and triple trading costs. Backtest, simulated and real-money figures are stored and shown separately, never mixed.</p>
+              <h3>Reporting</h3>
+              <p>Paper accounts run at live prices, weekly email reports summarize activity, and real-money trades export to CSV for the tax year.</p>
+            </div>
+          </div>
         </div>
       </section>
 
