@@ -52,7 +52,7 @@ for (const file of walk(PAGES)) {
 
   // src/pages/about.html -> /about/ ; src/pages/index.html -> / ; src/pages/case-studies/index.html -> /case-studies/
   const rel = path.relative(PAGES, file).replace(/\\/g, '/').replace(/\.html$/, '');
-  const urlPath = rel === 'index' ? '/' : `/${rel.replace(/\/?index$/, '')}/`;
+  const urlPath = rel === 'index' || rel === '404' ? '/' : `/${rel.replace(/\/?index$/, '')}/`;
 
   let html = layout
     .replace('{{content}}', raw.slice(match[0].length))
@@ -70,7 +70,8 @@ for (const file of walk(PAGES)) {
   if (meta.theme === 'dark') html = html.replace('<body class="', '<body class="theme-dark ').replace('content="#FAFAF7"', 'content="#161614"');
   if (meta.nav) html = html.replace(new RegExp(`data-nav="${meta.nav}"`, 'g'), `data-nav="${meta.nav}" aria-current="page"`);
 
-  const outFile = path.join(OUT, urlPath, 'index.html');
+  // src/pages/404.html becomes public/404.html, which Cloudflare serves for any missing address.
+  const outFile = rel === '404' ? path.join(OUT, '404.html') : path.join(OUT, urlPath, 'index.html');
   fs.mkdirSync(path.dirname(outFile), { recursive: true });
   fs.writeFileSync(outFile, html);
   console.log(`built ${urlPath}`);

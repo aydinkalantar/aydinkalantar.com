@@ -195,8 +195,8 @@ def gallery_page():
     dots = ''.join(f'<li><button type="button" data-slide-to="{n}" class="block h-px w-8 bg-line transition-colors aria-[current=true]:bg-ink hover:bg-accent" aria-label="Show {e(w["title"])}"><span class="sr-only">{e(w["title"])}</span></button></li>' for n, w in enumerate(featured))
     hero_img = f"{SITE}/assets/art/rooms/{featured[0]['room']}-wide.jpg" if featured else None
     return meta_comment(
-        'Marquetry Art Gallery · Aydin Kalantar',
-        'Original natural wood veneer marquetry by Aydin Kalantar: portraits, abstract pieces and the Bismillah collection, cut and fitted by hand. Buy a piece or commission your own.',
+        'Marquetry Art & Handcrafted Wood Veneer Wall Art · Aydin Kalantar',
+        'Original marquetry artworks handcrafted from natural wood veneer by Aydin Kalantar (Kalantarov): portraits, abstract and Bismillah wall art, plus custom commissions.',
         image=hero_img,
     ) + f'''
     <!-- Intro -->
@@ -395,7 +395,7 @@ os.makedirs(os.path.join(OUT, 'works'))
 shown = [w for w in works if w.get('photo')]
 gallery_ld = {
     '@context': 'https://schema.org', '@type': 'CollectionPage', 'url': f'{SITE}/art/',
-    'name': 'Marquetry Art Gallery · Aydin Kalantar', 'author': {'@id': f'{SITE}/#person'},
+    'name': 'Marquetry Art & Handcrafted Wood Veneer Wall Art · Aydin Kalantar', 'author': {'@id': f'{SITE}/#person'},
     'mainEntity': {'@type': 'ItemList', 'itemListElement': [
         {'@type': 'ListItem', 'position': n, 'url': f"{SITE}/art/works/{w['slug']}/", 'name': w['title']} for n, w in enumerate(shown, 1)]},
 }
