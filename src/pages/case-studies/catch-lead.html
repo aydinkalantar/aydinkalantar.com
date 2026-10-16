@@ -23,11 +23,13 @@
       </header>
 
       <figure class="container-site reveal py-16 lg:py-22">
-        <div class="media blueprint p-6 text-ink sm:p-12 lg:p-16">
-          <!-- PROJECT IMAGE SLOT: replace the schematic with <img src="/assets/work/catch-lead-hero.jpg" alt="..."> -->
-          {{> schematic-cl class="w-full"}}
+        <div class="border border-line bg-canvas p-px">
+          <video data-autoplay class="block aspect-[1600/830] w-full" muted loop playsinline controls preload="none" poster="/assets/work/catch-lead/desktop-demo-poster.jpg" aria-label="Screen recording: a visitor taps the orb on the Catch Lead website and Max answers by voice, explaining the product and the free trial">
+            <source src="/assets/work/catch-lead/desktop-demo.mp4" type="video/mp4">
+            <a class="link" href="/assets/work/catch-lead/desktop-demo.mp4">Download the recording</a>
+          </video>
         </div>
-        <figcaption class="media-caption"><span>Fig. 01</span><span>Chat and voice assistant on a client site</span></figcaption>
+        <figcaption class="media-caption"><span>Fig. 01</span><span>Max answering by voice on a live site · unmute for sound · 0:19</span></figcaption>
       </figure>
 
       <div class="container-site pb-16">
@@ -94,6 +96,35 @@
               <p>Leads, conversations and bookings live in one installable app with a swipeable weekly calendar. A quote becomes an invoice in one tap, and marking a job done sends the invoice automatically.</p>
             </div>
           </div>
+        </div>
+      </section>
+
+      <!-- Catch Lead agent: greeting and conversation panel -->
+      <section class="border-t border-line py-16 lg:py-22">
+        <div class="grid-asym items-end">
+          <div class="md:col-span-3">
+            <p class="label">The agent</p>
+          </div>
+          <div class="md:col-span-8 md:col-start-5">
+            <h3 class="display-md reveal">Meet Max: a greeting, then a conversation.</h3>
+            <p class="body reveal mt-4 max-w-prose">The orb waits quietly at the foot of the page. A short greeting offers two ways in, typing or talking, and the panel opens into a chat with quick replies for the questions every business gets.</p>
+          </div>
+        </div>
+        <div class="mt-12 grid grid-cols-1 items-end gap-10 sm:grid-cols-2 sm:gap-6 lg:gap-10 max-w-sm sm:max-w-3xl mx-auto">
+          <figure class="reveal">
+            <picture>
+              <source srcset="/assets/work/catch-lead/agent-greeting.webp" type="image/webp">
+              <img src="/assets/work/catch-lead/agent-greeting.jpg" width="656" height="906" alt="Catch Lead greeting card from Max over a page: Ask me anything about prices or booking, with Ask a question and Talk buttons above the orb" loading="lazy" class="block h-auto w-full">
+            </picture>
+            <figcaption class="media-caption"><span>A · Greeting</span><span>Type or talk, the visitor chooses</span></figcaption>
+          </figure>
+          <figure class="reveal">
+            <picture>
+              <source srcset="/assets/work/catch-lead/agent-panel.webp" type="image/webp">
+              <img src="/assets/work/catch-lead/agent-panel.jpg" width="596" height="860" alt="Catch Lead chat panel: Max greets the visitor, who asks for a quote this week, with quick replies Get a quote, Services and Book a time" loading="lazy" class="block h-auto w-full">
+            </picture>
+            <figcaption class="media-caption"><span>B · Conversation</span><span>Quick replies for common questions</span></figcaption>
+          </figure>
         </div>
       </section>
 
