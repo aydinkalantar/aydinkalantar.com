@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/styles.css?v=7dd724b5">
+  <link rel="stylesheet" href="/assets/styles.css?v=3e5ef401">
   <script>document.documentElement.classList.replace('no-js','js')</script>
   <script type="application/ld+json">
 {
@@ -248,7 +248,7 @@
               <p class="body mt-3 max-w-prose">Next came 3D: modeling, animation and rendering for film and television. My first CGI animation for a film was for <em>The Temple’s Heart</em>, directed by Teymur Daimi, in 2005.</p>
               <figure class="mt-6 max-w-prose">
                 <a href="https://www.youtube.com/watch?v=evTHCoPFD_g" target="_blank" rel="noopener" data-yt="evTHCoPFD_g" class="group relative block aspect-video overflow-hidden border border-line bg-ink" aria-label="Play The Temple’s Heart, a film by Teymur Daimi with 3D animation by Aydin Kalantar">
-                  <img src="https://i.ytimg.com/vi/evTHCoPFD_g/hqdefault.jpg" alt="" loading="lazy" class="h-full w-full object-cover opacity-80 transition duration-900 ease-craft group-hover:scale-[1.02] group-hover:opacity-100">
+                  <img src="https://i.ytimg.com/vi/evTHCoPFD_g/hqdefault.jpg" width="480" height="360" alt="" loading="lazy" decoding="async" class="h-full w-full object-cover opacity-80 transition duration-900 ease-craft group-hover:scale-[1.02] group-hover:opacity-100">
                   <span class="absolute inset-0 grid place-items-center">
                     <span class="grid h-14 w-14 place-items-center rounded-full border border-canvas/70 bg-ink/40 text-canvas backdrop-blur-sm transition-colors duration-400 group-hover:border-accent group-hover:bg-accent">
                       <svg viewBox="0 0 16 16" class="ml-0.5 h-4 w-4" fill="currentColor" aria-hidden="true"><path d="M4 2.5v11l9-5.5z"/></svg>
@@ -570,7 +570,7 @@
     </div>
   </footer>
 
-  <script src="/assets/main.js?v=1cdac776" defer></script>
+  <script src="/assets/main.js?v=ac5d932c" defer></script>
   <!-- Voice chats with Max open the microphone: report when that starts and ends, so main.js can quiet the music. Must run before the widget loads. -->
   <script>(function(){var md=navigator.mediaDevices;if(!md||!md.getUserMedia||!window.MediaStreamTrack)return;var live=new Set();var emit=function(){window.dispatchEvent(new CustomEvent("ak:voice",{detail:{active:live.size>0}}))};var drop=function(t){if(live.delete(t))emit()};window.akVoiceActive=function(){return live.size>0};var ask=md.getUserMedia.bind(md);md.getUserMedia=function(c){return ask(c).then(function(s){var a=s.getAudioTracks();a.forEach(function(t){live.add(t);t.addEventListener("ended",function(){drop(t)})});if(a.length)emit();return s})};var stop=MediaStreamTrack.prototype.stop;MediaStreamTrack.prototype.stop=function(){stop.call(this);drop(this)}})()</script>
   <!-- Catch Lead agent: answers visitor questions about Aydin's work -->

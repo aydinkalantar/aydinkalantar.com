@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://aydinkalantar.com/art/</loc>
+    <image:image><image:loc>https://aydinkalantar.com/assets/art/rooms/jesus-christ-wide.jpg</image:loc><image:title>Jesus Christ</image:title></image:image>
+    <image:image><image:loc>https://aydinkalantar.com/assets/art/rooms/mona-lisa-wide.jpg</image:loc><image:title>Mona Lisa</image:title></image:image>
+    <image:image><image:loc>https://aydinkalantar.com/assets/art/rooms/bob-marley-wide.jpg</image:loc><image:title>Bob Marley</image:title></image:image>
+    <image:image><image:loc>https://aydinkalantar.com/assets/art/rooms/abstract-flow-wide.jpg</image:loc><image:title>Abstract Flow</image:title></image:image>
+    <image:image><image:loc>https://aydinkalantar.com/assets/art/rooms/hero-spiral-wide.jpg</image:loc><image:title>Hero Spiral</image:title></image:image>
+  </url>
+  <url>
+    <loc>https://aydinkalantar.com/art/commissions/</loc>
+  </url>
+  <url>
+    <loc>https://aydinkalantar.com/art/works/jesus-christ/</loc>
+    <image:image><image:loc>https://aydinkalantar.com/assets/art/rooms/jesus-christ-wide.jpg</image:loc><image:title>Jesus Christ on a gallery wall</image:title></image:image>
+    <image:image><image:loc>https://aydinkalantar.com/assets/art/rooms/jesus-christ-tall.jpg</image:loc><image:title>Jesus Christ on a gallery wall</image:title></image:image>
+    <image:image><image:loc>https://aydinkalantar.com/assets/art/jesus-christ.jpg</image:loc><image:title>Jesus Christ, marquetry by Aydin Kalantar</image:title></image:image>
+  </url>
+  <url>
+    <loc>https://aydinkalantar.com/art/works/mona-lisa/</loc>
+    <image:image><image:loc>https://aydinkalantar.com/assets/art/rooms/mona-lisa-wide.jpg</image:loc><image:title>Mona Lisa on a gallery wall</image:title></image:image>
+    <image:image><image:loc>https://aydinkalantar.com/assets/art/rooms/mona-lisa-tall.jpg</image:loc><image:title>Mona Lisa on a gallery wall</image:title></image:image>
+    <image:image><image:loc>https://aydinkalantar.com/assets/art/mona-lisa.jpg</image:loc><image:title>Mona Lisa, marquetry by Aydin Kalantar</image:title></image:image>
+  </url>
+  <url>
+    <loc>https://aydinkalantar.com/art/works/bob-marley/</loc>
+    <image:image><image:loc>https://aydinkalantar.com/assets/art/rooms/bob-marley-wide.jpg</image:loc><image:title>Bob Marley on a gallery wall</image:title></image:image>
+    <image:image><image:loc>https://aydinkalantar.com/assets/art/rooms/bob-marley-tall.jpg</image:loc><image:title>Bob Marley on a gallery wall</image:title></image:image>
+    <image:image><image:loc>https://aydinkalantar.com/assets/art/bob-marley.jpg</image:loc><image:title>Bob Marley, marquetry by Aydin Kalantar</image:title></image:image>
+  </url>
+  <url>
+    <loc>https://aydinkalantar.com/art/works/abstract-flow/</loc>
+    <image:image><image:loc>https://aydinkalantar.com/assets/art/rooms/abstract-flow-wide.jpg</image:loc><image:title>Abstract Flow on a gallery wall</image:title></image:image>
+    <image:image><image:loc>https://aydinkalantar.com/assets/art/rooms/abstract-flow-tall.jpg</image:loc><image:title>Abstract Flow on a gallery wall</image:title></image:image>
+    <image:image><image:loc>https://aydinkalantar.com/assets/art/abstract-flow.jpg</image:loc><image:title>Abstract Flow, marquetry by Aydin Kalantar</image:title></image:image>
+  </url>
+  <url>
+    <loc>https://aydinkalantar.com/art/works/hero-spiral/</loc>
+    <image:image><image:loc>https://aydinkalantar.com/assets/art/rooms/hero-spiral-wide.jpg</image:loc><image:title>Hero Spiral on a gallery wall</image:title></image:image>
+    <image:image><image:loc>https://aydinkalantar.com/assets/art/rooms/hero-spiral-tall.jpg</image:loc><image:title>Hero Spiral on a gallery wall</image:title></image:image>
+    <image:image><image:loc>https://aydinkalantar.com/assets/art/hero-spiral.jpg</image:loc><image:title>Hero Spiral, marquetry by Aydin Kalantar</image:title></image:image>
+  </url>
+</urlset>

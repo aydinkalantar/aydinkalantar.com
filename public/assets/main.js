@@ -89,6 +89,31 @@ if (chips.length) {
   if (wanted) show(wanted);
 }
 
+// Featured slider: native swipe/scroll with snap points; arrows and dots move it. It never advances on its own.
+document.querySelectorAll('[data-slider]').forEach((root) => {
+  const track = root.querySelector('[data-slider-track]');
+  const slides = [...track.children];
+  const dots = [...root.querySelectorAll('[data-slide-to]')];
+  let current = 0;
+  const go = (i) => {
+    current = (i + slides.length) % slides.length;
+    track.scrollTo({ left: slides[current].offsetLeft, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  };
+  const mark = (i) => { current = i; dots.forEach((d, n) => d.setAttribute('aria-current', String(n === i))); };
+  mark(0);
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => entries.forEach((en) => { if (en.isIntersecting) mark(slides.indexOf(en.target)); }), { root: track, threshold: 0.6 });
+    slides.forEach((s) => io.observe(s));
+  }
+  root.querySelectorAll('[data-slide-step]').forEach((b) => b.addEventListener('click', () => go(current + Number(b.dataset.slideStep))));
+  dots.forEach((d) => d.addEventListener('click', () => go(Number(d.dataset.slideTo))));
+  track.tabIndex = 0;
+  track.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') { e.preventDefault(); go(current + 1); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); go(current - 1); }
+  });
+});
+
 // Ambient music: off by default (browsers block sound that starts on its own).
 // The toggle fades a looping track in and out, and the choice is remembered between pages.
 (() => {
