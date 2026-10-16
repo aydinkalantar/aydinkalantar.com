@@ -78,6 +78,8 @@
   .sound-btn { @apply grid h-10 w-10 place-items-center border border-line text-ink transition-colors duration-400 ease-craft hover:border-accent hover:text-accent; }
   .sound-bars { @apply flex h-3.5 items-end gap-[3px]; }
   .sound-bars i { @apply block h-1 w-px bg-current transition-all duration-400; }
+  /* waiting for the first tap on a new page: bars still, at half height */
+  .sound-btn[data-waiting] .sound-bars i { animation: none !important; height: 8px; }
   .sound-btn[aria-pressed='true'] .sound-bars i { animation: sound-bar 1.6s ease-in-out infinite; }
   .sound-btn[aria-pressed='true'] .sound-bars i:nth-child(2) { animation-delay: -.4s; }
   .sound-btn[aria-pressed='true'] .sound-bars i:nth-child(3) { animation-delay: -.9s; }
