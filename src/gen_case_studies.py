@@ -439,7 +439,7 @@ CASES = [
               <h3>Identity that stays consistent</h3>
               <p>A model's identity is stored once and reused in every image and video render, so the same face carries across a whole shoot. A single selfie is enough to create a new identity.</p>
               <h3>A cloud render queue</h3>
-              <p>Image and video jobs run in the cloud and save to the user's private gallery. Video is generated with Kling 2.6 Pro or Veo 3.1, in 4, 6 or 8 second clips, and the cost in credits is shown before anything starts. Batch Mode queues large runs at half the credit cost and emails the user when they finish. Exports cover PNG, WebP and MP4 at 2K for images and 4K for video.</p>
+              <p>Image and video jobs run in the cloud and save to the user's private gallery. Video is generated with Kling 2.6 Pro, Kling 3.0 Pro or Veo 3.1, in 4, 6 or 8 second clips, directed by a preset motion style or a written camera direction, and the cost in credits is shown before anything starts. Batch Mode queues large runs at half the credit cost and emails the user when they finish. Exports cover PNG, WebP and MP4 at 2K for images and 4K for video.</p>
               <h3>One credit system</h3>
               <p>Images and video draw from a single credit balance across Starter, Creator and Agency plans, with top-up packs and a referral loop that rewards both sides. The app is installable on phone and desktop.</p>'''),
    ('Outcome', '''<p>Virtual Fashion is live, with free starter credits for every new account.</p>
