@@ -23,11 +23,13 @@
       </header>
 
       <figure class="container-site reveal py-16 lg:py-22">
-        <div class="media blueprint p-6 text-ink sm:p-12 lg:p-16">
-          <!-- PROJECT IMAGE SLOT: replace the schematic with <img src="/assets/work/auto-alpha-hero.jpg" alt="..."> -->
-          {{> schematic-aa class="w-full"}}
+        <div class="border border-line bg-ink p-px">
+          <picture>
+            <source srcset="/assets/work/auto-alpha/strategies-desktop.webp" type="image/webp">
+            <img src="/assets/work/auto-alpha/strategies-desktop.jpg" width="2000" height="1041" alt="Auto Alpha strategies page: cards for Gaussian Channel, KeltnerPulse Pro and GaussBreaker, each with a backtest labelled hypothetical, risk level, worst drop and simulated record" class="block h-auto w-full">
+          </picture>
         </div>
-        <figcaption class="media-caption"><span>Fig. 01</span><span>Strategy dashboard: key figures, equity curve, trade list</span></figcaption>
+        <figcaption class="media-caption"><span>Fig. 01</span><span>Strategy library · every return labelled hypothetical, worst drop beside it</span></figcaption>
       </figure>
 
       <div class="container-site pb-16">
@@ -91,13 +93,57 @@
               <h3>Practice first</h3>
               <p>Every account starts with $10,000 of paper money at live prices, so people can watch a strategy behave before risking anything.</p>
               <h3>A careful connection flow</h3>
-              <p>Users create a trade-only API key locked to Auto Alpha's IP address, and two-factor sign-in is required before any real-money trade.</p>
+              <p>Users create a trade-only API key locked to Auto Alpha's IP address, and two-factor sign-in is required before any real-money trade. Keys with withdrawal rights are refused, stored keys are encrypted with AES-256, and incoming TradingView webhooks are validated and protected against replay before any order goes out.</p>
+              <h3>Honest testing, in the open</h3>
+              <p>Strategies are designed on 2018 to 2023 data, then judged on 2024 onward and on other coins. Each one carries a stress-test badge for four checks: other coins, settings sensitivity, later years and triple trading costs. A public page lists where backtests flatter, and backtest, simulated and real-money figures are never mixed.</p>
               <h3>Visible guardrails and stop controls</h3>
               <p>Late signals are dropped rather than chased, stop-losses sit on the exchange itself, and leverage is capped at 1×. Users can pause new entries, let open trades close, or stop everything at market in one action.</p>
               <h3>Pricing that explains itself</h3>
               <p>A calculator compares the profit-share plan with the flat monthly plan for the user's own numbers and shows where one becomes cheaper than the other.</p>
             </div>
           </div>
+        </div>
+      </section>
+
+      <!-- Auto Alpha on a phone -->
+      <section class="border-t border-line py-16 lg:py-22">
+        <div class="grid-asym items-end">
+          <div class="md:col-span-3">
+            <p class="label">On a phone</p>
+          </div>
+          <div class="md:col-span-8 md:col-start-5">
+            <h3 class="display-md reveal">Check it, pause it, stop it, from anywhere.</h3>
+            <p class="body reveal mt-4 max-w-prose">The full dashboard works one-handed. Live, paper and testnet sit one tap apart, the stop controls are never more than a thumb away, and the hypothetical label follows every number onto the small screen.</p>
+          </div>
+        </div>
+        <div class="mt-12 grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-6 lg:gap-10 max-w-sm sm:max-w-none mx-auto">
+          <figure class="reveal">
+            <div class="overflow-hidden rounded-[1.75rem] border border-line bg-ink p-1.5">
+              <picture>
+                <source srcset="/assets/work/auto-alpha/mobile-portfolio.webp" type="image/webp">
+                <img src="/assets/work/auto-alpha/mobile-portfolio.jpg" width="640" height="1330" alt="Auto Alpha mobile portfolio: live account card, balance chart, Pause entries and Stop all buttons, and a running strategy" loading="lazy" class="block h-auto w-full rounded-[1.4rem]">
+              </picture>
+            </div>
+            <figcaption class="media-caption"><span>01 · Portfolio</span><span>Pause or stop in one tap</span></figcaption>
+          </figure>
+          <figure class="reveal">
+            <div class="overflow-hidden rounded-[1.75rem] border border-line bg-ink p-1.5">
+              <picture>
+                <source srcset="/assets/work/auto-alpha/mobile-strategy.webp" type="image/webp">
+                <img src="/assets/work/auto-alpha/mobile-strategy.jpg" width="640" height="1330" alt="Auto Alpha mobile strategy detail for KeltnerPulse Pro: version chips, risk level, worst drop and a hypothetical results notice" loading="lazy" class="block h-auto w-full rounded-[1.4rem]">
+              </picture>
+            </div>
+            <figcaption class="media-caption"><span>02 · Strategy</span><span>Risk before return</span></figcaption>
+          </figure>
+          <figure class="reveal">
+            <div class="overflow-hidden rounded-[1.75rem] border border-line bg-ink p-1.5">
+              <picture>
+                <source srcset="/assets/work/auto-alpha/mobile-strategies.webp" type="image/webp">
+                <img src="/assets/work/auto-alpha/mobile-strategies.jpg" width="640" height="1330" alt="Auto Alpha mobile strategy library with filters by coin and a Gaussian Channel card labelled backtest hypothetical" loading="lazy" class="block h-auto w-full rounded-[1.4rem]">
+              </picture>
+            </div>
+            <figcaption class="media-caption"><span>03 · Library</span><span>Filter, compare, allocate</span></figcaption>
+          </figure>
         </div>
       </section>
 
