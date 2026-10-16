@@ -1,4 +1,4 @@
-import html, os
+import html, os, re
 
 import pathlib
 OUT = str(pathlib.Path(__file__).resolve().parent / 'pages' / 'case-studies')
@@ -239,6 +239,42 @@ VF_SHOWCASE = '''
             <figcaption class="media-caption"><span>03 · Create</span><span>Format, quality and cost</span></figcaption>
           </figure>
         </div>
+        <!-- Start to finish: Ayden's own recordings, from blank garment to finished video -->
+        <div class="mt-18 grid-asym items-end border-t border-line pt-16">
+          <div class="md:col-span-3">
+            <p class="label">Start to finish</p>
+          </div>
+          <div class="md:col-span-8 md:col-start-5">
+            <h3 class="display-md reveal">From a blank garment to a finished film, on a phone.</h3>
+            <p class="body reveal mt-4 max-w-prose">Three real sessions, recorded in the app: pick a garment, add the artwork, cast a model, render the photo, then animate it. Sound on.</p>
+          </div>
+        </div>
+        <div class="mt-12 grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-6 lg:gap-10 max-w-sm sm:max-w-none mx-auto">
+          <figure class="reveal">
+            <div class="overflow-hidden rounded-[1.75rem] border border-line bg-ink p-1.5">
+              <video class="block aspect-[540/1168] w-full rounded-[1.4rem] bg-ink object-contain" controls playsinline preload="none" poster="/assets/work/app/howto-1-poster.jpg" aria-label="Screen recording: a puffer vest is picked, colored and given a graphic in Virtual Fashion, a model is cast, and the finished photo is animated into a video">
+                <source src="/assets/work/app/howto-1.mp4" type="video/mp4">
+              </video>
+            </div>
+            <figcaption class="media-caption"><span>01 · Puffer vest</span><span>Start to finish · 0:31</span></figcaption>
+          </figure>
+          <figure class="reveal">
+            <div class="overflow-hidden rounded-[1.75rem] border border-line bg-ink p-1.5">
+              <video class="block aspect-[540/1168] w-full rounded-[1.4rem] bg-ink object-contain" controls playsinline preload="none" poster="/assets/work/app/howto-2-poster.jpg" aria-label="Screen recording: a T-shirt is designed in Virtual Fashion, rendered on a model and animated into a video">
+                <source src="/assets/work/app/howto-2.mp4" type="video/mp4">
+              </video>
+            </div>
+            <figcaption class="media-caption"><span>02 · T-shirt</span><span>Start to finish · 0:25</span></figcaption>
+          </figure>
+          <figure class="reveal">
+            <div class="overflow-hidden rounded-[1.75rem] border border-line bg-ink p-1.5">
+              <video class="block aspect-[540/1168] w-full rounded-[1.4rem] bg-ink object-contain" controls playsinline preload="none" poster="/assets/work/app/howto-3-poster.jpg" aria-label="Screen recording: a knit sweater design is uploaded, given a fabric finish, rendered on a model in a rainy street and animated into a walking video">
+                <source src="/assets/work/app/howto-3.mp4" type="video/mp4">
+              </video>
+            </div>
+            <figcaption class="media-caption"><span>03 · Knit sweater</span><span>Start to finish · 0:27</span></figcaption>
+          </figure>
+        </div>
         <div class="mt-18 flex items-baseline justify-between gap-6 border-b border-line pb-5">
           <p class="label">Gallery · Generated outputs</p>
           <p class="meta hidden sm:block">Stills and motion, all made in Virtual Fashion</p>
@@ -410,21 +446,30 @@ CASES = [
   facts=[('Role','Product design & development'),('Type','B2C SaaS'),('Platform','Web app, installable'),('Live','<a class="link" href="https://virtualfashion.app" target="_blank" rel="noopener">virtualfashion.app</a>')],
   parts=[
    ('Overview', '''<p>Virtual Fashion is a browser studio for designing apparel and producing the imagery to sell it. A designer picks a garment, places artwork on it, casts a model, sets the scene and exports studio-quality photos and video, all in one workspace.</p>'''),
-   ('Challenge', '''<p>Apparel imagery has always been expensive. It takes samples, a photographer, models and a location, or 3D software with a steep learning curve. Small brands and creators need convincing visuals before a garment physically exists.</p>
-              <p>Generative AI can produce the pictures, but a bare prompt box is the wrong tool for a designer. The challenge was to make a powerful generation pipeline feel like a <strong>design tool</strong>: direct, predictable and consistent from one image to the next.</p>'''),
-   ('Approach', '''<p>I organized the product around how a real shoot is planned: the product, the model, the set, then the motion. That sequence became the navigation itself: Workspace, Identity, Motion and Showcase.</p>
-              ''' + ul([
-                '<strong>The canvas stays central.</strong> AI handles tedious steps such as placement and pattern repeats; the designer keeps every decision.',
-                '<strong>Consistency is the core requirement.</strong> A brand needs the same face across every photo and video, so identity is its own step, not a prompt detail.',
-                '<strong>Never make people wait.</strong> Rendering is slow, so it runs in the background while design continues.'])),
-   ('Solution', '''<h3>A smart canvas</h3>
-              <p>Logos in PNG, JPG or SVG are placed automatically. One uploaded pattern repeats across the garment and follows the fabric folds. Material finishes simulate embroidery, puff print, screen print and sublimation.</p>
-              <h3>Identity</h3>
-              <p>A library of lifestyle and runway models stays consistent across shoots. Designers can cast their own face from a single selfie, or upload a full-body photo for a personal virtual try-on.</p>
-              <h3>Scene and motion</h3>
-              <p>Nine scene presets, from studio gray to a golden-hour desert, switch with one click. A short prompt makes the model walk, pose or spin, exported as 9:16 for Reels and TikTok or 16:9 for lookbooks.</p>
-              <h3>A production queue</h3>
-              <p>Renders run in the cloud and save to a private gallery. Batch Mode queues large image runs at half the credit cost and sends an email when they finish.</p>'''),
+   ('Challenges', ul([
+                '<strong>Photography is the bottleneck.</strong> Convincing apparel imagery needs samples, a photographer, models and a location, or 3D software with a steep learning curve. Small brands and creators need it before a garment physically exists.',
+                '<strong>A prompt box is the wrong tool for a designer.</strong> Generative AI can make the pictures, but typing descriptions gives no direct control over where a logo sits or how a print wraps.',
+                '<strong>The same face, every time.</strong> A brand needs one model to look identical across every photo and video, which generative models do not do on their own.',
+                '<strong>Rendering is slow and costly.</strong> High-resolution images and video take minutes and real compute, so waiting on a spinner would stall the creative work.'])),
+   ('UI/UX solutions', '''<p>I organized the product around how a real shoot is planned: the product, the model, the set, then the motion. That sequence became the navigation itself: Workspace, Identity, Motion and Showcase.</p>
+              <h3>A smart canvas, not a prompt</h3>
+              <p>The garment stays at the center of the screen and the designer works on it directly. Logos are dropped on and placed automatically, one uploaded pattern repeats across the garment, and material finishes (embroidery, puff print, screen print, sublimation) are picked from a panel rather than described in words.</p>
+              <h3>Identity as its own step</h3>
+              <p>Casting is a dedicated screen with a library of lifestyle and runway models. Designers can also cast their own face from a single selfie, or upload a full-body photo for a personal try-on, so consistency is a choice made once instead of a prompt detail repeated every time.</p>
+              <h3>One-click scenes and motion</h3>
+              <p>Nine scene presets, from studio gray to a golden-hour desert, switch with one tap. A short instruction makes the model walk, pose or spin, with the output format (9:16 for Reels and TikTok, 16:9 for lookbooks) chosen up front.</p>
+              <h3>Never make people wait</h3>
+              <p>Renders run in the background while design continues, and land in a private gallery. The same flow works on a phone, where the studio is one thumb away.</p>'''),
+   ('Technical solutions', '''<h3>A generation pipeline behind the canvas</h3>
+              <p>Each canvas action becomes structured input for the image models: garment, artwork placement, material finish, model identity and scene. That keeps results predictable and repeatable, instead of depending on how a prompt happens to be worded.</p>
+              <h3>Automatic artwork placement</h3>
+              <p>PNG, JPG and SVG logos are positioned on the garment automatically, and uploaded patterns are tiled so the repeat follows the folds of the fabric rather than sitting flat on top.</p>
+              <h3>Identity that stays consistent</h3>
+              <p>A model's identity is stored once and reused in every image and video render, so the same face carries across a whole shoot. A single selfie is enough to create a new identity.</p>
+              <h3>A cloud render queue</h3>
+              <p>Image and video jobs run in the cloud and save to the user's private gallery. Video is generated with Kling 2.6 Pro, Kling 3.0 Pro or Veo 3.1, in 4, 6 or 8 second clips, directed by a preset motion style or a written camera direction, and the cost in credits is shown before anything starts. Batch Mode queues large runs at half the credit cost and emails the user when they finish. Exports cover PNG, WebP and MP4 at 2K for images and 4K for video.</p>
+              <h3>One credit system</h3>
+              <p>Images and video draw from a single credit balance across Starter, Creator and Agency plans, with top-up packs and a referral loop that rewards both sides. The app is installable on phone and desktop.</p>'''),
    ('Outcome', '''<p>Virtual Fashion is live, with free starter credits for every new account.</p>
               ''' + ul([
                 'Exports PNG, WebP and MP4, with 2K images and 4K video.',
@@ -442,21 +487,28 @@ CASES = [
   facts=[('Role','Product design & development'),('Type','B2B SaaS'),('Platform','Website widget + PWA'),('Live','<a class="link" href="https://catchlead.dev" target="_blank" rel="noopener">catchlead.dev</a>')],
   parts=[
    ('Overview', '''<p>Catch Lead adds an AI assistant to a service business's website. It answers visitors by chat or voice, in their language, quotes from the business's own prices, books appointments and emails the owner every lead.</p>'''),
-   ('Challenge', '''<p>Plumbers, roofers, HVAC teams and law firms lose customers after hours and while they are out on jobs. A missed call is often a lost job.</p>
-              <p>The owners are rarely technical and have no time for scripts or integrations. And an assistant that invents a price does more damage than no assistant at all. It had to be <strong>simple to set up and impossible to embarrass the business</strong>.</p>'''),
-   ('Approach', '''<p>I treated setup as the product and trust as the constraint.</p>
-              ''' + ul([
-                '<strong>Three steps to live.</strong> Anything more than a pasted link and one line of code would lose the owner.',
-                '<strong>Grounded answers only.</strong> The assistant learns from the business\'s own website, and the owner can edit everything it learned.',
-                '<strong>Two moments, two designs.</strong> The visitor gets a conversation that feels like a phone call; the owner gets a dashboard built for a phone between jobs.'])),
-   ('Solution', '''<h3>Onboarding in three steps</h3>
-              <p>Paste the website address and Catch Lead reads the services, prices and service area. Add one line to Wix, WordPress, Squarespace or any site. Leads and bookings start arriving. Before signing up, an owner can enter their URL and see the widget on a screenshot of their own site in about ten seconds.</p>
+   ('Challenges', ul([
+                '<strong>Missed calls are lost jobs.</strong> Plumbers, roofers, HVAC teams and law firms lose customers after hours and while they are out on jobs.',
+                '<strong>Owners are not technical.</strong> They have no time for scripts, integrations or training a bot, so setup had to take minutes.',
+                '<strong>A wrong price is worse than no answer.</strong> An assistant that invents a quote damages the business, so every answer had to come from the business itself.',
+                '<strong>One script on someone else\'s website.</strong> The widget has to look right and work on any site (Wix, WordPress, Squarespace or custom code) without breaking the page around it.'])),
+   ('UI/UX solutions', '''<p>I treated setup as the product and trust as the constraint, and designed for two different moments: the visitor, who should feel like they are on a phone call, and the owner, who checks leads on a phone between jobs.</p>
+              <h3>Onboarding in three steps</h3>
+              <p>Paste the website address, add one line of code, and leads start arriving. Before signing up, an owner can enter their URL and see the assistant on a preview of their own site in seconds.</p>
               <h3>The orb</h3>
-              <p>Visitors tap a glowing orb to talk, or type. They can interrupt naturally, as on a call, and send photos of the job. The assistant detects the visitor's language across 13 options and offers 30 voices.</p>
-              <h3>Guardrails</h3>
-              <p>Quotes come only from published prices. When a visitor needs a person, the assistant collects their name, contact details and needs, then emails the owner right away.</p>
-              <h3>The owner's dashboard</h3>
-              <p>Leads, conversations and bookings live in one installable app with a swipeable weekly calendar. A quote becomes an invoice in one tap, and marking a job done sends the invoice automatically.</p>'''),
+              <p>A single glowing orb invites visitors to talk or type. They can interrupt naturally, as on a call, send photos of the job, and switch to text at any time. Max greets them with a short card first, so the voice never starts without a tap.</p>
+              <h3>A handoff that feels personal</h3>
+              <p>When a visitor needs a person, the assistant collects their name, contact details and needs in the conversation itself, then tells them the owner will follow up.</p>
+              <h3>A dashboard built for the truck</h3>
+              <p>Leads, conversations and bookings live in one installable app with a swipeable weekly calendar. Each lead arrives already written up with a summary and quote. A quote becomes an invoice in one tap, and marking a job done sends it.</p>'''),
+   ('Technical solutions', '''<h3>One script tag, fully isolated</h3>
+              <p>The widget loads from a single script and renders inside a closed Shadow DOM, so the host site's styles cannot break it and the widget cannot leak styles into the page. It follows the site's light or dark theme and is configured through attributes on the script tag.</p>
+              <h3>Real-time voice</h3>
+              <p>Voice runs over one streaming WebSocket connection to Google's Gemini Live, which gives a natural voice and lets visitors interrupt mid-sentence. The assistant detects the visitor's language across 13 options and offers 30 voices.</p>
+              <h3>Grounded answers</h3>
+              <p>At setup Catch Lead reads the business's website for services, prices and service area. The assistant answers only from that knowledge, which the owner can edit, and quotes only published prices.</p>
+              <h3>Leads, bookings and payments</h3>
+              <p>Every conversation is turned into a lead with a summary and quote, and the owner is emailed right away. Bookings land in the calendar, Stripe handles deposits, and the same inbox now covers Instagram, WhatsApp and SMS. Usage alerts at 80% and 100% replace hard limits, so a lead is never blocked.</p>'''),
    ('Outcome', '''<p>Catch Lead is live with a 14-day free trial that needs no card.</p>
               ''' + ul([
                 'Plans run from solo operators to agencies, with white-label and multi-location support at the top tier.',
@@ -473,27 +525,32 @@ CASES = [
   facts=[('Role','Product design & development'),('Type','Fintech SaaS'),('Platform','Web dashboard'),('Live','<a class="link" href="https://autoalpha.trade" target="_blank" rel="noopener">autoalpha.trade</a>')],
   parts=[
    ('Overview', '''<p>Auto Alpha runs rule-based crypto strategies on a user's own exchange account, around the clock. Funds never leave the exchange; Auto Alpha only places trades.</p>'''),
-   ('Challenge', '''<p>Automated trading products tend to lead with their best return and bury the risk. People are asked to connect real money to a system they cannot see inside.</p>
-              <p>The challenge was to make a product whose <strong>trust is earned through transparency</strong>, and to make dense performance data readable for people who are not quants.</p>'''),
-   ('Approach', '''<p>I set a few rules for every screen before designing any of them.</p>
-              ''' + ul([
-                '<strong>Show the drop next to the gain.</strong> Worst drop in testing sits beside every return figure.',
-                '<strong>Label every hypothetical.</strong> Backtests and simulated records are always marked as such.',
-                '<strong>Show every trade, losses included.</strong>',
-                '<strong>Make stopping easier than starting.</strong>',
-                '<strong>The money never moves.</strong> Connections are trade-only, with withdrawals disabled.'])),
-   ('Solution', '''<h3>Strategy cards</h3>
+   ('Challenges', ul([
+                '<strong>Trust before money.</strong> People are asked to connect real money to a system they cannot see inside.',
+                '<strong>Products that hide the risk.</strong> Automated trading tools tend to lead with their best return and bury the losses.',
+                '<strong>Dense data for non-experts.</strong> Equity curves, drawdowns and trade logs had to be readable by people who are not quants.',
+                '<strong>Security of exchange keys.</strong> The product places trades on the user\'s own exchange account, so a leaked key or forged signal must never be able to move funds.'])),
+   ('UI/UX solutions', '''<p>I set a few rules before designing any screen: show the drop next to the gain, label every hypothetical, show every trade (losses included), and make stopping easier than starting.</p>
+              <h3>Strategy cards</h3>
               <p>Each card puts backtest return, the period covered, risk level, worst drop and the simulated record since launch in one compact frame, so strategies can be compared honestly at a glance. Detail pages add a log-scale equity curve and an every-trade ledger.</p>
               <h3>Practice first</h3>
               <p>Every account starts with $10,000 of paper money at live prices, so people can watch a strategy behave before risking anything.</p>
-              <h3>A careful connection flow</h3>
-              <p>Users create a trade-only API key locked to Auto Alpha's IP address, and two-factor sign-in is required before any real-money trade. Keys with withdrawal rights are refused, stored keys are encrypted with AES-256, and incoming TradingView webhooks are validated and protected against replay before any order goes out.</p>
-              <h3>Honest testing, in the open</h3>
-              <p>Strategies are designed on 2018 to 2023 data, then judged on 2024 onward and on other coins. Each one carries a stress-test badge for four checks: other coins, settings sensitivity, later years and triple trading costs. A public page lists where backtests flatter, and backtest, simulated and real-money figures are never mixed.</p>
-              <h3>Visible guardrails and stop controls</h3>
-              <p>Late signals are dropped rather than chased, stop-losses sit on the exchange itself, and leverage is capped at 1×. Users can pause new entries, let open trades close, or stop everything at market in one action.</p>
+              <h3>A guided, careful connection</h3>
+              <p>Connecting an exchange is a step-by-step flow that explains each setting, such as why the key must be trade-only, before anything is saved.</p>
+              <h3>Stop controls in reach</h3>
+              <p>Users can pause new entries, let open trades close, or stop everything at market in one action, from the desktop or a phone.</p>
               <h3>Pricing that explains itself</h3>
               <p>A calculator compares the profit-share plan with the flat monthly plan for the user's own numbers and shows where one becomes cheaper than the other.</p>'''),
+   ('Technical solutions', '''<h3>Funds never leave the exchange</h3>
+              <p>Users create a trade-only API key locked to Auto Alpha's IP address. Keys with withdrawal rights are refused, stored keys are encrypted with AES-256, and two-factor sign-in is required before any real-money trade.</p>
+              <h3>Signals that can't be forged or replayed</h3>
+              <p>Incoming TradingView webhooks are validated and protected against replay before any order goes out, and signals that arrive late are dropped rather than chased.</p>
+              <h3>Risk limits at the exchange</h3>
+              <p>Stop-losses are placed on the exchange itself, so they hold even if Auto Alpha is offline, and leverage is capped at 1×.</p>
+              <h3>Honest testing</h3>
+              <p>Strategies are designed on 2018 to 2023 data, then judged on 2024 onward and on other coins. Each one carries a stress-test badge for four checks: other coins, settings sensitivity, later years and triple trading costs. Backtest, simulated and real-money figures are stored and shown separately, never mixed.</p>
+              <h3>Reporting</h3>
+              <p>Paper accounts run at live prices, weekly email reports summarize activity, and real-money trades export to CSV for the tax year.</p>'''),
    ('Outcome', '''<p>Auto Alpha is live on Binance for spot and futures, with more exchanges in progress.</p>
               ''' + ul([
                 'A library of six strategies in ten versions, plus private TradingView strategies on Pro.',
@@ -515,13 +572,16 @@ DEFAULT_HERO = '''      <figure class="container-site reveal py-16 lg:py-22">
 
 ORDER = [c['slug'] for c in CASES]
 
+def slug(label):
+    return re.sub(r'[^a-z]+', '-', label.lower()).strip('-')
+
 def page(c):
     i = ORDER.index(c['slug']); nxt = CASES[(i + 1) % len(CASES)]
     facts = '\n'.join(f'            <div><dt>{k}</dt><dd>{v}</dd></div>' for k, v in c['facts'])
     parts = ''
     for n, (label, body) in enumerate(c['parts'], 1):
         parts += f'''
-      <section id="{label.lower()}" class="scroll-mt-20 border-t border-line py-16 lg:py-22">
+      <section id="{slug(label)}" class="scroll-mt-20 border-t border-line py-16 lg:py-22">
         <div class="grid-asym">
           <div class="md:col-span-3">
             <p class="label md:sticky md:top-28"><span class="text-ink-faint">0{n}</span>&nbsp;&nbsp;{label}</p>
@@ -534,7 +594,7 @@ def page(c):
         </div>
       </section>
 '''
-        if label == 'Solution' and c.get('after_solution'):
+        if label == 'UI/UX solutions' and c.get('after_solution'):
             parts += c['after_solution']
     hero = c.get('hero') or DEFAULT_HERO.format(c=c)
     meta = '{"title": "%s", "description": "%s", "nav": "case-studies"}' % (c['title'], c['desc'])
