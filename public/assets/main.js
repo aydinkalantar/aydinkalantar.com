@@ -77,7 +77,8 @@ if (reels.length && 'IntersectionObserver' in window && !window.matchMedia('(pre
   const AudioCtx = window.AudioContext || window.webkitAudioContext;
   if (!buttons.length || !AudioCtx) { buttons.forEach((b) => b.remove()); return; }
   const SRC = '/assets/audio/ambient.mp3', LOOP = 64, LEVEL = 0.35, KEY = 'ak-sound';
-  let ctx, gain, source, buffer, on = false, ducked = false;
+  let ctx, gain, source, buffer, on = false;
+  const holds = new Set(); // reasons to stay quiet: a video with sound, a voice chat with Max
   const store = (v) => { try { localStorage.setItem(KEY, v); } catch (e) {} };
   const stored = () => { try { return localStorage.getItem(KEY); } catch (e) { return null; } };
   const render = () => buttons.forEach((b) => {
@@ -100,7 +101,7 @@ if (reels.length && 'IntersectionObserver' in window && !window.matchMedia('(pre
       source.loopStart = 0; source.loopEnd = Math.min(LOOP, buffer.duration);
       source.connect(gain); source.start();
     }
-    if (on && !ducked) ramp(LEVEL, 2.5);
+    if (on && !holds.size) ramp(LEVEL, 2.5);
   };
   const setOn = (value) => {
     on = value; store(on ? 'on' : 'off'); render();
@@ -117,11 +118,19 @@ if (reels.length && 'IntersectionObserver' in window && !window.matchMedia('(pre
     ['pointerdown', 'keydown', 'touchstart'].forEach((ev) => window.addEventListener(ev, resume, { once: true, passive: true }));
   }
 
+  const hold = (why) => { holds.add(why); if (ctx) ramp(0, 0.6); };
+  const release = (why) => { if (holds.delete(why) && !holds.size && on && ctx) ramp(LEVEL, 2); };
+
   // Step aside while a video with sound is playing.
   document.querySelectorAll('video').forEach((v) => {
-    v.addEventListener('play', () => { if (!v.muted && ctx) { ducked = true; ramp(0, 0.6); } });
-    const back = () => { if (ducked) { ducked = false; if (on && ctx) ramp(LEVEL, 2); } };
+    v.addEventListener('play', () => { if (!v.muted) hold(v); });
+    const back = () => release(v);
     v.addEventListener('pause', back); v.addEventListener('ended', back);
-    v.addEventListener('volumechange', () => { if (!v.paused && !v.muted && ctx) { ducked = true; ramp(0, 0.6); } else if (v.muted) back(); });
+    v.addEventListener('volumechange', () => { if (!v.paused && !v.muted) hold(v); else if (v.muted) back(); });
   });
+
+  // And while a visitor is talking with Max (the layout reports when the widget's microphone opens and closes).
+  const voice = (active) => (active ? hold('voice') : release('voice'));
+  window.addEventListener('ak:voice', (e) => voice(e.detail.active));
+  if (window.akVoiceActive && window.akVoiceActive()) voice(true);
 })();
