@@ -200,17 +200,17 @@ VF_SHOWCASE = '''
           </div>
           <figcaption class="media-caption"><span>Fig. 02</span><span>Lookbook film generated with Virtual Fashion · 0:23</span></figcaption>
         </figure>
-        <!-- The app on a phone: three steps of one flow -->
+        <!-- The app on a phone: three steps of one flow, then the flow in motion -->
         <div class="mt-18 grid-asym items-end border-t border-line pt-16">
           <div class="md:col-span-3">
             <p class="label">On a phone</p>
           </div>
           <div class="md:col-span-8 md:col-start-5">
             <h3 class="display-md reveal">The full studio, one thumb away.</h3>
-            <p class="body reveal mt-4 max-w-prose">The desktop workspace folds into three bottom sheets on mobile. Pick a garment, describe the shot, then set format, quality and cost before anything is generated.</p>
+            <p class="body reveal mt-4 max-w-prose">The desktop workspace folds into bottom sheets on mobile. Pick a garment, describe the shot, set format, quality and cost before anything is generated, then choose how the model moves.</p>
           </div>
         </div>
-        <div class="mt-12 grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-6 lg:gap-10 max-w-sm sm:max-w-none mx-auto">
+        <div class="mt-12 grid grid-cols-1 gap-10 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4 lg:gap-8 max-w-sm sm:max-w-xl lg:max-w-none mx-auto">
           <figure class="reveal">
             <div class="overflow-hidden rounded-[1.75rem] border border-line bg-canvas p-1.5">
               <picture>
@@ -237,6 +237,14 @@ VF_SHOWCASE = '''
               </picture>
             </div>
             <figcaption class="media-caption"><span>03 · Create</span><span>Format, quality and cost</span></figcaption>
+          </figure>
+          <figure class="reveal">
+            <div class="overflow-hidden rounded-[1.75rem] border border-line bg-canvas p-1.5">
+              <video data-autoplay muted loop playsinline preload="none" width="718" height="1518" poster="/assets/work/app/mobile-flow-poster.jpg" class="block h-auto w-full rounded-[1.4rem]" aria-label="Screen recording of the Virtual Fashion mobile app: a puffer vest is colored on the canvas, a model identity is locked, production settings are chosen, then a motion style is picked for the video">
+                <source src="/assets/work/app/mobile-flow.mp4" type="video/mp4">
+              </video>
+            </div>
+            <figcaption class="media-caption"><span>04 · Motion</span><span>The flow, recorded</span></figcaption>
           </figure>
         </div>
         <div class="mt-18 flex items-baseline justify-between gap-6 border-b border-line pb-5">
@@ -431,7 +439,7 @@ CASES = [
               <h3>Identity that stays consistent</h3>
               <p>A model's identity is stored once and reused in every image and video render, so the same face carries across a whole shoot. A single selfie is enough to create a new identity.</p>
               <h3>A cloud render queue</h3>
-              <p>Image and video jobs run in the cloud and save to the user's private gallery. Batch Mode queues large runs at half the credit cost and emails the user when they finish. Exports cover PNG, WebP and MP4 at 2K for images and 4K for video.</p>
+              <p>Image and video jobs run in the cloud and save to the user's private gallery. Video is generated with Kling 2.6 Pro or Veo 3.1, in 4, 6 or 8 second clips, and the cost in credits is shown before anything starts. Batch Mode queues large runs at half the credit cost and emails the user when they finish. Exports cover PNG, WebP and MP4 at 2K for images and 4K for video.</p>
               <h3>One credit system</h3>
               <p>Images and video draw from a single credit balance across Starter, Creator and Agency plans, with top-up packs and a referral loop that rewards both sides. The app is installable on phone and desktop.</p>'''),
    ('Outcome', '''<p>Virtual Fashion is live, with free starter credits for every new account.</p>
