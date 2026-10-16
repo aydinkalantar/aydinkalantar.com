@@ -58,7 +58,8 @@ for (const file of walk(PAGES)) {
     .replace('{{content}}', raw.slice(match[0].length))
     .replace(/\{\{title\}\}/g, meta.title)
     .replace(/\{\{description\}\}/g, meta.description)
-    .replace(/\{\{path\}\}/g, urlPath);
+    .replace(/\{\{path\}\}/g, urlPath)
+    .replace('{{contact}}', meta.contact || 'Have a product that deserves craft?');
   html = includePartials(html)
     .replace('/assets/styles.css"', `/assets/styles.css?v=${cssVersion}"`)
     .replace('/assets/main.js"', `/assets/main.js?v=${jsVersion}"`);

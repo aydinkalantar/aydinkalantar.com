@@ -70,6 +70,25 @@ if (reels.length && 'IntersectionObserver' in window && !window.matchMedia('(pre
   reels.forEach((v) => reelObserver.observe(v));
 }
 
+// Gallery filters: chips with data-filter show one collection; ?c=<collection> opens the gallery filtered.
+const chips = document.querySelectorAll('[data-filter]');
+if (chips.length) {
+  const cards = document.querySelectorAll('#works-grid > [data-collection]');
+  const show = (id) => {
+    if (![...chips].some((c) => c.dataset.filter === id)) id = 'all';
+    chips.forEach((c) => c.setAttribute('aria-pressed', String(c.dataset.filter === id)));
+    cards.forEach((card) => { card.hidden = id !== 'all' && card.dataset.collection !== id; if (!card.hidden) card.classList.add('is-visible'); });
+  };
+  chips.forEach((c) => c.addEventListener('click', () => {
+    show(c.dataset.filter);
+    const url = new URL(location.href);
+    if (c.dataset.filter === 'all') url.searchParams.delete('c'); else url.searchParams.set('c', c.dataset.filter);
+    history.replaceState(null, '', url);
+  }));
+  const wanted = new URLSearchParams(location.search).get('c');
+  if (wanted) show(wanted);
+}
+
 // Ambient music: off by default (browsers block sound that starts on its own).
 // The toggle fades a looping track in and out, and the choice is remembered between pages.
 (() => {

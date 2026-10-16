@@ -1,0 +1,38 @@
+{
+  "_readme": "One entry per artwork. Fill in photo (file name in /assets/art/, without extension), size, woods, year, price and stripe (a Stripe Payment Link) as they arrive. A work with a stripe link shows a Buy button; without one it shows Enquire. Works without a photo show an empty slot while SHOW_PENDING is on in gen_art.py.",
+  "collections": [
+    {"id": "portraits", "name": "Portraits", "blurb": "Faces built from grain: every shadow and highlight is a different veneer."},
+    {"id": "abstract", "name": "Abstract", "blurb": "Spirals, ripples and flowing lines that follow the movement of the wood itself."},
+    {"id": "bismillah", "name": "Bismillah", "blurb": "Calligraphy and sacred geometry set in contrasting natural woods."}
+  ],
+  "works": [
+    {"title": "Jesus Christ", "collection": "portraits", "photo": "jesus-christ", "format": "Shaped panel"},
+    {"title": "Mona Lisa", "collection": "portraits", "photo": "mona-lisa", "format": "Framed panel"},
+    {"title": "Bob Marley", "collection": "portraits", "photo": "bob-marley", "format": "Round panel"},
+    {"title": "Marilyn Monroe", "collection": "portraits"},
+    {"title": "Barack Obama", "collection": "portraits"},
+    {"title": "Donald Trump", "collection": "portraits"},
+    {"title": "George Clooney", "collection": "portraits"},
+    {"title": "Diana, Princess of Wales", "collection": "portraits"},
+    {"title": "Elvis Presley", "collection": "portraits"},
+    {"title": "Abstract Flow", "collection": "abstract"},
+    {"title": "Hero Spiral", "collection": "abstract"},
+    {"title": "Vortex of Order", "collection": "abstract"},
+    {"title": "Aligned Motion", "collection": "abstract"},
+    {"title": "Gravity Well", "collection": "abstract"},
+    {"title": "Portal of Perception", "collection": "abstract"},
+    {"title": "Duality Spiral", "collection": "abstract"},
+    {"title": "Ripple Core", "collection": "abstract"},
+    {"title": "Contours of Silence", "collection": "abstract"},
+    {"title": "Fractal Pulse", "collection": "abstract"},
+    {"title": "Tidal Lines", "collection": "abstract"},
+    {"title": "Wormhole Echo", "collection": "abstract"},
+    {"title": "Surge", "collection": "abstract"},
+    {"title": "Entangle", "collection": "abstract"},
+    {"title": "Bismillah Blossom", "collection": "bismillah"},
+    {"title": "Divine Geometry", "collection": "bismillah"},
+    {"title": "Grace in Harmony", "collection": "bismillah"},
+    {"title": "Sacred Contrast", "collection": "bismillah"},
+    {"title": "Celestial Invocation", "collection": "bismillah"}
+  ]
+}
