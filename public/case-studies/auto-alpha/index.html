@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/styles.css?v=9dc7a39d">
+  <link rel="stylesheet" href="/assets/styles.css?v=fc7af8f9">
   <script>document.documentElement.classList.replace('no-js','js')</script>
   <script type="application/ld+json">
 {
@@ -396,7 +396,9 @@
     </div>
   </footer>
 
-  <script src="/assets/main.js?v=0f224a31" defer></script>
+  <script src="/assets/main.js?v=074ce2cb" defer></script>
+  <!-- Voice chats with Max open the microphone: report when that starts and ends, so main.js can quiet the music. Must run before the widget loads. -->
+  <script>(function(){var md=navigator.mediaDevices;if(!md||!md.getUserMedia||!window.MediaStreamTrack)return;var live=new Set();var emit=function(){window.dispatchEvent(new CustomEvent("ak:voice",{detail:{active:live.size>0}}))};var drop=function(t){if(live.delete(t))emit()};window.akVoiceActive=function(){return live.size>0};var ask=md.getUserMedia.bind(md);md.getUserMedia=function(c){return ask(c).then(function(s){var a=s.getAudioTracks();a.forEach(function(t){live.add(t);t.addEventListener("ended",function(){drop(t)})});if(a.length)emit();return s})};var stop=MediaStreamTrack.prototype.stop;MediaStreamTrack.prototype.stop=function(){stop.call(this);drop(this)}})()</script>
   <!-- Catch Lead agent: answers visitor questions about Aydin's work -->
   <script>(function(){var s=document.createElement("script");s.async=true;s.src="https://catchlead.dev/static/widget.js";s.setAttribute("data-api-key","cl_1BXjmQ_5AFqakFIcF5bkj9VPIZIGZVbeAtnQe2xYJZpYLf3W");(document.body||document.head).appendChild(s)})()</script>
 </body>

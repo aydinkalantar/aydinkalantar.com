@@ -77,12 +77,16 @@ if (reels.length && 'IntersectionObserver' in window && !window.matchMedia('(pre
   const AudioCtx = window.AudioContext || window.webkitAudioContext;
   if (!buttons.length || !AudioCtx) { buttons.forEach((b) => b.remove()); return; }
   const SRC = '/assets/audio/ambient.mp3', LOOP = 64, LEVEL = 0.35, KEY = 'ak-sound';
-  let ctx, gain, source, buffer, on = false, ducked = false;
+  let ctx, gain, source, buffer, on = false;
+  const holds = new Set(); // reasons to stay quiet: a video with sound, a voice chat with Max
   const store = (v) => { try { localStorage.setItem(KEY, v); } catch (e) {} };
   const stored = () => { try { return localStorage.getItem(KEY); } catch (e) { return null; } };
+  // Until the browser lets audio run (it needs a tap on each new page), the bars stay still.
+  const running = () => !!ctx && ctx.state === 'running';
   const render = () => buttons.forEach((b) => {
     b.setAttribute('aria-pressed', String(on));
-    b.setAttribute('aria-label', on ? 'Pause ambient music' : 'Play ambient music');
+    b.toggleAttribute('data-waiting', on && !running());
+    b.setAttribute('aria-label', on ? (running() ? 'Pause ambient music' : 'Resume ambient music') : 'Play ambient music');
   });
   const ramp = (to, secs) => {
     const t = ctx.currentTime;
@@ -90,38 +94,71 @@ if (reels.length && 'IntersectionObserver' in window && !window.matchMedia('(pre
     gain.gain.setValueAtTime(gain.gain.value, t);
     gain.gain.linearRampToValueAtTime(to, t + secs);
   };
+  const setup = () => {
+    if (ctx) return;
+    ctx = new AudioCtx(); gain = ctx.createGain(); gain.gain.value = 0; gain.connect(ctx.destination);
+    ctx.onstatechange = render;
+  };
+  let loading;
+  const load = () => (loading = loading || fetch(SRC).then((r) => r.arrayBuffer()).then((a) => new Promise((ok, no) => ctx.decodeAudioData(a, ok, no))));
   const start = async () => {
-    if (!ctx) { ctx = new AudioCtx(); gain = ctx.createGain(); gain.gain.value = 0; gain.connect(ctx.destination); }
-    if (ctx.state === 'suspended') await ctx.resume();
-    if (!buffer) buffer = await fetch(SRC).then((r) => r.arrayBuffer()).then((a) => ctx.decodeAudioData(a));
+    setup();
+    // resume() has to be called inside the tap itself, before anything is awaited.
+    const resumed = ctx.state === 'running' ? null : ctx.resume();
+    buffer = buffer || await load();
+    if (resumed) await resumed;
     if (!source) {
       source = ctx.createBufferSource();
       source.buffer = buffer; source.loop = true;
       source.loopStart = 0; source.loopEnd = Math.min(LOOP, buffer.duration);
       source.connect(gain); source.start();
     }
-    if (on && !ducked) ramp(LEVEL, 2.5);
+    render();
+    if (on && !holds.size) ramp(LEVEL, 2.5);
   };
+  const fail = () => { on = false; render(); };
   const setOn = (value) => {
     on = value; store(on ? 'on' : 'off'); render();
-    if (on) start().catch(() => { on = false; render(); });
+    if (on) start().catch(fail);
     else if (ctx) ramp(0, 1.2);
   };
-  buttons.forEach((b) => b.addEventListener('click', () => setOn(!on)));
+  // A tap on bars that are waiting starts the music rather than switching it off.
+  buttons.forEach((b) => b.addEventListener('click', (e) => {
+    if (on && !running()) { e.stopPropagation(); start().catch(fail); } else setOn(!on);
+  }));
   render();
 
-  // Visitors who turned it on earlier get it back on their first tap or key press.
+  // Music that was on keeps going on the next page from the visitor's first tap or key press.
+  // Only these events let a page start sound (touchstart and pointerdown don't on iPhone).
+  const GESTURES = ['click', 'touchend', 'pointerup', 'keydown'];
+  const onGesture = () => {
+    if (!on || running()) return;
+    start().then(() => { if (running()) GESTURES.forEach((ev) => window.removeEventListener(ev, onGesture, true)); }).catch(() => {});
+  };
+  const waitForGesture = () => GESTURES.forEach((ev) => window.addEventListener(ev, onGesture, { capture: true, passive: true }));
   if (stored() === 'on') {
-    on = true; render();
-    const resume = () => { start().catch(() => { on = false; render(); }); };
-    ['pointerdown', 'keydown', 'touchstart'].forEach((ev) => window.addEventListener(ev, resume, { once: true, passive: true }));
+    on = true; setup(); render();
+    load().then((d) => { buffer = d; }).catch(() => {}); // fetch ahead, so the first tap only has to press play
+    waitForGesture();
   }
+  // Phones pause audio in background tabs; pick it up again on the next tap after returning.
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible' && on && ctx && !running()) { ctx.resume().catch(() => {}); render(); waitForGesture(); }
+  });
+
+  const hold = (why) => { holds.add(why); if (ctx) ramp(0, 0.6); };
+  const release = (why) => { if (holds.delete(why) && !holds.size && on && ctx) ramp(LEVEL, 2); };
 
   // Step aside while a video with sound is playing.
   document.querySelectorAll('video').forEach((v) => {
-    v.addEventListener('play', () => { if (!v.muted && ctx) { ducked = true; ramp(0, 0.6); } });
-    const back = () => { if (ducked) { ducked = false; if (on && ctx) ramp(LEVEL, 2); } };
+    v.addEventListener('play', () => { if (!v.muted) hold(v); });
+    const back = () => release(v);
     v.addEventListener('pause', back); v.addEventListener('ended', back);
-    v.addEventListener('volumechange', () => { if (!v.paused && !v.muted && ctx) { ducked = true; ramp(0, 0.6); } else if (v.muted) back(); });
+    v.addEventListener('volumechange', () => { if (!v.paused && !v.muted) hold(v); else if (v.muted) back(); });
   });
+
+  // And while a visitor is talking with Max (the layout reports when the widget's microphone opens and closes).
+  const voice = (active) => (active ? hold('voice') : release('voice'));
+  window.addEventListener('ak:voice', (e) => voice(e.detail.active));
+  if (window.akVoiceActive && window.akVoiceActive()) voice(true);
 })();
