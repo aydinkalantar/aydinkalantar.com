@@ -22,14 +22,28 @@
         </div>
       </header>
 
-      <figure class="container-site reveal py-16 lg:py-22">
-        <div class="border border-line bg-canvas p-px">
-          <video data-autoplay class="block aspect-[1600/824] w-full" muted loop playsinline controls preload="none" poster="/assets/work/tbsp/max-demo-poster.jpg" aria-label="Animated demo from the TBSP home page: a customer asks Max for 36 maroon hoodies, sends a logo, Max places it front and back and returns a priced order with an Order and pay button">
-            <source src="/assets/work/tbsp/max-demo.mp4" type="video/mp4">
-            <a class="link" href="/assets/work/tbsp/max-demo.mp4">Download the recording</a>
-          </video>
+      <figure class="container-site grid-asym reveal items-start py-16 lg:py-22">
+        <div class="md:col-span-9">
+          <div class="border border-line bg-ink p-px">
+            <video id="tbsp-max" class="block aspect-video w-full" controls playsinline preload="none" poster="/assets/work/tbsp/max-explainer-poster.jpg" aria-label="Voiced explainer from the TBSP home page: a customer asks Max for 100 tees, 50 hoodies and 50 hats for a 5K race, picks navy, uploads a logo that appears on every item, gets sizes split and one priced total, then orders and pays">
+              <source src="/assets/work/tbsp/max-explainer.mp4" type="video/mp4">
+              <a class="link" href="/assets/work/tbsp/max-explainer.mp4">Download the video</a>
+            </video>
+          </div>
+          <figcaption class="media-caption"><span>Fig. 01</span><span>Meet Max · the voiced explainer on the TBSP home page · 0:49</span></figcaption>
         </div>
-        <figcaption class="media-caption"><span>Fig. 01</span><span>Talk to Max, from the TBSP home page · 0:16</span></figcaption>
+        <div class="md:col-span-3">
+          <p class="label">Chapters</p>
+          <ol class="mt-4 border-t border-line text-[0.9375rem]">
+            <li><button type="button" data-target="tbsp-max" data-seek="3" class="group flex w-full items-baseline gap-3 border-b border-line py-3 text-left transition-colors hover:text-accent"><span class="meta w-6 shrink-0">01</span><span class="text-ink transition-colors group-hover:text-accent">Tell Max what you need</span><span class="meta ml-auto">0:03</span></button></li>
+            <li><button type="button" data-target="tbsp-max" data-seek="11" class="group flex w-full items-baseline gap-3 border-b border-line py-3 text-left transition-colors hover:text-accent"><span class="meta w-6 shrink-0">02</span><span class="text-ink transition-colors group-hover:text-accent">He picks the products</span><span class="meta ml-auto">0:11</span></button></li>
+            <li><button type="button" data-target="tbsp-max" data-seek="17" class="group flex w-full items-baseline gap-3 border-b border-line py-3 text-left transition-colors hover:text-accent"><span class="meta w-6 shrink-0">03</span><span class="text-ink transition-colors group-hover:text-accent">Pick a color</span><span class="meta ml-auto">0:17</span></button></li>
+            <li><button type="button" data-target="tbsp-max" data-seek="23" class="group flex w-full items-baseline gap-3 border-b border-line py-3 text-left transition-colors hover:text-accent"><span class="meta w-6 shrink-0">04</span><span class="text-ink transition-colors group-hover:text-accent">Upload your logo</span><span class="meta ml-auto">0:23</span></button></li>
+            <li><button type="button" data-target="tbsp-max" data-seek="29" class="group flex w-full items-baseline gap-3 border-b border-line py-3 text-left transition-colors hover:text-accent"><span class="meta w-6 shrink-0">05</span><span class="text-ink transition-colors group-hover:text-accent">Sizes, split for you</span><span class="meta ml-auto">0:29</span></button></li>
+            <li><button type="button" data-target="tbsp-max" data-seek="33" class="group flex w-full items-baseline gap-3 border-b border-line py-3 text-left transition-colors hover:text-accent"><span class="meta w-6 shrink-0">06</span><span class="text-ink transition-colors group-hover:text-accent">One total, free shipping</span><span class="meta ml-auto">0:33</span></button></li>
+            <li><button type="button" data-target="tbsp-max" data-seek="39" class="group flex w-full items-baseline gap-3 border-b border-line py-3 text-left transition-colors hover:text-accent"><span class="meta w-6 shrink-0">07</span><span class="text-ink transition-colors group-hover:text-accent">Order and pay</span><span class="meta ml-auto">0:39</span></button></li>
+          </ol>
+        </div>
       </figure>
 
       <div class="container-site pb-16">
