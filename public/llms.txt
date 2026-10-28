@@ -10,6 +10,7 @@
 
 ## Products
 
+- [The Best Screen Printing website](https://aydinkalantar.com/case-studies/tbsp/): 2026 rebuild of thebestscreenprinting.com for a Los Angeles screen printing and embroidery shop: buy-online catalog with design placement, Max voice merch agent, and a data-driven WordPress SEO migration. Live at https://thebestscreenprinting.com
 - [Virtual Fashion](https://aydinkalantar.com/case-studies/virtual-fashion/): AI apparel design studio for generating on-model product photos and video. Live at https://virtualfashion.app
 - [Catch Lead](https://aydinkalantar.com/case-studies/catch-lead/): AI chat and voice sales agent that answers website visitors 24/7, qualifies leads and books appointments for service businesses. Live at https://catchlead.dev
 - [Auto Alpha](https://aydinkalantar.com/case-studies/auto-alpha/): Crypto trading strategy automation. Live at https://autoalpha.trade
@@ -21,7 +22,7 @@
 ## Earlier work
 
 - Graphic design, 3D modeling and rendering.
-- 2017 to 2020, Los Angeles: branding, web design and development, SEO, Google Ads and Facebook Ads for The Best Screen Printing (https://thebestscreenprinting.com) and Signs Market (https://signsmarket.com).
+- 2017 to 2020, Los Angeles: branding, web design and development, SEO, Google Ads and Facebook Ads for The Best Screen Printing (https://thebestscreenprinting.com) and Signs Market (https://signsmarket.com). In 2026 Aydin rebuilt The Best Screen Printing website (case study above).
 
 ## Pages
 

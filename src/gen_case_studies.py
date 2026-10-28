@@ -436,9 +436,106 @@ VF_HERO = '''      <figure class="container-site grid-asym reveal items-start py
       </figure>
 '''
 
+TBSP_HERO = '''      <figure class="container-site reveal py-16 lg:py-22">
+        <div class="border border-line bg-canvas p-px">
+          <video data-autoplay class="block aspect-[1600/824] w-full" muted loop playsinline controls preload="none" poster="/assets/work/tbsp/max-demo-poster.jpg" aria-label="Animated demo from the TBSP home page: a customer asks Max for 36 maroon hoodies, sends a logo, Max places it front and back and returns a priced order with an Order and pay button">
+            <source src="/assets/work/tbsp/max-demo.mp4" type="video/mp4">
+            <a class="link" href="/assets/work/tbsp/max-demo.mp4">Download the recording</a>
+          </video>
+        </div>
+        <figcaption class="media-caption"><span>Fig. 01</span><span>Talk to Max, from the TBSP home page · 0:16</span></figcaption>
+      </figure>
+'''
+
+TBSP_SHOWCASE = '''
+      <!-- TBSP migration: what happened to every old URL -->
+      <section class="border-t border-line py-16 lg:py-22">
+        <div class="grid-asym items-end">
+          <div class="md:col-span-3">
+            <p class="label">The migration</p>
+          </div>
+          <div class="md:col-span-8 md:col-start-5">
+            <h3 class="display-md reveal">2,662 old URLs. Every one with a decision.</h3>
+            <p class="body reveal mt-4 max-w-prose">Each address on the old site was checked against 16 months of Search Console data before anything moved. The pages people actually found were kept at the same URL and rewritten. The rest were folded into the page that answers the same search, or retired.</p>
+          </div>
+        </div>
+        <figure class="reveal mt-12">
+          <div class="border border-line p-6 sm:p-10">
+            <div class="flex h-14 w-full gap-px bg-line" role="img" aria-label="Bar of 2,662 URLs: 104 kept, 2,503 redirected, 55 retired">
+              <div class="bg-ink" style="width:3.9%"></div>
+              <div class="bg-canvas" style="width:94.0%; background-image:repeating-linear-gradient(135deg, rgb(var(--color-line)) 0 1px, transparent 1px 7px)"></div>
+              <div class="bg-ink-faint" style="width:2.1%"></div>
+            </div>
+            <dl class="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-3">
+              <div class="border-t border-ink pt-4">
+                <dt class="label">Kept and rewritten</dt>
+                <dd class="display-md mt-3">104</dd>
+                <dd class="meta mt-2">Same URL, new copy · 96% of past clicks</dd>
+              </div>
+              <div class="border-t border-line pt-4">
+                <dt class="label">Redirected (301)</dt>
+                <dd class="display-md mt-3">2,503</dd>
+                <dd class="meta mt-2">2,479 were auto-generated service and city pages</dd>
+              </div>
+              <div class="border-t border-ink-faint pt-4">
+                <dt class="label">Retired (410)</dt>
+                <dd class="display-md mt-3">55</dd>
+                <dd class="meta mt-2">Page-builder fragments and test leftovers</dd>
+              </div>
+            </dl>
+          </div>
+          <figcaption class="media-caption"><span>Fig. 02</span><span>Old WordPress URLs by outcome · clicks and impressions from Search Console, 16 months</span></figcaption>
+        </figure>
+      </section>
+'''
+
 CASES = [
  dict(
-  slug='virtual-fashion', num='01', hero=VF_HERO, after_solution=VF_SHOWCASE, name='Virtual Fashion', url='https://virtualfashion.app', domain='virtualfashion.app',
+  slug='tbsp', num='01', hero=TBSP_HERO, after_solution=TBSP_SHOWCASE, name='The Best Screen Printing', url='https://thebestscreenprinting.com', domain='thebestscreenprinting.com',
+  schematic='schematic-cl', fig='',
+  title='The Best Screen Printing case study · Aydin Kalantar',
+  desc='How Aydin Kalantar rebuilt thebestscreenprinting.com for a Los Angeles print shop: a buy-first catalog, an AI merch agent that takes orders by voice, and a WordPress migration that kept its search traffic.',
+  headline='Rebuilding a print shop\'s website so customers can order, not just ask.',
+  facts=[('Role','Design, development & SEO'),('Type','E-commerce + local SEO'),('Platform','Astro on Cloudflare Workers'),('Live','<a class="link" href="https://thebestscreenprinting.com" target="_blank" rel="noopener">thebestscreenprinting.com</a>')],
+  parts=[
+   ('Overview', '''<p>The Best Screen Printing (TBSP) is a screen printing and embroidery shop in Downtown Los Angeles, with a second production facility in Cleveland. I worked there from 2017 to 2020 on the brand, the website, SEO and paid ads.</p>
+              <p>In 2026 I came back to rebuild thebestscreenprinting.com from the ground up: from a WordPress site where every order started with a quote form, to a fast static site where customers browse real products, place their design, pick a deadline and pay, or simply tell Max what they need. Max is the agent I built for <a class="link" href="/case-studies/catch-lead/">Catch Lead</a>, here working as the shop's merch agent.</p>'''),
+   ('Challenges', ul([
+                '<strong>Years of search history on the line.</strong> The old site had 2,662 URLs, and the home page alone had about 245,000 search impressions in 16 months. A careless migration would have thrown that away.',
+                '<strong>Most pages were thin.</strong> Nearly 2,500 of those URLs were auto-generated "service in city" pages, the kind search engines now treat as noise.',
+                '<strong>Every order started with a wait.</strong> Buyers filled in a form and waited for a reply before they saw a price, which is where many of them left.',
+                '<strong>Custom merch is hard to picture.</strong> Print placement, print method, size splits and turnaround fees are decisions a first-time buyer doesn\'t know how to make.'])),
+   ('UI/UX solutions', '''<p>I designed the site around one change: let people buy first, and keep a quote and a real person one tap away for everything else.</p>
+              <h3>A catalog you can order from</h3>
+              <p>403 blank styles from brands buyers already know, grouped the way people shop: tees, hoodies, hats, polos, bags. Each product page has a design preview with the print areas for that garment (front, back, chest, sleeves), size steppers that show the price per piece, a recommended print method, and Normal, Rush or Super Rush turnaround with the fee shown up front.</p>
+              <h3>Max as the front door</h3>
+              <p>The search bar takes plain language ("50 black tees for our tour, front and back, by Friday") and hands it to Max. One tap starts a voice call. Max picks the product, splits the sizes, checks each design and places it front, back or sleeve, and returns a priced order card. Change anything out loud and the price updates. The details he collects fill the checkout, and the customer approves a free proof before anything prints.</p>
+              <h3>Pages that answer the search</h3>
+              <p>The pages worth keeping were rewritten with local facts, and new pages were added where searches had no good answer: industry pages for bands, teams, schools and companies, and regional shipping pages built from past out-of-state quote requests. The same facts (6-piece minimum, turnaround, free shipping from $300) read the same everywhere.</p>
+              <h3>Built for the phone</h3>
+              <p>A bottom tab bar, a cart that remembers, and an order tracker, because most customers find the shop from a search on their phone.</p>'''),
+   ('Technical solutions', '''<h3>A migration driven by data</h3>
+              <p>Every old URL lives in one spreadsheet with its clicks, impressions and average position, and an action: keep, 301 or 410. A build script turns it into a redirect table, and a Cloudflare Worker answers old URLs before any page is served. A check script then requests every old URL against the preview and fails on anything unexpected. Kept pages stay at their exact address, trailing slash included, so rankings carry over without a redirect.</p>
+              <h3>Static and fast</h3>
+              <p>The site is built with Astro into 585 static pages and served from Cloudflare's edge. Styles are inlined into each page and hashed assets are cached for a year, so pages paint complete on the first frame.</p>
+              <h3>One source of truth</h3>
+              <p>The business name, address, hours, minimum and turnaround options live in one file that feeds every page, the structured data for search, and the quote emails. The catalog syncs from the shop's admin, and refuses an update that would shrink it by more than half.</p>
+              <h3>Live voice in the browser</h3>
+              <p>The shop's studio issues a short-lived token with Max's instructions and tools locked in. The browser then streams the caller's microphone to the voice model over a WebSocket and plays the reply back as it arrives, so callers can interrupt him mid-sentence. When Max picks a product or places a design, the tool call comes back as a card in the chat. The audio pipeline is the one from the Catch Lead widget.</p>
+              <h3>Quotes the shop can act on</h3>
+              <p>A request that still needs a person is sent by the Worker with the customer's artwork, rendered mockups, placements and sizes, plus a branded PDF summary for the shop and the customer.</p>
+              <h3>A weekly SEO loop</h3>
+              <p>A script pulls Search Console every week and writes a report: pages seen but not clicked, pages ranking just off page one with the searches to answer, searches with no good page yet, and traffic still landing on redirected URLs. New pages are announced to search engines through IndexNow.</p>'''),
+   ('Outcome', '''<p>The new thebestscreenprinting.com is live, replacing the WordPress site in October 2026.</p>
+              ''' + ul([
+                'Customers can go from a blank tee to a paid order without waiting for a reply.',
+                'Max takes orders by voice or text on every page, with designs placed and priced in the conversation.',
+                'All 2,662 old URLs are accounted for, with the 104 kept pages carrying 96% of the clicks the old site earned.',
+                'A weekly Search Console report drives what gets written or fixed next.']) + '''
+              <!-- ADD METRICS: orders placed online, Max conversations and orders, search clicks before and after launch -->'''),
+  ]),
+ dict(
+  slug='virtual-fashion', num='02', hero=VF_HERO, after_solution=VF_SHOWCASE, name='Virtual Fashion', url='https://virtualfashion.app', domain='virtualfashion.app',
   schematic='schematic-vf', fig='Workspace: tool rail, garment canvas, finish panel',
   title='Virtual Fashion case study · Aydin Kalantar',
   desc='How Virtual Fashion turns apparel photography into a browser canvas: AI garment design, consistent models, scenes and 4K video export.',
@@ -479,7 +576,7 @@ CASES = [
               <!-- ADD METRICS: sign-ups, renders generated, conversion from free credits to paid -->'''),
   ]),
  dict(
-  slug='catch-lead', num='02', hero=CL_HERO, after_solution=CL_SHOWCASE, name='Catch Lead', url='https://catchlead.dev', domain='catchlead.dev',
+  slug='catch-lead', num='03', hero=CL_HERO, after_solution=CL_SHOWCASE, name='Catch Lead', url='https://catchlead.dev', domain='catchlead.dev',
   schematic='schematic-cl', fig='Chat and voice assistant on a client site',
   title='Catch Lead case study · Aydin Kalantar',
   desc='How Catch Lead gives service businesses an AI sales agent that answers by chat or voice, quotes from real prices and books appointments.',
@@ -517,7 +614,7 @@ CASES = [
               <!-- ADD METRICS: businesses onboarded, conversations handled, bookings created -->'''),
   ]),
  dict(
-  slug='auto-alpha', num='03', hero=AA_HERO, after_solution=AA_SHOWCASE, name='Auto Alpha', url='https://autoalpha.trade', domain='autoalpha.trade',
+  slug='auto-alpha', num='04', hero=AA_HERO, after_solution=AA_SHOWCASE, name='Auto Alpha', url='https://autoalpha.trade', domain='autoalpha.trade',
   schematic='schematic-aa', fig='Strategy dashboard: key figures, equity curve, trade list',
   title='Auto Alpha case study · Aydin Kalantar',
   desc='How Auto Alpha designs trust into automated crypto trading: risk shown beside return, every trade visible, and funds that never leave the exchange.',
