@@ -487,6 +487,66 @@ TBSP_SHOWCASE = '''
           <figcaption class="media-caption"><span>Fig. 02</span><span>Old WordPress URLs by outcome · clicks and impressions from Search Console, 16 months</span></figcaption>
         </figure>
       </section>
+
+      <!-- TBSP on the live site: desktop, then phone -->
+      <section class="border-t border-line py-16 lg:py-22">
+        <div class="grid-asym items-end">
+          <div class="md:col-span-3">
+            <p class="label">On the live site</p>
+          </div>
+          <div class="md:col-span-8 md:col-start-5">
+            <h3 class="display-md reveal">Shop first, with Max one tap away.</h3>
+            <p class="body reveal mt-4 max-w-prose">The home page opens on a real order mocked up on a real blank, with the price per piece and the minimum in the first sentence. Ask Max sits inside the search bar, and on a phone he takes the center of the tab bar.</p>
+          </div>
+        </div>
+        <figure class="reveal mt-12">
+          <div class="border border-line bg-canvas p-px">
+            <picture>
+              <source srcset="/assets/work/tbsp/home-desktop.webp" type="image/webp">
+              <img src="/assets/work/tbsp/home-desktop.jpg" width="2000" height="1250" alt="TBSP home page: headline Custom merch, done right, tees from $9.25 each, Shop products and Talk to Max buttons, and a black tee mockup with a tour print on the back, with an Ask Max button in the search bar" loading="lazy" class="block h-auto w-full">
+            </picture>
+          </div>
+          <figcaption class="media-caption"><span>Fig. 03</span><span>Home page · thebestscreenprinting.com</span></figcaption>
+        </figure>
+        <figure class="reveal mt-12">
+          <div class="border border-line bg-canvas p-px">
+            <picture>
+              <source srcset="/assets/work/tbsp/product-design-desktop.webp" type="image/webp">
+              <img src="/assets/work/tbsp/product-design-desktop.jpg" width="2000" height="1250" alt="TBSP product page for a red Gildan 18500 hoodie with a TBSP wordmark placed on the front in the design preview, color swatches and quantity by size" loading="lazy" class="block h-auto w-full">
+            </picture>
+          </div>
+          <figcaption class="media-caption"><span>Fig. 04</span><span>Product page · artwork placed on the front in the live preview</span></figcaption>
+        </figure>
+        <div class="mt-12 grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-6 lg:gap-10 max-w-sm sm:max-w-none mx-auto">
+          <figure class="reveal">
+            <div class="overflow-hidden rounded-[1.75rem] border border-line bg-canvas p-1.5">
+              <picture>
+                <source srcset="/assets/work/tbsp/home-mobile.webp" type="image/webp">
+                <img src="/assets/work/tbsp/home-mobile.jpg" width="640" height="1385" alt="TBSP home page on a phone with Shop products and Talk to Max buttons and a bottom tab bar with Max in the center" loading="lazy" class="block h-auto w-full rounded-[1.4rem]">
+              </picture>
+            </div>
+            <figcaption class="media-caption"><span>01 · Home</span><span>Max in the center of the tab bar</span></figcaption>
+          </figure>
+          <figure class="reveal">
+            <div class="overflow-hidden rounded-[1.75rem] border border-line bg-canvas p-1.5">
+              <picture>
+                <source srcset="/assets/work/tbsp/product-mobile.webp" type="image/webp">
+                <img src="/assets/work/tbsp/product-mobile.jpg" width="640" height="1385" alt="TBSP product page on a phone: red hoodie with a dashed front print area to add artwork, and Add to cart and Order and pay buttons" loading="lazy" class="block h-auto w-full rounded-[1.4rem]">
+              </picture>
+            </div>
+            <figcaption class="media-caption"><span>02 · Product</span><span>Add artwork, then order and pay</span></figcaption>
+          </figure>
+          <figure class="reveal">
+            <div class="overflow-hidden rounded-[1.75rem] border border-line bg-canvas p-1.5">
+              <picture>
+                <source srcset="/assets/work/tbsp/quote-mobile.webp" type="image/webp">
+                <img src="/assets/work/tbsp/quote-mobile.jpg" width="640" height="1385" alt="TBSP quote form on a phone: Tell us what you need, with garment, quantity, decoration and a Send my quote request button" loading="lazy" class="block h-auto w-full rounded-[1.4rem]">
+              </picture>
+            </div>
+            <figcaption class="media-caption"><span>03 · Quote</span><span>A person is still one form away</span></figcaption>
+          </figure>
+        </div>
+      </section>
 '''
 
 CASES = [
