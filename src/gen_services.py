@@ -32,6 +32,28 @@ STEPS = [
 
 SERVICES = [
     {
+        'slug': 'ui-ux-design',
+        'faq_heading': 'About UI & UX.',
+        'name': 'UI & UX design',
+        'short': 'UI & UX',
+        'type': 'UI design and UX design',
+        'title': 'UI & UX Design for Apps, SaaS & Websites in Cleveland · Aydin Kalantar',
+        'desc': 'UI and UX design for SaaS products, web and mobile apps and websites: user research, flows, wireframes, prototypes, interface design and design systems, by Aydin Kalantar in Cleveland, Ohio.',
+        'headline': 'Interfaces people understand the first time they use them.',
+        'lede': 'I am a UI and UX specialist. I design how a product works and how it looks: the flows, the screens, every state and detail, so customers find what they need, trust what they see and finish what they started. And because I also write the code, the design ships the way it was drawn.',
+        'card': 'User flows, wireframes, prototypes, interfaces and design systems for apps, SaaS and websites.',
+        'for': ['Startups that need a product designed before it is built', 'SaaS and apps where users get lost, stall or cancel', 'Teams with developers but no designer', 'Businesses whose site looks dated or converts poorly'],
+        'includes': ['UX audit of your current product or site', 'User research, journeys and user flows', 'Wireframes and clickable prototypes', 'UI design for web, mobile and dashboards', 'Design systems: components, type, color and states', 'Developer-ready files, or I build it myself'],
+        'cases': ['virtual-fashion', 'catch-lead', 'auto-alpha'],
+        'faq': [
+            ('What is the difference between UI and UX design?', 'UX design is how a product works: what a user needs, the steps they take and where they get stuck. UI design is how it looks and feels on screen: layout, type, color and every button state. I do both, and they work best together.'),
+            ('Can you hand designs to my developers?', 'Yes. I hand over organized design files with every screen, state and spacing rule, or I build the interface myself so nothing is lost between design and code.'),
+            ('Can you improve an app or site that already exists?', 'Yes. A UX audit finds where users stall or leave, then I redesign those screens first, so you see results without a full rebuild.'),
+            ('What have you designed?', 'Virtual Fashion, Catch Lead and Auto Alpha: an AI design studio, a chat and voice sales agent with an owner dashboard, and a trading dashboard built to make complex data easy to read. All three are live.'),
+            ('Do you also design for mobile?', 'Yes. Every design covers phone, tablet and desktop, and the apps I build install on mobile.'),
+        ],
+    },
+    {
         'slug': 'web-design',
         'faq_heading': 'About websites.',
         'name': 'Web design & development',
@@ -368,8 +390,8 @@ def hub():
             <p class="body mb-10 mt-4">{e(r['card'])}</p>
             <span class="meta mt-auto flex items-center justify-between border-t border-line pt-5 group-hover:text-accent"><span>Learn more</span><span class="arrow">→</span></span>
           </a>''' for i, r in enumerate(rows, 1))
-    title = 'Services · Web & App Development, AI, Automation & SEO in Cleveland · Aydin Kalantar'
-    desc = 'Web design, SaaS, web and mobile app development, business automation, AI agents, SEO and local SEO, branding and 3D rendering for businesses in Cleveland, Mayfield Heights and Northeast Ohio, from Aydin Kalantar.'
+    title = 'Services · UI/UX Design, Web & App Development, AI & SEO in Cleveland · Aydin Kalantar'
+    desc = 'UI and UX design, web design, SaaS, web and mobile app development, business automation, AI agents, SEO and local SEO, branding and 3D rendering for businesses in Cleveland, Mayfield Heights and Northeast Ohio, from Aydin Kalantar.'
     ld = jsonld([
         {'@type': 'OfferCatalog', '@id': SITE + '/services/#catalog', 'name': 'Services by Aydin Kalantar',
          'itemListElement': [{'@type': 'Offer', 'itemOffered': {'@id': f"{SITE}/services/{s['slug']}/#service"}} for s in SERVICES]},
@@ -384,7 +406,7 @@ def hub():
         <p class="label reveal md:col-span-3">Services</p>
         <div class="md:col-span-9">
           <h1 class="display-xl reveal">Design, code and growth for your business.</h1>
-          <p class="lede reveal mt-8 max-w-prose">I help businesses in Cleveland and across the country get found, look the part and turn visitors into customers. One person from brand to website, app, automation and search, so nothing gets lost in a handoff.</p>
+          <p class="lede reveal mt-8 max-w-prose">I help businesses in Cleveland and across the country get found, look the part and turn visitors into customers. One person from UX and brand to website, app, automation and search, so nothing gets lost in a handoff.</p>
           <div class="reveal mt-12 flex flex-col gap-3 sm:flex-row">
             <a href="{mailto('New project')}" class="btn-primary group">Start a project <span aria-hidden="true" class="arrow">↗</span></a>
             <a href="tel:+12163398948" class="btn-secondary">Call 216-339-8948</a>
@@ -395,7 +417,7 @@ def hub():
 
     <section class="section">
       <div class="container-site">
-        <div class="hairline-grid md:grid-cols-2 lg:grid-cols-4">
+        <div class="hairline-grid md:grid-cols-2 lg:grid-cols-3">
 {cards}
         </div>
       </div>
