@@ -1,4 +1,4 @@
-"""Generates src/pages/services/*.html: the services hub and one page per service.
+"""Generates src/pages/services/*.html and src/pages/industries/*.html: hubs and one page per service or industry.
 
 Each page carries its own JSON-LD (Service, FAQPage, BreadcrumbList) so search engines
 and AI assistants can tie the service to Aydin. Services that sell locally ('local': True) name
@@ -416,6 +416,7 @@ def hub():
             <a href="{mailto('New project')}" class="btn-primary group">Start a project <span aria-hidden="true" class="arrow">↗</span></a>
             <a href="tel:+12163398948" class="btn-secondary">Call 216-339-8948</a>
           </div>
+          <p class="reveal mt-8"><a class="link" href="/industries/">See how I help your industry</a></p>
         </div>
       </div>
     </section>
@@ -436,9 +437,281 @@ def hub():
 '''
 
 
+# Industry pages: /industries/<slug>/. Only industries with real proof behind them, each with its own
+# problems and answers, so no page is a copy of another with a word swapped.
+IND_OUT = OUT.parent / 'industries'
+SVC = {s['slug']: s for s in SERVICES}
+
+INDUSTRIES = [
+    {
+        'slug': 'print-and-apparel',
+        'name': 'Print shops & apparel brands',
+        'title': 'Websites, AI Agents & Mockups for Print Shops and Apparel Brands · Aydin Kalantar',
+        'desc': 'Websites with online ordering, AI order-taking agents, product mockups and SEO for screen printers, embroidery shops, sign shops and apparel brands across the US.',
+        'headline': 'For print shops that want orders, not just quote requests.',
+        'lede': 'I learned screen printing end to end, ran an apparel decoration business, and did the branding, websites and ads for a Los Angeles print shop and a sign company. I know how your customers buy, and where they give up.',
+        'card': 'Online ordering with design placement, an agent that takes orders, mockups and SEO.',
+        'problems': [
+            ('Customers ask for quotes instead of ordering', 'A catalog of real products where customers place their design, see the price and pay online, as on The Best Screen Printing.'),
+            ('The phone rings with the same questions all day', 'A voice and chat agent that answers sizing, pricing and turnaround questions and takes the order details.'),
+            ('Mockups and product photos slow every job', 'On-model photos and video of your blanks with the customer\'s design, made in minutes instead of a shoot.'),
+            ('A new website would wipe out your Google traffic', 'A redirect plan for every old page. The Best Screen Printing moved 2,662 URLs and kept 96% of its clicks.'),
+        ],
+        'services': ['web-design', 'ai-agents', '3d-rendering', 'seo', 'branding'],
+        'cases': ['tbsp', 'virtual-fashion'],
+        'faq': [
+            ('Have you worked in the print industry?', 'Yes. I took a screen printing course, ran an apparel decoration business, and from 2017 to 2020 handled branding, web, SEO and ads for The Best Screen Printing and Signs Market in Los Angeles. In 2026 I rebuilt The Best Screen Printing\'s website.'),
+            ('Can customers upload a design and order online?', 'Yes. Customers choose a product, place their artwork, pick sizes and colors, and check out, with pricing that follows your real rules.'),
+            ('Can you make mockups without physical samples?', 'Yes. Virtual Fashion, the studio I built, places a design on garments and consistent models and exports photos and video.'),
+        ],
+    },
+    {
+        'slug': 'fashion-and-ecommerce',
+        'name': 'Fashion brands & online stores',
+        'title': 'UX, E-commerce & AI Product Imagery for Fashion Brands · Aydin Kalantar',
+        'desc': 'UI/UX, online store design and development, and AI product photos and video for fashion brands and e-commerce businesses across the US.',
+        'headline': 'Product pages and imagery that sell the garment.',
+        'lede': 'I build the store, design the shopping experience and make the product imagery. Virtual Fashion, my AI apparel studio, came from the same problem every brand has: great product, slow and costly photos.',
+        'card': 'Store design, product imagery without shoots, and UX that turns browsing into buying.',
+        'problems': [
+            ('Every new product needs a photo shoot', 'Studio-quality on-model photos and short videos generated from the garment, with consistent models across the catalog.'),
+            ('Visitors browse but do not buy', 'A UX review of the product page and checkout, then a redesign of the screens where shoppers drop off.'),
+            ('The store is slow on phones', 'A fast, mobile-first build, with images and code tuned so pages load in a blink.'),
+            ('Launches need content you do not have time to make', 'Lookbook videos, product loops and ad creative made with the same tools.'),
+        ],
+        'services': ['ui-ux-design', 'web-design', '3d-rendering', 'app-development', 'branding'],
+        'cases': ['virtual-fashion', 'tbsp'],
+        'faq': [
+            ('Can you improve the store I already have?', 'Yes. I can redesign the screens that lose shoppers on your current store, or build a custom store when the brand needs something the platform cannot do.'),
+            ('Are AI product photos realistic enough to sell with?', 'Virtual Fashion is built for exactly that: consistent models, real garment shapes and 4K export. See the case study for examples.'),
+            ('Can you keep my brand look consistent?', 'Yes. I set up the models, scenes and style once, so every new product matches the rest of the catalog.'),
+        ],
+    },
+    {
+        'slug': 'home-services',
+        'name': 'Home & local services',
+        'title': 'AI Answering, Websites & Local SEO for Home Service Businesses · Aydin Kalantar',
+        'desc': 'AI chat and voice agents that answer missed calls and book jobs, websites and local SEO for contractors, HVAC, plumbers, cleaners, movers and other home service businesses across the US.',
+        'headline': 'Every missed call is a job someone else gets.',
+        'lede': 'Contractors, cleaners, movers and repair companies lose work while they are on a job. I built Catch Lead so a business never misses an inquiry, and I have run a moving company myself, so I know the owner\'s side of the phone.',
+        'card': 'Answer every call and inquiry, quote fast, book jobs and show up in local search.',
+        'problems': [
+            ('Calls come in while you are on a job', 'An AI agent answers by voice or chat, quotes from your real prices and books the appointment on your calendar.'),
+            ('Quotes take days to send', 'Automatic quotes for standard jobs, and a clean summary of every other request so you can price it in minutes.'),
+            ('You do not show up in "near me" searches', 'A complete Google Business Profile, consistent listings, service-area pages and a review routine.'),
+            ('Happy customers never leave reviews', 'An automatic review request after every finished job.'),
+        ],
+        'services': ['ai-agents', 'automation', 'seo', 'web-design'],
+        'cases': ['catch-lead', 'tbsp'],
+        'faq': [
+            ('Will an AI agent sound like a robot to my customers?', 'Catch Lead speaks naturally and answers in plain language. Try it: the assistant in the corner of this page is Catch Lead.'),
+            ('What happens with jobs it cannot price?', 'It collects the details, photos and contact information, and sends you a ready-to-call lead.'),
+            ('Do you understand service businesses?', 'Yes. Before I built software I started and ran a relocation company, so I have been the owner answering the phone between jobs.'),
+        ],
+    },
+    {
+        'slug': 'law-firms',
+        'name': 'Law firms & professional services',
+        'title': 'AI Intake Agents, Websites & SEO for Law Firms · Aydin Kalantar',
+        'desc': 'AI intake agents that answer after hours and book consultations, trustworthy website design and local SEO for law firms, accountants and other professional service firms across the US.',
+        'headline': 'Turn the 9 p.m. visitor into tomorrow\'s consultation.',
+        'lede': 'People look for a lawyer or an accountant when something goes wrong, often at night. I build intake that answers right away, websites that earn trust in seconds, and search visibility that brings the right cases to you.',
+        'card': 'After-hours intake that books consultations, a site that earns trust, and local SEO.',
+        'problems': [
+            ('After-hours inquiries go to voicemail', 'An AI intake agent answers by chat or voice, collects the case details and books a consultation.'),
+            ('The website does not build trust', 'A clear, modern design that explains what you do, who you help and what happens next.'),
+            ('Intake forms are retyped by hand', 'Automation that moves intake details into your case management tools and sends confirmations.'),
+            ('Clients cannot find you locally', 'Local SEO, practice-area pages and structured data that search engines and AI assistants can read.'),
+        ],
+        'services': ['ai-agents', 'ui-ux-design', 'web-design', 'automation', 'seo'],
+        'cases': ['catch-lead'],
+        'faq': [
+            ('Will the AI give legal advice?', 'No. It is set up to answer only from the information you approve, such as practice areas, fees and next steps, then collect details and book a consultation.'),
+            ('Can it screen out cases we do not take?', 'Yes. It asks your qualifying questions and routes or politely declines inquiries outside your practice areas.'),
+            ('Is there an example?', 'The Catch Lead case study includes a short film of a law firm website visitor at night becoming a qualified lead.'),
+        ],
+    },
+    {
+        'slug': 'startups-and-saas',
+        'name': 'Startups & SaaS founders',
+        'title': 'Product Design & MVP Development for Startups and SaaS Founders · Aydin Kalantar',
+        'desc': 'UI/UX design and full-stack development for startups and SaaS founders across the US: from idea to a launched MVP, with AI features, payments and dashboards.',
+        'headline': 'From idea to a product people pay for.',
+        'lede': 'I have taken three products of my own from sketch to live software: Virtual Fashion, Catch Lead and Auto Alpha. I design the experience and write the code, so founders get one partner instead of a designer, an agency and a hand-off gap.',
+        'card': 'UX, design and code for your first version, built by someone who has shipped three.',
+        'problems': [
+            ('You have the idea but no product', 'A focused first version: the core flow designed, built and launched so real users can try it.'),
+            ('Designs that developers cannot build', 'Design and code from the same person, so what ships matches what was designed.'),
+            ('Users sign up and disappear', 'A UX audit of onboarding and the first session, then redesigned screens that get users to value faster.'),
+            ('You need AI in the product', 'Generation, chat, voice and automation features built in, as in all three of my products.'),
+        ],
+        'services': ['ui-ux-design', 'app-development', 'web-design', 'ai-agents', 'branding'],
+        'cases': ['virtual-fashion', 'catch-lead', 'auto-alpha'],
+        'faq': [
+            ('Can you build our MVP?', 'Yes. I plan the first version with you, design it and build it, including accounts, payments and an admin panel.'),
+            ('Do you work with existing teams?', 'Yes. I can lead design for your developers, or join as the designer who also codes.'),
+            ('Will we own everything?', 'Yes. Code, designs and accounts are yours.'),
+        ],
+    },
+    {
+        'slug': 'fintech',
+        'name': 'Fintech & data products',
+        'title': 'UI/UX Design & Development for Fintech and Data Dashboards · Aydin Kalantar',
+        'desc': 'UI/UX design and development of fintech products and data dashboards across the US: complex numbers made clear, trust built into every screen, automation underneath.',
+        'headline': 'Complex numbers, made clear enough to trust.',
+        'lede': 'Money products live or die on trust. I designed and built Auto Alpha, where users run automated crypto strategies on their own exchange accounts, so every screen had to explain risk, performance and control at a glance.',
+        'card': 'Dashboards and fintech flows that make complex data clear and earn users\' trust.',
+        'problems': [
+            ('Users do not understand the numbers', 'Dashboards that show performance, history and risk in a form people read at a glance.'),
+            ('Users do not trust where their money goes', 'Flows that state plainly who holds the funds, what the product can and cannot do, and how to stop it.'),
+            ('Onboarding loses people at the hard steps', 'Guided setup for steps like connecting accounts and API keys, with clear checks at each stage.'),
+            ('Manual work behind the scenes', 'Automation that runs strategies, reports and alerts without anyone babysitting it.'),
+        ],
+        'services': ['ui-ux-design', 'app-development', 'automation'],
+        'cases': ['auto-alpha'],
+        'faq': [
+            ('Have you built a fintech product?', 'Yes. Auto Alpha runs rule-based crypto strategies on users\' own exchange accounts, with funds that never leave the exchange.'),
+            ('Can you design dashboards for complex data?', 'Yes. That was the core of Auto Alpha: backtests and live records presented so they read clearly at a glance.'),
+            ('Do you build the back end too?', 'Yes. I build the data, automation and integrations behind the interface.'),
+        ],
+    },
+]
+
+
+def ind_page(i):
+    url = f"/industries/{i['slug']}/"
+    probs = '\n'.join(f'''          <div class="card reveal">
+            <h3 class="text-xl">{e(p)}</h3>
+            <p class="body mt-4">{e(a)}</p>
+          </div>''' for p, a in i['problems'])
+    svcs = '\n'.join(f'            <li><a class="link" href="/services/{s}/">{e(SVC[s]["name"])}</a></li>' for s in i['services'])
+    cards = '\n'.join(f'''          <a href="/case-studies/{c}/" class="card group reveal">
+            <span class="tag self-start">{e(CASES[c][1])}</span>
+            <h3 class="card-title mt-10">{e(CASES[c][0])}</h3>
+            <p class="body mb-10 mt-4">{e(CASES[c][2])}</p>
+            <span class="meta mt-auto flex items-center justify-between border-t border-line pt-5 group-hover:text-accent"><span>Read case study</span><span class="arrow">→</span></span>
+          </a>''' for c in i['cases'])
+    others = '\n'.join(f'            <li><a class="link" href="/industries/{o["slug"]}/">{e(o["name"])}</a></li>' for o in INDUSTRIES if o is not i)
+    ld = jsonld([
+        {'@type': 'Service', '@id': SITE + url + '#service', 'name': f"Design, development and AI for {i['name'].lower()}",
+         'description': i['desc'], 'url': SITE + url, 'provider': {'@id': SITE + '/#business'},
+         'audience': {'@type': 'BusinessAudience', 'name': i['name']}, 'areaServed': NATIONAL_LD},
+        faq_ld(i['faq']),
+        crumbs_ld([('Home', '/'), ('Industries', '/industries/'), (i['name'], url)]),
+    ])
+    return f'''{meta(i['title'], i['desc'], 'Tell me about your business.').replace('"nav": "services"', '"nav": "industries"')}
+{ld}
+    <section class="relative border-b border-line">
+      <div class="blueprint pointer-events-none absolute inset-0 opacity-50 [mask-image:linear-gradient(to_bottom,black,transparent_90%)]" aria-hidden="true"></div>
+      <div class="container-site relative pb-18 pt-12 md:pt-20 lg:pb-22">
+        <nav aria-label="Breadcrumb" class="meta reveal"><a class="transition-colors hover:text-accent" href="/industries/">Industries</a> <span class="text-ink-faint">/</span> {e(i['name'])}</nav>
+        <div class="grid-asym mt-12 items-end">
+          <div class="md:col-span-8">
+            <p class="label reveal">{e(i['name'])} · Nationwide</p>
+            <h1 class="display-lg reveal mt-6">{e(i['headline'])}</h1>
+            <p class="lede reveal mt-8 max-w-prose">{e(i['lede'])}</p>
+          </div>
+          <div class="reveal flex flex-col gap-3 md:col-span-4 md:col-start-9 lg:col-span-3 lg:col-start-10">
+            <a href="{mailto(i['name'] + ' project')}" class="btn-primary group">Start a project <span aria-hidden="true" class="arrow">↗</span></a>
+            <a href="tel:+12163398948" class="btn-secondary">Call 216-339-8948</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container-site">
+        <div class="grid-asym">
+          <p class="label reveal md:col-span-3">Problems I solve</p>
+          <h2 class="display-md reveal md:col-span-9">What gets in the way, and what fixes it.</h2>
+        </div>
+        <div class="hairline-grid mt-14 md:grid-cols-2">
+{probs}
+        </div>
+      </div>
+    </section>
+
+    <section class="section border-t border-line">
+      <div class="container-site grid-asym">
+        <p class="label reveal md:col-span-3">Services that fit</p>
+        <ul class="reveal flex flex-wrap gap-x-8 gap-y-3 md:col-span-9">
+{svcs}
+        </ul>
+      </div>
+    </section>
+
+    <section class="section border-t border-line">
+      <div class="container-site">
+        <div class="grid-asym">
+          <p class="label reveal md:col-span-3">Proof</p>
+          <h2 class="display-md reveal md:col-span-9">Work that is live today.</h2>
+        </div>
+        <div class="hairline-grid mt-14 md:grid-cols-{min(len(i['cases']), 3)}">
+{cards}
+        </div>
+      </div>
+    </section>
+
+{faq_section(i['faq'], 'Common questions.')}
+
+{area_section()}
+
+    <nav aria-label="Other industries" class="border-t border-line">
+      <div class="container-site grid-asym py-16 lg:py-22">
+        <p class="label md:col-span-3">Other industries</p>
+        <ul class="flex flex-wrap gap-x-8 gap-y-3 md:col-span-9">
+{others}
+        </ul>
+      </div>
+    </nav>
+'''
+
+
+def ind_hub():
+    cards = '\n'.join(f'''          <a href="/industries/{i['slug']}/" class="card group reveal">
+            <span class="meta">0{n}</span>
+            <h2 class="card-title mt-10">{e(i['name'])}</h2>
+            <p class="body mb-10 mt-4">{e(i['card'])}</p>
+            <span class="meta mt-auto flex items-center justify-between border-t border-line pt-5 group-hover:text-accent"><span>Learn more</span><span class="arrow">→</span></span>
+          </a>''' for n, i in enumerate(INDUSTRIES, 1))
+    title = 'Industries · Design, Apps, AI & SEO by Industry · Aydin Kalantar'
+    desc = 'How Aydin Kalantar helps print shops, fashion brands, home service businesses, law firms, startups and fintech companies across the US with UI/UX, websites, apps, AI agents, automation and SEO.'
+    ld = jsonld([crumbs_ld([('Home', '/'), ('Industries', '/industries/')])])
+    return f'''{meta(title, desc, 'Tell me about your business.').replace('"nav": "services"', '"nav": "industries"')}
+{ld}
+    <section class="relative border-b border-line">
+      <div class="blueprint pointer-events-none absolute inset-0 opacity-50 [mask-image:linear-gradient(to_bottom,black,transparent_90%)]" aria-hidden="true"></div>
+      <div class="container-site grid-asym relative pb-18 pt-16 md:pt-24 lg:pb-22">
+        <p class="label reveal md:col-span-3">Industries</p>
+        <div class="md:col-span-9">
+          <h1 class="display-xl reveal">Built for the way your business works.</h1>
+          <p class="lede reveal mt-8 max-w-prose">The same skills, shaped by what I have learned in each field. These are the industries where I have shipped real work. Do not see yours? Most problems are the same underneath, so <a class="link" href="{mailto('New project')}">ask me</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container-site">
+        <div class="hairline-grid md:grid-cols-2 lg:grid-cols-3">
+{cards}
+        </div>
+      </div>
+    </section>
+
+{area_section()}
+'''
+
+
 os.makedirs(OUT, exist_ok=True)
 (OUT / 'index.html').write_text(hub())
 print('wrote services/index')
 for s in SERVICES:
     (OUT / f"{s['slug']}.html").write_text(page(s))
     print('wrote services/' + s['slug'])
+
+os.makedirs(IND_OUT, exist_ok=True)
+(IND_OUT / 'index.html').write_text(ind_hub())
+print('wrote industries/index')
+for i in INDUSTRIES:
+    (IND_OUT / f"{i['slug']}.html").write_text(ind_page(i))
+    print('wrote industries/' + i['slug'])

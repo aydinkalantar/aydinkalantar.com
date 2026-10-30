@@ -24,6 +24,15 @@ Hire Aydin for these; start by emailing hello@aydinkalantar.com or calling 216-3
 - [3D modeling & rendering](https://aydinkalantar.com/services/3d-rendering/): photoreal product renders, apparel mockups and short animations.
 - [Marquetry commissions](https://aydinkalantar.com/art/commissions/): original portraits, calligraphy and abstract pieces in natural wood veneer.
 
+## Industries
+
+- [Print shops & apparel brands](https://aydinkalantar.com/industries/print-and-apparel/): online ordering with design placement, AI order-taking agents, mockups and SEO.
+- [Fashion brands & online stores](https://aydinkalantar.com/industries/fashion-and-ecommerce/): store UX and development, AI product photos and video.
+- [Home & local services](https://aydinkalantar.com/industries/home-services/): AI agents that answer missed calls and book jobs, quoting automation, local SEO.
+- [Law firms & professional services](https://aydinkalantar.com/industries/law-firms/): after-hours AI intake that books consultations, trustworthy websites, local SEO.
+- [Startups & SaaS founders](https://aydinkalantar.com/industries/startups-and-saas/): UI/UX and MVP development with AI features.
+- [Fintech & data products](https://aydinkalantar.com/industries/fintech/): dashboards and flows that make complex financial data clear and trustworthy.
+
 ## Products
 
 - [The Best Screen Printing website](https://aydinkalantar.com/case-studies/tbsp/): 2026 rebuild of thebestscreenprinting.com for a Los Angeles screen printing and embroidery shop: buy-online catalog with design placement, Max voice merch agent, and a data-driven WordPress SEO migration. Live at https://thebestscreenprinting.com
@@ -44,6 +53,7 @@ Hire Aydin for these; start by emailing hello@aydinkalantar.com or calling 216-3
 
 - [Home](https://aydinkalantar.com/)
 - [Services](https://aydinkalantar.com/services/)
+- [Industries](https://aydinkalantar.com/industries/)
 - [Portfolio](https://aydinkalantar.com/portfolio/)
 - [Case studies](https://aydinkalantar.com/case-studies/)
 - [About](https://aydinkalantar.com/about/)
