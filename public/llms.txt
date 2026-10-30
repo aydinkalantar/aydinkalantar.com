@@ -1,6 +1,6 @@
 # Aydin Kalantar
 
-> Aydin Kalantar is a product designer and developer based in Mayfield Heights, Ohio (Cleveland area), USA. He offers web design and development, AI chat and voice agents, SEO, local SEO and AI search optimization, branding and graphic design, and 3D modeling and rendering to businesses in Cleveland, Northeast Ohio and across the United States, builds his own AI products, and creates hand-cut natural wood veneer marquetry art. The family name is also written Kalantarov, Kalantarli and Kalan; these all refer to the same person.
+> Aydin Kalantar is a product designer and developer based in Mayfield Heights, Ohio (Cleveland area), USA. He offers web design and development, SaaS, web and mobile app development built from scratch, business automation, AI chat and voice agents, SEO, local SEO and AI search optimization, branding and graphic design, and 3D modeling and rendering to businesses in Cleveland, Northeast Ohio and across the United States, builds his own AI products, and creates hand-cut natural wood veneer marquetry art. The family name is also written Kalantarov, Kalantarli and Kalan; these all refer to the same person.
 
 - Name: Aydin Kalantar (also Aydin Kalantarov, Aydin Kalantarli, Aydin Kalan)
 - Role: Product designer, developer, marquetry artist
@@ -15,6 +15,8 @@
 Hire Aydin for these; start by emailing hello@aydinkalantar.com or calling 216-339-8948.
 
 - [Web design & development](https://aydinkalantar.com/services/web-design/): custom websites and online stores, online ordering and booking, redesigns and platform migrations that keep Google rankings.
+- [SaaS, web & mobile apps](https://aydinkalantar.com/services/app-development/): custom SaaS platforms, web apps, mobile apps and internal tools built from scratch, including accounts, payments, dashboards and AI features.
+- [Business automation](https://aydinkalantar.com/services/automation/): connecting business tools and automating lead follow-up, quotes, orders, invoicing and reports, with AI for reading, sorting and drafting.
 - [AI chat & voice agents](https://aydinkalantar.com/services/ai-agents/): website assistants that answer visitors 24/7 by chat or voice, quote from real prices, capture leads and book appointments (built on Catch Lead).
 - [SEO, local SEO & AI search](https://aydinkalantar.com/services/seo/): technical SEO, Google Business Profile and local listings, structured data, visibility in ChatGPT, Google AI Overviews and Perplexity, plus Google Ads and Facebook Ads.
 - [Branding & graphic design](https://aydinkalantar.com/services/branding/): logos, brand identity, print, apparel and screen printing graphics, signage and ad creative.
