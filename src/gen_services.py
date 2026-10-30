@@ -1,7 +1,8 @@
 """Generates src/pages/services/*.html: the services hub and one page per service.
 
 Each page carries its own JSON-LD (Service, FAQPage, BreadcrumbList) so search engines
-and AI assistants can tie the service to Aydin, Mayfield Heights and the Cleveland area.
+and AI assistants can tie the service to Aydin. Services that sell locally ('local': True) name
+Cleveland; the rest are pitched to the whole United States.
 Run with python3 after editing the text below, then `npm run build`.
 """
 import html, json, os, pathlib
@@ -12,9 +13,9 @@ SITE = 'https://aydinkalantar.com'
 # Places served in person; shown on every page and listed in the structured data.
 AREAS = ['Mayfield Heights', 'Cleveland', 'Lyndhurst', 'Beachwood', 'Highland Heights',
          'Pepper Pike', 'Mayfield Village', 'Euclid', 'Shaker Heights', 'Cleveland Heights']
-AREA_LINE = ('Based in Mayfield Heights, Ohio. I meet clients in person across Cleveland and the east side, '
-             'Lyndhurst, Beachwood, Highland Heights, Pepper Pike, Shaker Heights and Cleveland Heights, '
-             'and work remotely with businesses anywhere in the United States.')
+AREA_LINE = ('I work remotely with businesses across the United States. I am based in Mayfield Heights, Ohio, '
+             'near Cleveland, and meet Cleveland-area clients in person. I also have deep roots in Los Angeles, '
+             'where I built brands and websites for local companies from 2017 to 2020 and still work with clients today.')
 
 CASES = {
     'tbsp': ('The Best Screen Printing', 'E-commerce · SEO', 'Website rebuild for a Los Angeles print shop: online ordering, a voice agent, and 2,662 old URLs migrated with search traffic intact.'),
@@ -37,8 +38,8 @@ SERVICES = [
         'name': 'UI & UX design',
         'short': 'UI & UX',
         'type': 'UI design and UX design',
-        'title': 'UI & UX Design for Apps, SaaS & Websites in Cleveland · Aydin Kalantar',
-        'desc': 'UI and UX design for SaaS products, web and mobile apps and websites: user research, flows, wireframes, prototypes, interface design and design systems, by Aydin Kalantar in Cleveland, Ohio.',
+        'title': 'UI & UX Design for Apps, SaaS & Websites · Aydin Kalantar, UI/UX Designer',
+        'desc': 'UI and UX design for SaaS products, web and mobile apps and websites: user research, flows, wireframes, prototypes, interface design and design systems for businesses across the US, by Aydin Kalantar.',
         'headline': 'Interfaces people understand the first time they use them.',
         'lede': 'I am a UI and UX specialist. I design how a product works and how it looks: the flows, the screens, every state and detail, so customers find what they need, trust what they see and finish what they started. And because I also write the code, the design ships the way it was drawn.',
         'card': 'User flows, wireframes, prototypes, interfaces and design systems for apps, SaaS and websites.',
@@ -60,7 +61,8 @@ SERVICES = [
         'short': 'Web design',
         'type': 'Web design and development',
         'title': 'Web Design & Development in Cleveland, Ohio · Aydin Kalantar',
-        'desc': 'Custom website design and development for businesses in Cleveland and Northeast Ohio: fast, search-ready sites, online ordering and redesigns that keep your Google rankings.',
+        'local': True,
+        'desc': 'Custom website design and development for businesses in Cleveland, Northeast Ohio and across the US: fast, search-ready sites, online ordering and redesigns that keep your Google rankings.',
         'headline': 'Websites that bring in business, designed and built by one person.',
         'lede': 'I design and code custom websites for small and growing businesses: fast, easy to update, built to rank in Google and to turn visitors into calls, orders and bookings.',
         'card': 'Custom websites and online stores, designed and coded by hand, built to load fast and rank.',
@@ -81,8 +83,8 @@ SERVICES = [
         'name': 'SaaS, web & mobile apps',
         'short': 'Apps',
         'type': 'Custom software, SaaS, web app and mobile app development',
-        'title': 'SaaS, Web App & Mobile App Development in Cleveland · Aydin Kalantar',
-        'desc': 'Custom SaaS, web app and mobile app development from scratch for startups and businesses in Cleveland and Northeast Ohio: product design, code, payments, dashboards and launch.',
+        'title': 'SaaS, Web App & Mobile App Development · Aydin Kalantar',
+        'desc': 'Custom SaaS, web app and mobile app development from scratch for startups and businesses across the United States: product design, code, payments, dashboards and launch.',
         'headline': 'Your app, from first sketch to paying users.',
         'lede': 'I design and build software products from scratch: SaaS platforms, web apps, mobile apps and internal tools. One person handles the product thinking, the interface and the code, so the idea survives all the way to launch.',
         'card': 'SaaS platforms, web and mobile apps and internal tools, designed and built from scratch.',
@@ -103,8 +105,8 @@ SERVICES = [
         'name': 'Business automation',
         'short': 'Automation',
         'type': 'Business process automation and AI workflow automation',
-        'title': 'Business Automation & AI Workflow Solutions in Cleveland · Aydin Kalantar',
-        'desc': 'Business process automation for Cleveland and Northeast Ohio companies: connect your tools, automate quotes, orders, follow-ups and reports, and add AI where it saves hours every week.',
+        'title': 'Business Automation & AI Workflow Solutions · Aydin Kalantar',
+        'desc': 'Business process automation for companies across the United States: connect your tools, automate quotes, orders, follow-ups and reports, and add AI where it saves hours every week.',
         'headline': 'Stop doing by hand what software can do for you.',
         'lede': 'I find the repetitive work in your business, like copying data between tools, chasing leads, building quotes or sending reports, and automate it. Smart solutions that save hours every week and cut mistakes.',
         'card': 'Connect your tools and automate quotes, orders, follow-ups and reports, with AI where it helps.',
@@ -124,7 +126,7 @@ SERVICES = [
         'name': 'AI chat & voice agents',
         'short': 'AI agents',
         'type': 'AI chatbot and voice agent development',
-        'title': 'AI Chat & Voice Agents for Businesses · Aydin Kalantar, Cleveland',
+        'title': 'AI Chat & Voice Agents for Businesses · Aydin Kalantar',
         'desc': 'AI chat and voice agents for business websites: answer visitors 24/7, quote from your real prices, capture leads and book appointments. Built by Aydin Kalantar, creator of Catch Lead.',
         'headline': 'An assistant that answers every visitor, day and night.',
         'lede': 'I build AI agents that talk to your customers by chat or voice. They answer questions from your own prices and policies, collect contact details and book the appointment, then send the lead to you.',
@@ -147,7 +149,8 @@ SERVICES = [
         'short': 'SEO',
         'type': 'Search engine optimization',
         'title': 'SEO, Local SEO & AI Search Optimization in Cleveland · Aydin Kalantar',
-        'desc': 'SEO for Cleveland and Northeast Ohio businesses: technical SEO, local SEO and Google Business Profile, AI search visibility in ChatGPT and Google AI, plus Google Ads and Facebook Ads.',
+        'local': True,
+        'desc': 'SEO for businesses in Cleveland, Northeast Ohio and across the US: technical SEO, local SEO and Google Business Profile, AI search visibility in ChatGPT and Google AI, plus Google Ads and Facebook Ads.',
         'headline': 'Get found on Google, on the map and in AI answers.',
         'lede': 'I help businesses show up when customers search: in Google results, in the local map pack, and in the answers ChatGPT, Google AI and Perplexity give. When you need results faster, I run Google Ads and Facebook Ads too.',
         'card': 'Technical and local SEO, AI search visibility, and Google and Facebook ads that bring in customers.',
@@ -169,7 +172,8 @@ SERVICES = [
         'short': 'Branding',
         'type': 'Branding and graphic design',
         'title': 'Branding, Logo & Graphic Design in Cleveland, Ohio · Aydin Kalantar',
-        'desc': 'Logo design, brand identity and graphic design for businesses in Cleveland and Northeast Ohio: print, apparel, signage and ad creative, from a designer trained in fine art.',
+        'local': True,
+        'desc': 'Logo design, brand identity and graphic design for businesses in Cleveland, Northeast Ohio and across the US: print, apparel, signage and ad creative, from a designer trained in fine art.',
         'headline': 'A brand that looks as good as the work you do.',
         'lede': 'I design logos, brand identities and the graphics that carry them: print, apparel, signs, social posts and ads. I trained as a painter and spent years in a print shop, so the designs are made to work on screen and in production.',
         'card': 'Logos, identities and graphics for print, apparel, signs, social and ads, ready for production.',
@@ -189,8 +193,8 @@ SERVICES = [
         'name': '3D modeling & rendering',
         'short': '3D rendering',
         'type': '3D modeling and rendering',
-        'title': '3D Modeling, Product Rendering & Animation · Aydin Kalantar, Cleveland',
-        'desc': '3D modeling, photoreal product rendering and animation for products, apparel and ads, by Aydin Kalantar in Mayfield Heights, Ohio. CGI experience from film to AI product imagery.',
+        'title': '3D Modeling, Product Rendering & Animation · Aydin Kalantar',
+        'desc': '3D modeling, photoreal product rendering and animation for products, apparel and ads, by Aydin Kalantar, for brands across the US. CGI experience from film to AI product imagery.',
         'headline': 'Products shown at their best, before a photo is taken.',
         'lede': 'I model and render products, apparel and scenes in 3D: photoreal images for your store, mockups for pitches, and short animations for ads and launches. I started in CGI for film and today build AI tools for product imagery.',
         'card': 'Photoreal product renders, apparel mockups and short animations for stores, pitches and ads.',
@@ -213,7 +217,7 @@ ART = {
 }
 
 HUB_FAQ = [
-    ('Where are you based?', 'Mayfield Heights, Ohio, on the east side of Cleveland. I meet local clients in person and work remotely with businesses anywhere in the United States.'),
+    ('Do you work with clients outside Ohio?', 'Yes, most of my work is remote, with businesses anywhere in the United States. I am based in Mayfield Heights, near Cleveland, and have worked with Los Angeles companies since 2017.'),
     ('What kinds of businesses do you work with?', 'Mostly small and growing businesses: local services, shops, manufacturers and startups. I have also built and run my own products, so I know the owner\'s side of the table.'),
     ('Can you handle the whole project?', 'Yes. Brand, website, app, automation, AI, search and ads can all come from one person, so nothing gets lost between agencies.'),
     ('How do we start?', 'Email hello@aydinkalantar.com or call 216-339-8948 with a few lines about the business and what you need. I reply personally.'),
@@ -263,7 +267,7 @@ def area_section():
       <div class="container-site grid-asym">
         <p class="label reveal md:col-span-3">Service area</p>
         <div class="md:col-span-9">
-          <h2 class="display-md reveal">Local to Cleveland, working everywhere.</h2>
+          <h2 class="display-md reveal">Nationwide, from Cleveland.</h2>
           <p class="lede reveal mt-6 max-w-prose">{e(AREA_LINE)}</p>
         </div>
       </div>
@@ -285,7 +289,8 @@ def crumbs_ld(items):
         {'@type': 'ListItem', 'position': i, 'name': n, 'item': SITE + u} for i, (n, u) in enumerate(items, 1)]}
 
 
-AREA_LD = [{'@type': 'City', 'name': f'{a}, Ohio'} for a in AREAS] + [{'@type': 'Country', 'name': 'United States'}]
+NATIONAL_LD = [{'@type': 'Country', 'name': 'United States'}, {'@type': 'City', 'name': 'Cleveland, Ohio'}, {'@type': 'City', 'name': 'Los Angeles, California'}]
+LOCAL_LD = NATIONAL_LD + [{'@type': 'City', 'name': f'{a}, Ohio'} for a in AREAS if a != 'Cleveland']
 
 
 def meta(title, desc, contact):
@@ -311,7 +316,7 @@ def page(s):
     ld = jsonld([
         {'@type': 'Service', '@id': SITE + url + '#service', 'name': s['name'], 'serviceType': s['type'],
          'description': s['desc'], 'url': SITE + url,
-         'provider': {'@id': SITE + '/#business'}, 'areaServed': AREA_LD},
+         'provider': {'@id': SITE + '/#business'}, 'areaServed': LOCAL_LD if s.get('local') else NATIONAL_LD},
         faq_ld(s['faq']),
         crumbs_ld([('Home', '/'), ('Services', '/services/'), (s['name'], url)]),
     ])
@@ -323,7 +328,7 @@ def page(s):
         <nav aria-label="Breadcrumb" class="meta reveal"><a class="transition-colors hover:text-accent" href="/services/">Services</a> <span class="text-ink-faint">/</span> {e(s['short'])}</nav>
         <div class="grid-asym mt-12 items-end">
           <div class="md:col-span-8">
-            <p class="label reveal">{e(s['name'])} · Cleveland, Ohio</p>
+            <p class="label reveal">{e(s['name'])} · {'Cleveland, Ohio + nationwide' if s.get('local') else 'Nationwide, remote'}</p>
             <h1 class="display-lg reveal mt-6">{e(s['headline'])}</h1>
             <p class="lede reveal mt-8 max-w-prose">{e(s['lede'])}</p>
           </div>
@@ -390,8 +395,8 @@ def hub():
             <p class="body mb-10 mt-4">{e(r['card'])}</p>
             <span class="meta mt-auto flex items-center justify-between border-t border-line pt-5 group-hover:text-accent"><span>Learn more</span><span class="arrow">→</span></span>
           </a>''' for i, r in enumerate(rows, 1))
-    title = 'Services · UI/UX Design, Web & App Development, AI & SEO in Cleveland · Aydin Kalantar'
-    desc = 'UI and UX design, web design, SaaS, web and mobile app development, business automation, AI agents, SEO and local SEO, branding and 3D rendering for businesses in Cleveland, Mayfield Heights and Northeast Ohio, from Aydin Kalantar.'
+    title = 'Services · UI/UX Design, Web & App Development, AI & SEO · Aydin Kalantar'
+    desc = 'UI and UX design, web design, SaaS, web and mobile app development, business automation, AI agents, SEO and local SEO, branding and 3D rendering for businesses across the United States, from Aydin Kalantar, based in Cleveland, Ohio.'
     ld = jsonld([
         {'@type': 'OfferCatalog', '@id': SITE + '/services/#catalog', 'name': 'Services by Aydin Kalantar',
          'itemListElement': [{'@type': 'Offer', 'itemOffered': {'@id': f"{SITE}/services/{s['slug']}/#service"}} for s in SERVICES]},
@@ -406,7 +411,7 @@ def hub():
         <p class="label reveal md:col-span-3">Services</p>
         <div class="md:col-span-9">
           <h1 class="display-xl reveal">Design, code and growth for your business.</h1>
-          <p class="lede reveal mt-8 max-w-prose">I help businesses in Cleveland and across the country get found, look the part and turn visitors into customers. One person from UX and brand to website, app, automation and search, so nothing gets lost in a handoff.</p>
+          <p class="lede reveal mt-8 max-w-prose">I help businesses across the United States get found, look the part and turn visitors into customers. One person from UX and brand to website, app, automation and search, so nothing gets lost in a handoff.</p>
           <div class="reveal mt-12 flex flex-col gap-3 sm:flex-row">
             <a href="{mailto('New project')}" class="btn-primary group">Start a project <span aria-hidden="true" class="arrow">↗</span></a>
             <a href="tel:+12163398948" class="btn-secondary">Call 216-339-8948</a>
