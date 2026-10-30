@@ -54,6 +54,49 @@ SERVICES = [
         ],
     },
     {
+        'slug': 'app-development',
+        'faq_heading': 'About apps.',
+        'name': 'SaaS, web & mobile apps',
+        'short': 'Apps',
+        'type': 'Custom software, SaaS, web app and mobile app development',
+        'title': 'SaaS, Web App & Mobile App Development in Cleveland · Aydin Kalantar',
+        'desc': 'Custom SaaS, web app and mobile app development from scratch for startups and businesses in Cleveland and Northeast Ohio: product design, code, payments, dashboards and launch.',
+        'headline': 'Your app, from first sketch to paying users.',
+        'lede': 'I design and build software products from scratch: SaaS platforms, web apps, mobile apps and internal tools. One person handles the product thinking, the interface and the code, so the idea survives all the way to launch.',
+        'card': 'SaaS platforms, web and mobile apps and internal tools, designed and built from scratch.',
+        'for': ['Founders with an idea who need a working product, not just designs', 'Businesses that want their own customer portal or app', 'Teams outgrowing spreadsheets that need an internal tool', 'Companies with an existing app that needs a redesign or new features'],
+        'includes': ['Product planning: features, users and a first version you can launch', 'UX and interface design for web and mobile', 'Front end, back end, database and APIs', 'Accounts, subscriptions and payments', 'Dashboards, admin panels and reporting', 'AI features built in: generation, chat, search and recommendations', 'Hosting, launch and ongoing improvements'],
+        'cases': ['virtual-fashion', 'catch-lead', 'auto-alpha'],
+        'faq': [
+            ('Can you build an app from scratch?', 'Yes. Virtual Fashion, Catch Lead and Auto Alpha are SaaS products I designed and built from the first sketch to live, paying-ready software. Each is online today.'),
+            ('Do you build mobile apps?', 'Yes. I build mobile apps and installable web apps that work on phones, tablets and desktop. Virtual Fashion and Catch Lead both run as installable apps on mobile.'),
+            ('How long does it take to build a first version?', 'It depends on the features. Most products start with a focused first version that real users can try, then grow from what they do. You get the scope, timeline and price in writing before work starts.'),
+            ('Will I own the code?', 'Yes. The code, designs and accounts are yours.'),
+            ('Can you add AI to my product?', 'Yes. All three of my products use AI: image and video generation in Virtual Fashion, chat and voice in Catch Lead, and strategy automation in Auto Alpha.'),
+        ],
+    },
+    {
+        'slug': 'automation',
+        'faq_heading': 'About automation.',
+        'name': 'Business automation',
+        'short': 'Automation',
+        'type': 'Business process automation and AI workflow automation',
+        'title': 'Business Automation & AI Workflow Solutions in Cleveland · Aydin Kalantar',
+        'desc': 'Business process automation for Cleveland and Northeast Ohio companies: connect your tools, automate quotes, orders, follow-ups and reports, and add AI where it saves hours every week.',
+        'headline': 'Stop doing by hand what software can do for you.',
+        'lede': 'I find the repetitive work in your business, like copying data between tools, chasing leads, building quotes or sending reports, and automate it. Smart solutions that save hours every week and cut mistakes.',
+        'card': 'Connect your tools and automate quotes, orders, follow-ups and reports, with AI where it helps.',
+        'for': ['Owners spending evenings on admin and data entry', 'Teams that copy information between apps by hand', 'Businesses that lose leads because follow-up is slow', 'Companies that want to use AI but do not know where to start'],
+        'includes': ['A review of where your time goes and what to automate first', 'Connecting your apps: CRM, email, forms, spreadsheets, payments', 'Automatic lead follow-up, quotes and booking', 'Order, invoice and inventory workflows', 'Automatic reports and dashboards', 'AI that reads, sorts and drafts: emails, documents and requests'],
+        'cases': ['catch-lead', 'tbsp', 'auto-alpha'],
+        'faq': [
+            ('What can be automated in a small business?', 'Usually more than people expect: replying to new leads, sending quotes, booking appointments, moving orders between systems, invoicing, reminders and weekly reports. We start with the task that costs you the most time.'),
+            ('Do I have to change the software I use?', 'Usually not. Most automation connects the tools you already have so they share information without anyone copying it by hand.'),
+            ('Where does AI fit in?', 'AI handles the work that needs reading or writing: answering customer questions, sorting incoming requests, pulling details from documents and drafting replies for you to approve.'),
+            ('Have you built automation before?', 'Yes. Catch Lead automates lead capture, quoting and booking for service businesses, and Auto Alpha runs trading strategies automatically on users\' own exchange accounts.'),
+        ],
+    },
+    {
         'slug': 'ai-agents',
         'faq_heading': 'About AI agents.',
         'name': 'AI chat & voice agents',
@@ -150,7 +193,7 @@ ART = {
 HUB_FAQ = [
     ('Where are you based?', 'Mayfield Heights, Ohio, on the east side of Cleveland. I meet local clients in person and work remotely with businesses anywhere in the United States.'),
     ('What kinds of businesses do you work with?', 'Mostly small and growing businesses: local services, shops, manufacturers and startups. I have also built and run my own products, so I know the owner\'s side of the table.'),
-    ('Can you handle the whole project?', 'Yes. Brand, website, AI agent, search and ads can all come from one person, so nothing gets lost between agencies.'),
+    ('Can you handle the whole project?', 'Yes. Brand, website, app, automation, AI, search and ads can all come from one person, so nothing gets lost between agencies.'),
     ('How do we start?', 'Email hello@aydinkalantar.com or call 216-339-8948 with a few lines about the business and what you need. I reply personally.'),
 ]
 
@@ -325,8 +368,8 @@ def hub():
             <p class="body mb-10 mt-4">{e(r['card'])}</p>
             <span class="meta mt-auto flex items-center justify-between border-t border-line pt-5 group-hover:text-accent"><span>Learn more</span><span class="arrow">→</span></span>
           </a>''' for i, r in enumerate(rows, 1))
-    title = 'Services · Web Design, AI Agents, SEO & Branding in Cleveland · Aydin Kalantar'
-    desc = 'Web design and development, AI chat and voice agents, SEO and local SEO, branding and 3D rendering for businesses in Cleveland, Mayfield Heights and Northeast Ohio, from Aydin Kalantar.'
+    title = 'Services · Web & App Development, AI, Automation & SEO in Cleveland · Aydin Kalantar'
+    desc = 'Web design, SaaS, web and mobile app development, business automation, AI agents, SEO and local SEO, branding and 3D rendering for businesses in Cleveland, Mayfield Heights and Northeast Ohio, from Aydin Kalantar.'
     ld = jsonld([
         {'@type': 'OfferCatalog', '@id': SITE + '/services/#catalog', 'name': 'Services by Aydin Kalantar',
          'itemListElement': [{'@type': 'Offer', 'itemOffered': {'@id': f"{SITE}/services/{s['slug']}/#service"}} for s in SERVICES]},
@@ -341,7 +384,7 @@ def hub():
         <p class="label reveal md:col-span-3">Services</p>
         <div class="md:col-span-9">
           <h1 class="display-xl reveal">Design, code and growth for your business.</h1>
-          <p class="lede reveal mt-8 max-w-prose">I help businesses in Cleveland and across the country get found, look the part and turn visitors into customers. One person from brand to website to AI agent to search, so nothing gets lost in a handoff.</p>
+          <p class="lede reveal mt-8 max-w-prose">I help businesses in Cleveland and across the country get found, look the part and turn visitors into customers. One person from brand to website, app, automation and search, so nothing gets lost in a handoff.</p>
           <div class="reveal mt-12 flex flex-col gap-3 sm:flex-row">
             <a href="{mailto('New project')}" class="btn-primary group">Start a project <span aria-hidden="true" class="arrow">↗</span></a>
             <a href="tel:+12163398948" class="btn-secondary">Call 216-339-8948</a>
@@ -352,7 +395,7 @@ def hub():
 
     <section class="section">
       <div class="container-site">
-        <div class="hairline-grid md:grid-cols-2 lg:grid-cols-3">
+        <div class="hairline-grid md:grid-cols-2 lg:grid-cols-4">
 {cards}
         </div>
       </div>
