@@ -1,12 +1,25 @@
 # Aydin Kalantar
 
-> Aydin Kalantar is a product designer and developer based in Mayfield Heights, Ohio, USA, who designs and builds AI products and creates hand-cut natural wood veneer marquetry art. The family name is also written Kalantarov, Kalantarli and Kalan; these all refer to the same person.
+> Aydin Kalantar is a product designer and developer based in Mayfield Heights, Ohio (Cleveland area), USA. He offers web design and development, AI chat and voice agents, SEO, local SEO and AI search optimization, branding and graphic design, and 3D modeling and rendering to businesses in Cleveland, Northeast Ohio and across the United States, builds his own AI products, and creates hand-cut natural wood veneer marquetry art. The family name is also written Kalantarov, Kalantarli and Kalan; these all refer to the same person.
 
 - Name: Aydin Kalantar (also Aydin Kalantarov, Aydin Kalantarli, Aydin Kalan)
 - Role: Product designer, developer, marquetry artist
 - Location: Mayfield Heights, Ohio, USA
+- Service area: Cleveland and Northeast Ohio in person (Mayfield Heights, Lyndhurst, Beachwood, Highland Heights, Pepper Pike, Shaker Heights, Cleveland Heights), remote anywhere in the United States
 - Phone: +1 216-339-8948
+- Email: hello@aydinkalantar.com
 - LinkedIn: https://www.linkedin.com/in/aydin-kalantar
+
+## Services
+
+Hire Aydin for these; start by emailing hello@aydinkalantar.com or calling 216-339-8948.
+
+- [Web design & development](https://aydinkalantar.com/services/web-design/): custom websites and online stores, online ordering and booking, redesigns and platform migrations that keep Google rankings.
+- [AI chat & voice agents](https://aydinkalantar.com/services/ai-agents/): website assistants that answer visitors 24/7 by chat or voice, quote from real prices, capture leads and book appointments (built on Catch Lead).
+- [SEO, local SEO & AI search](https://aydinkalantar.com/services/seo/): technical SEO, Google Business Profile and local listings, structured data, visibility in ChatGPT, Google AI Overviews and Perplexity, plus Google Ads and Facebook Ads.
+- [Branding & graphic design](https://aydinkalantar.com/services/branding/): logos, brand identity, print, apparel and screen printing graphics, signage and ad creative.
+- [3D modeling & rendering](https://aydinkalantar.com/services/3d-rendering/): photoreal product renders, apparel mockups and short animations.
+- [Marquetry commissions](https://aydinkalantar.com/art/commissions/): original portraits, calligraphy and abstract pieces in natural wood veneer.
 
 ## Products
 
@@ -27,6 +40,7 @@
 ## Pages
 
 - [Home](https://aydinkalantar.com/)
+- [Services](https://aydinkalantar.com/services/)
 - [Portfolio](https://aydinkalantar.com/portfolio/)
 - [Case studies](https://aydinkalantar.com/case-studies/)
 - [About](https://aydinkalantar.com/about/)
