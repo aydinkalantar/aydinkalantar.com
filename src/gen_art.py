@@ -389,6 +389,101 @@ def commissions_page():
 {faq_section()}'''
 
 
+# A long-form guide that takes over the old art site's blog posts (history, what marquetry is, how it is made),
+# which still drew search impressions. Facts here are general craft history; the process is Aydin's own.
+GUIDE_SLUG = 'wood-veneer-art'
+GUIDE_TITLE = 'Wood Veneer Art: What Marquetry Is, Its History and Modern Techniques'
+GUIDE_DESC = ('A guide to wood veneer art and marquetry: what it is, how it differs from inlay and intarsia, '
+              'its history from ancient Egypt to today, how a piece is made by hand, and modern techniques and trends.')
+GUIDE_SECTIONS = [
+    ('What is wood veneer art?', [
+        'Wood veneer art is a picture or pattern made from thin sheets of real wood. Each sheet, a veneer, is usually well under a millimeter thick. Pieces of different species are cut to shape and fitted edge to edge, so the image comes from the natural color and grain of the wood rather than paint.',
+        'The craft has several names that are often mixed up. <strong>Marquetry</strong> builds a picture from veneer pieces fitted together and glued to a backing. <strong>Inlay</strong> sets material into a recess cut into a solid surface. <strong>Intarsia</strong> is the Renaissance Italian word for wood pictures, today also used for thicker, shaped pieces. <strong>Parquetry</strong> uses geometric shapes, as in patterned floors.',
+    ]),
+    ('A short history', [
+        'Veneering is ancient. Furniture from Egyptian tombs, including Tutankhamun\'s, shows thin layers of fine wood and decorative inlay laid over plainer timber.',
+        'In Renaissance Italy, intarsia reached its peak in church choir stalls and private studies, where whole walls of wood pictures created cupboards, books and city views in false perspective. In 17th-century France, André-Charles Boulle made marquetry famous on royal furniture, and the 18th century filled European homes with floral and pictorial marquetry.',
+        'In the 19th century, machines that slice and peel logs made veneer cheaper and more widely available. Today marquetry lives on in fine furniture and, more and more, as wall art in its own right.',
+    ]),
+    ('How a piece is made by hand', [
+        'Every piece in my gallery is made the traditional way, without stain or print:',
+        '<ul><li><strong>Drawing.</strong> The image is drawn and broken into the shapes that will each become one piece of wood.</li><li><strong>Choosing veneers.</strong> Species are chosen for tone and grain: a curl of grain can become a strand of hair, a darker figure a shadow.</li><li><strong>Cutting.</strong> Each fragment is cut by hand to match its neighbors. Portraits can take hundreds of pieces.</li><li><strong>Fitting and gluing.</strong> The pieces are assembled into one sheet, glued to a stable backing and pressed flat.</li><li><strong>Finishing.</strong> The surface is sanded and finished to bring out the wood\'s own color and depth.</li></ul>',
+        'You can watch the process in the <a class="link" href="/art/commissions/#process">studio films</a>.',
+    ]),
+    ('Modern techniques and trends', [
+        'Today\'s makers mix old and new. Designs are often drawn or refined digitally, and some studios cut veneer with lasers for very fine detail. Traditional techniques remain: sand shading, scorching the edge of a piece in hot sand to create a soft shadow, is centuries old and still widely used.',
+        'Subjects have widened too. Alongside classic florals and landscapes you now see photo-real portraits, optical-illusion abstracts, calligraphy and geometric pieces made to hang on a wall rather than sit on furniture. My own work moves between <a class="link" href="/art/?c=portraits#works">portraits</a>, <a class="link" href="/art/?c=abstract#works">abstract pieces</a> and <a class="link" href="/art/?c=bismillah#works">Bismillah calligraphy</a>.',
+    ]),
+    ('Caring for wood veneer art', [
+        '<ul><li>Hang it out of strong direct sunlight. Like all wood, veneer slowly changes color under UV light.</li><li>Avoid big swings in humidity and heat, such as directly above a radiator.</li><li>Dust with a soft, dry cloth. Skip sprays and polishes.</li></ul>',
+    ]),
+]
+GUIDE_FAQ = [
+    ('Is marquetry the same as inlay?', 'Not quite. Marquetry assembles veneer pieces into a single sheet glued to a backing; inlay sets material into a recess cut into a solid surface. Both are often called wood inlay art.'),
+    ('Is the color painted or stained?', 'In my work, no. Every color and shadow is the natural tone of a different wood species.'),
+    ('Can I commission a piece?', 'Yes. Send a photo, a name or an idea and the size of the wall, and I will draw it in wood for you.'),
+]
+
+
+def guide_page():
+    body = '\n'.join(
+        f'          <h2 class="heading mt-16 text-2xl first:mt-0">{h}</h2>\n' + '\n'.join(
+            p if p.startswith('<') else f'          <p>{p}</p>' for p in paras)
+        for h, paras in GUIDE_SECTIONS)
+    faq = '\n'.join(f'''          <details class="group border-b border-line py-6">
+            <summary class="flex cursor-pointer list-none items-baseline justify-between gap-6 font-heading text-lg font-bold tracking-tight text-ink transition-colors hover:text-accent [&::-webkit-details-marker]:hidden">{e(q)}<span aria-hidden="true" class="meta transition-transform duration-400 group-open:rotate-45">+</span></summary>
+            <p class="body mt-4 max-w-prose">{e(a)}</p>
+          </details>''' for q, a in GUIDE_FAQ)
+    ld = {'@context': 'https://schema.org', '@graph': [
+        {'@type': 'Article', '@id': f'{SITE}/art/{GUIDE_SLUG}/#article', 'headline': GUIDE_TITLE, 'description': GUIDE_DESC,
+         'url': f'{SITE}/art/{GUIDE_SLUG}/', 'author': {'@id': f'{SITE}/#person'}, 'publisher': {'@id': f'{SITE}/#person'},
+         'image': f'{SITE}/assets/art/rooms/hero-spiral-wide.jpg', 'datePublished': '2026-10-31', 'inLanguage': 'en-US'},
+        {'@type': 'FAQPage', 'mainEntity': [{'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': a}} for q, a in GUIDE_FAQ]},
+        {'@type': 'BreadcrumbList', 'itemListElement': [
+            {'@type': 'ListItem', 'position': 1, 'name': 'Gallery', 'item': f'{SITE}/art/'},
+            {'@type': 'ListItem', 'position': 2, 'name': 'Wood veneer art guide', 'item': f'{SITE}/art/{GUIDE_SLUG}/'}]},
+    ]}
+    return meta_comment(GUIDE_TITLE + ' · Aydin Kalantar', GUIDE_DESC, image=f'{SITE}/assets/art/rooms/hero-spiral-wide.jpg') + f'''
+    <script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>
+    <article>
+      <header class="pb-14 pt-14 lg:pt-22">
+        <div class="container-site grid-asym">
+          <div class="md:col-span-8">
+            <nav aria-label="Breadcrumb" class="meta"><a class="link" href="/art/">Gallery</a> <span aria-hidden="true">/</span> Guide</nav>
+            <h1 class="display-lg reveal mt-10">{e(GUIDE_TITLE)}</h1>
+            <p class="lede reveal mt-8 max-w-prose">Everything you need to know about the craft behind my work, from its history to how a piece is cut and fitted by hand today.</p>
+            <p class="meta mt-6">By Aydin Kalantar, marquetry artist</p>
+          </div>
+        </div>
+      </header>
+      <section class="border-t border-line pb-22 pt-16">
+        <div class="container-site grid-asym">
+        <div class="prose-case reveal md:col-span-8 md:col-start-3 [&_ul]:space-y-3">
+{body}
+        </div>
+        </div>
+      </section>
+      <section id="faq" class="section scroll-mt-16 border-t border-line">
+        <div class="container-site grid-asym">
+          <div class="md:col-span-4">
+            <p class="label reveal">Questions</p>
+            <h2 class="display-md reveal mt-8">Quick answers.</h2>
+          </div>
+          <div class="reveal border-t border-line md:col-span-7 md:col-start-6">
+{faq}
+          </div>
+        </div>
+      </section>
+      <section class="section border-t border-line">
+        <div class="container-site flex flex-col gap-3 sm:flex-row">
+          <a href="/art/" class="btn-primary group">See the gallery <span aria-hidden="true" class="arrow">→</span></a>
+          <a href="/art/commissions/" class="btn-secondary">Commission a piece</a>
+        </div>
+      </section>
+    </article>
+'''
+
+
 if os.path.isdir(OUT):
     shutil.rmtree(OUT)
 os.makedirs(os.path.join(OUT, 'works'))
@@ -401,9 +496,10 @@ gallery_ld = {
 }
 open(os.path.join(OUT, 'index.html'), 'w').write(gallery_page() + f'\n    <script type="application/ld+json">{json.dumps(gallery_ld, ensure_ascii=False)}</script>\n')
 open(os.path.join(OUT, 'commissions.html'), 'w').write(commissions_page())
+open(os.path.join(OUT, GUIDE_SLUG + '.html'), 'w').write(guide_page())
 for i, w in enumerate(works, 1):
     open(os.path.join(OUT, 'works', w['slug'] + '.html'), 'w').write(work_page(w, i))
-print(f'wrote gallery, commissions and {len(works)} work pages')
+print(f'wrote gallery, commissions, guide and {len(works)} work pages')
 
 # Image sitemap for the gallery, so search engines find every photo with its title.
 def image_entry(src, title):
@@ -411,7 +507,7 @@ def image_entry(src, title):
 
 
 urls = [(f'{SITE}/art/', ''.join(image_entry(f"/assets/art/rooms/{w['room']}-wide.jpg", w['title']) for w in works if w.get('room'))),
-        (f'{SITE}/art/commissions/', '')]
+        (f'{SITE}/art/commissions/', ''), (f'{SITE}/art/{GUIDE_SLUG}/', '')]
 for w in shown:
     imgs = ''
     if w.get('room'):
