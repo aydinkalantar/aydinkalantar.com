@@ -676,6 +676,23 @@ TBSP_SHOWCASE = '''
       </section>
 '''
 
+TBSPLA_HERO = '''      <figure class="container-site reveal py-16 lg:py-22">
+        <div class="border border-line p-6 sm:p-10">
+          <!-- PROJECT IMAGE SLOT: replace with the TBSP.LA walkthrough video once Ayden sends it -->
+          <ol class="grid grid-cols-2 gap-px bg-line sm:grid-cols-3 lg:grid-cols-6" aria-label="One job from request to delivery, with who acts at each step">
+            <li class="bg-canvas p-5"><p class="meta">01</p><p class="card-title mt-6 !text-xl">Request</p><p class="meta mt-2">Max, website, email or phone</p></li>
+            <li class="bg-canvas p-5"><p class="meta">02</p><p class="card-title mt-6 !text-xl">Quote</p><p class="meta mt-2">Priced from live blank costs</p></li>
+            <li class="bg-canvas p-5"><p class="meta">03</p><p class="card-title mt-6 !text-xl">Paid</p><p class="meta mt-2">Card, with a private status link</p></li>
+            <li class="bg-canvas p-5"><p class="meta">04</p><p class="card-title mt-6 !text-xl">Proof</p><p class="meta mt-2">Designer drafts, customer approves</p></li>
+            <li class="bg-canvas p-5"><p class="meta">05</p><p class="card-title mt-6 !text-xl">Blanks</p><p class="meta mt-2">Ordered from S&amp;S, scanned in</p></li>
+            <li class="bg-ink p-5 text-canvas"><p class="meta !text-canvas/70">06</p><p class="card-title mt-6 !text-xl !text-canvas">Print &amp; ship</p><p class="meta mt-2 !text-canvas/70">In house or a partner shop</p></li>
+          </ol>
+        </div>
+        <figcaption class="media-caption"><span>Fig. 01</span><span>One job, one page, six steps · the next step is always on top</span></figcaption>
+      </figure>
+'''
+
+
 CASES = [
  dict(
   slug='tbsp', num='01', hero=TBSP_HERO, after_solution=TBSP_SHOWCASE, name='The Best Screen Printing', url='https://thebestscreenprinting.com', domain='thebestscreenprinting.com',
@@ -722,7 +739,54 @@ CASES = [
               <!-- ADD METRICS: orders placed online, Max conversations and orders, search clicks before and after launch -->'''),
   ]),
  dict(
-  slug='virtual-fashion', num='02', hero=VF_HERO, after_solution=VF_SHOWCASE, name='Virtual Fashion', url='https://virtualfashion.app', domain='virtualfashion.app',
+  slug='tbsp-la', num='02', hero=TBSPLA_HERO, name='TBSP.LA', url='https://tbsp.la', domain='tbsp.la',
+  schematic='schematic-cl', fig='',
+  title='TBSP.LA case study · Aydin Kalantar',
+  desc='How Aydin Kalantar built TBSP.LA, the operating system behind a Los Angeles print shop: AI quoting, art proofs, blank ordering, production and a network of partner print shops in one app.',
+  headline='One system to run a print shop, from the first message to the shipped box.',
+  facts=[('Role','Product design & full-stack development'),('Type','B2B SaaS · operations'),('Platform','Next.js, Postgres, Stripe'),('Status','Launching at TBSP, 2026')],
+  parts=[
+   ('Overview', '''<p>TBSP.LA is the software that runs The Best Screen Printing behind its <a class="link" href="/case-studies/tbsp/">new website</a>. Every request, whether it comes from Max on the website, the quote form, an email or a phone call, becomes one job that moves through quoting, payment, art, blanks, production and shipping in the same app.</p>
+              <p>It replaces a stack of separate tools: an old order system, inboxes, spreadsheets and the supplier's website. Staff, designers, partner print shops and customers each see the part that's theirs, and the work moves between them without anyone retyping it.</p>'''),
+   ('Challenges', ul([
+                '<strong>Requests arrive everywhere.</strong> Website chats, quote forms, two sales inboxes, calls and walk-ins. Anything that sat in the wrong place was a lost order.',
+                '<strong>Pricing a job is slow.</strong> Blank cost by color and size, print method, ink colors, print locations, quantity breaks, rush fees and sales tax all change the number.',
+                '<strong>Art is where jobs stall.</strong> Proofs wait on designers, then on customers, and nothing prints until the art and the print files are right.',
+                '<strong>Many hands, one order.</strong> Sales, designers, the floor, outside print shops and the customer all touch the same job, and each needs a different view of it, without seeing what isn\'t theirs.',
+                '<strong>Ten years of history.</strong> Repeat customers ask for "the same as last time", and that order lived in the old system.'])),
+   ('UI/UX solutions', '''<p>I designed the admin around one question: what does someone need to do next?</p>
+              <h3>Today, then the job</h3>
+              <p>The first screen lists what needs a person right now, most urgent first: late jobs, proof changes, quotes to price, messages, past-due invoices, blanks to order. Each line opens the right place. Every job has one page with its steps, and the next step always sits on top.</p>
+              <h3>Seven places, plain names</h3>
+              <p>The menu went from a long list of screens to seven places (Today, Jobs, Customers, Art desk, Production, Blanks &amp; receiving, Website &amp; marketing) plus Settings, named the way the shop talks. One search box finds any customer, job, quote or past order.</p>
+              <h3>A view for every role</h3>
+              <p>Staff see everything they need for daily work. Designers only see the Art desk, with the brief, the customer's files and a checklist for every proof, and never see prices or the customer list. Partner print shops get their own portal with work orders and payouts. Customers get private links to pay, approve their proof and track their order, with no account to create.</p>
+              <h3>Built for the floor</h3>
+              <p>The admin installs on a phone like an app, with alerts by role, swipe actions, pull to refresh and barcode scanning to check in boxes of blanks. Work orders carry a QR code for the screen on the press.</p>
+              <h3>Training built in</h3>
+              <p>New designers and print shops land on a short set of training videos the first time they sign in, with a tick on each one they've watched.</p>'''),
+   ('Technical solutions', '''<h3>One price engine</h3>
+              <p>Every price, whether Max quotes it in a chat, a customer sees it on the website or staff build a quote, comes from the same engine: live blank costs from S&amp;S Activewear, the shop's price grids per method, the ink colors the uploaded art really has, print locations, setup charged once per order, turnaround and sales tax by ship-to state, with tax-exempt certificates on file.</p>
+              <h3>Quotes from anywhere</h3>
+              <p>A website chat that stops after a price becomes a quote draft. Emails to the sales inboxes are read from Gmail and turned into a priced draft with a reply waiting in the thread. Nothing reaches a customer until a person presses Send. Quotes offer Good, Better and Best options and pay by card through Stripe.</p>
+              <h3>Automation with a person in the loop</h3>
+              <p>Background jobs draft proof 1 from the customer's own placed mockup, remind customers about unanswered proofs, move a job to Ready to print once it's paid, approved and has its files, build the day's supplier carts, follow up on open quotes, and send the shop a morning summary. Each loop takes a database lock so a deploy can never send the same email twice, and a real supplier purchase always needs a person to confirm it.</p>
+              <h3>A network of print shops</h3>
+              <p>Approved partner shops confirm a price sheet, get work orders with the files, sizes and due date, mark jobs started and shipped, and are paid out through Stripe. Designers are paid per art task when a proof is approved.</p>
+              <h3>Secure by default</h3>
+              <p>Role checks on every route and API call, two-step login, rate-limited sign-in, signed webhooks that fail closed, and service keys encrypted at rest. Customer links are single, private codes.</p>
+              <h3>The past, searchable</h3>
+              <p>Orders from the old DecoNetwork system, back to 2016, were imported under their original numbers, so "the same as order 619237" is found in seconds and reordered in one click.</p>'''),
+   ('Outcome', '''<p>TBSP.LA brings The Best Screen Printing's website, Max, quoting, art, blanks, production and partner shops into one system.</p>
+              ''' + ul([
+                'Every request, from any channel, lands in one list, oldest first.',
+                'Prices are the same wherever a customer sees them, because they come from one engine.',
+                'Designers, print shops and customers work in their own views, with no retyping between them.',
+                'Ten years of past orders are one search away.']) + '''
+              <!-- ADD METRICS: jobs per week, quote turnaround, time from payment to proof, partner shops, orders shipped -->'''),
+  ]),
+ dict(
+  slug='virtual-fashion', num='03', hero=VF_HERO, after_solution=VF_SHOWCASE, name='Virtual Fashion', url='https://virtualfashion.app', domain='virtualfashion.app',
   schematic='schematic-vf', fig='Workspace: tool rail, garment canvas, finish panel',
   title='Virtual Fashion case study · Aydin Kalantar',
   desc='How Virtual Fashion turns apparel photography into a browser canvas: AI garment design, consistent models, scenes and 4K video export.',
@@ -763,7 +827,7 @@ CASES = [
               <!-- ADD METRICS: sign-ups, renders generated, conversion from free credits to paid -->'''),
   ]),
  dict(
-  slug='catch-lead', num='03', hero=CL_HERO, after_solution=CL_SHOWCASE, name='Catch Lead', url='https://catchlead.dev', domain='catchlead.dev',
+  slug='catch-lead', num='04', hero=CL_HERO, after_solution=CL_SHOWCASE, name='Catch Lead', url='https://catchlead.dev', domain='catchlead.dev',
   schematic='schematic-cl', fig='Chat and voice assistant on a client site',
   title='Catch Lead case study · Aydin Kalantar',
   desc='How Catch Lead gives service businesses an AI sales agent that answers by chat or voice, quotes from real prices and books appointments.',
@@ -801,7 +865,7 @@ CASES = [
               <!-- ADD METRICS: businesses onboarded, conversations handled, bookings created -->'''),
   ]),
  dict(
-  slug='auto-alpha', num='04', hero=AA_HERO, after_solution=AA_SHOWCASE, name='Auto Alpha', url='https://autoalpha.trade', domain='autoalpha.trade',
+  slug='auto-alpha', num='05', hero=AA_HERO, after_solution=AA_SHOWCASE, name='Auto Alpha', url='https://autoalpha.trade', domain='autoalpha.trade',
   schematic='schematic-aa', fig='Strategy dashboard: key figures, equity curve, trade list',
   title='Auto Alpha case study · Aydin Kalantar',
   desc='How Aydin Kalantar designed and built Auto Alpha: automated crypto strategies on your own exchange account, explained in voiced films, tested on years they never saw, with funds that never leave the exchange.',
