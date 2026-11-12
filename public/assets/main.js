@@ -80,6 +80,20 @@ document.querySelectorAll('[data-seek]').forEach((btn) => {
   });
 });
 
+// Film playlists: buttons with data-src load that film into the data-target video and play it.
+document.querySelectorAll('[data-src][data-target]').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const video = document.getElementById(btn.dataset.target);
+    if (!video) return;
+    document.querySelectorAll(`[data-src][data-target="${btn.dataset.target}"]`).forEach((b) => b.removeAttribute('aria-current'));
+    btn.setAttribute('aria-current', 'true');
+    video.poster = btn.dataset.poster || '';
+    if (btn.dataset.label) video.setAttribute('aria-label', btn.dataset.label);
+    video.src = btn.dataset.src;
+    video.play().catch(() => {});
+  });
+});
+
 // Muted reels: play only while on screen, and never under reduced motion.
 const reels = document.querySelectorAll('video[data-autoplay]');
 if (reels.length && 'IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {

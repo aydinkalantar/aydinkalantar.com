@@ -676,7 +676,49 @@ TBSP_SHOWCASE = '''
       </section>
 '''
 
-TBSPLA_HERO = '''      <figure class="container-site reveal py-16 lg:py-22">
+TBSPLA_HERO = '''      <figure class="container-site grid-asym reveal items-start py-16 lg:py-22">
+        <div class="md:col-span-9">
+          <div class="border border-line bg-ink p-px">
+            <video id="tla-film" class="block aspect-video w-full" controls playsinline preload="none" poster="/assets/work/tbsp-la/designer-03-making-a-proof-poster.jpg" aria-label="A designer opens a paid order, reads the brief and checklist, drops mockups in, fills in each print spot with size, method and ink colors, and emails the proof">
+              <source src="/assets/work/tbsp-la/designer-03-making-a-proof.mp4" type="video/mp4">
+              <a class="link" href="/assets/work/tbsp-la/designer-03-making-a-proof.mp4">Download the video</a>
+            </video>
+          </div>
+          <figcaption class="media-caption"><span>Fig. 01</span><span>Training films built into the app · shown to designers and print shops on their first sign-in · demo data</span></figcaption>
+        </div>
+        <div class="md:col-span-3">
+          <p class="label">Designers</p>
+          <ol class="mt-4 border-t border-line text-[0.9375rem]">
+            <li><button type="button" data-target="tla-film" data-src="/assets/work/tbsp-la/designer-03-making-a-proof.mp4" data-poster="/assets/work/tbsp-la/designer-03-making-a-proof-poster.jpg" data-label="A designer opens a paid order, reads the brief and checklist, drops mockups in, fills in each print spot with size, method and ink colors, and emails the proof" aria-current="true" class="group flex w-full items-baseline gap-3 border-b border-line py-3 text-left transition-colors hover:text-accent aria-[current=true]:text-accent"><span class="meta w-6 shrink-0">01</span><span class="text-ink transition-colors group-hover:text-accent group-aria-[current=true]:text-accent">Making a proof</span><span class="meta ml-auto shrink-0">1:07</span></button></li>
+            <li><button type="button" data-target="tla-film" data-src="/assets/work/tbsp-la/designer-02-art-desk-queue.mp4" data-poster="/assets/work/tbsp-la/designer-02-art-desk-queue-poster.jpg" data-label="The Art desk queue by stage: changes asked first, then art needed, proofs not sent, waiting for the customer, and ready to print" class="group flex w-full items-baseline gap-3 border-b border-line py-3 text-left transition-colors hover:text-accent aria-[current=true]:text-accent"><span class="meta w-6 shrink-0">02</span><span class="text-ink transition-colors group-hover:text-accent group-aria-[current=true]:text-accent">Reading the Art desk</span><span class="meta ml-auto shrink-0">0:54</span></button></li>
+            <li><button type="button" data-target="tla-film" data-src="/assets/work/tbsp-la/designer-04-changes-and-approval.mp4" data-poster="/assets/work/tbsp-la/designer-04-changes-and-approval-poster.jpg" data-label="What the customer sees on the proof page, how a change request comes back as a new proof version, and how approval moves the order on" class="group flex w-full items-baseline gap-3 border-b border-line py-3 text-left transition-colors hover:text-accent aria-[current=true]:text-accent"><span class="meta w-6 shrink-0">03</span><span class="text-ink transition-colors group-hover:text-accent group-aria-[current=true]:text-accent">Changes and approval</span><span class="meta ml-auto shrink-0">0:58</span></button></li>
+            <li><button type="button" data-target="tla-film" data-src="/assets/work/tbsp-la/designer-05-print-files.mp4" data-poster="/assets/work/tbsp-la/designer-05-print-files-poster.jpg" data-label="Which print file each method needs, and how adding them moves an order to Ready to print" class="group flex w-full items-baseline gap-3 border-b border-line py-3 text-left transition-colors hover:text-accent aria-[current=true]:text-accent"><span class="meta w-6 shrink-0">04</span><span class="text-ink transition-colors group-hover:text-accent group-aria-[current=true]:text-accent">Adding print files</span><span class="meta ml-auto shrink-0">1:06</span></button></li>
+            <li><button type="button" data-target="tla-film" data-src="/assets/work/tbsp-la/designer-01-welcome-and-sign-in.mp4" data-poster="/assets/work/tbsp-la/designer-01-welcome-and-sign-in-poster.jpg" data-label="A designer invite, password and two-step login, the Art desk and phone alerts" class="group flex w-full items-baseline gap-3 border-b border-line py-3 text-left transition-colors hover:text-accent aria-[current=true]:text-accent"><span class="meta w-6 shrink-0">05</span><span class="text-ink transition-colors group-hover:text-accent group-aria-[current=true]:text-accent">Welcome and sign in</span><span class="meta ml-auto shrink-0">0:59</span></button></li>
+          </ol>
+          <p class="label mt-8">Print shops</p>
+          <ol class="mt-4 border-t border-line text-[0.9375rem]">
+            <li><button type="button" data-target="tla-film" data-src="/assets/work/tbsp-la/shop-03-work-order.mp4" data-poster="/assets/work/tbsp-la/shop-03-work-order-poster.jpg" data-label="A partner print shop opens a TBSP work order: finish-by date, garments and size split, approved art, print files and shipping" class="group flex w-full items-baseline gap-3 border-b border-line py-3 text-left transition-colors hover:text-accent aria-[current=true]:text-accent"><span class="meta w-6 shrink-0">06</span><span class="text-ink transition-colors group-hover:text-accent group-aria-[current=true]:text-accent">Reading a work order</span><span class="meta ml-auto shrink-0">1:09</span></button></li>
+            <li><button type="button" data-target="tla-film" data-src="/assets/work/tbsp-la/shop-04-making-and-shipping.mp4" data-poster="/assets/work/tbsp-la/shop-04-making-and-shipping-poster.jpg" data-label="A print shop starts production, sends TBSP a note, and marks the job shipped with tracking in its portal" class="group flex w-full items-baseline gap-3 border-b border-line py-3 text-left transition-colors hover:text-accent aria-[current=true]:text-accent"><span class="meta w-6 shrink-0">07</span><span class="text-ink transition-colors group-hover:text-accent group-aria-[current=true]:text-accent">Making and shipping</span><span class="meta ml-auto shrink-0">0:41</span></button></li>
+            <li><button type="button" data-target="tla-film" data-src="/assets/work/tbsp-la/shop-01-welcome-and-sign-in.mp4" data-poster="/assets/work/tbsp-la/shop-01-welcome-and-sign-in-poster.jpg" data-label="A print shop invite, password and the partner portal" class="group flex w-full items-baseline gap-3 border-b border-line py-3 text-left transition-colors hover:text-accent aria-[current=true]:text-accent"><span class="meta w-6 shrink-0">08</span><span class="text-ink transition-colors group-hover:text-accent group-aria-[current=true]:text-accent">Welcome and sign in</span><span class="meta ml-auto shrink-0">0:53</span></button></li>
+            <li><button type="button" data-target="tla-film" data-src="/assets/work/tbsp-la/shop-05-getting-paid.mp4" data-poster="/assets/work/tbsp-la/shop-05-getting-paid-poster.jpg" data-label="How and when TBSP pays a partner print shop through Stripe" class="group flex w-full items-baseline gap-3 border-b border-line py-3 text-left transition-colors hover:text-accent aria-[current=true]:text-accent"><span class="meta w-6 shrink-0">09</span><span class="text-ink transition-colors group-hover:text-accent group-aria-[current=true]:text-accent">Getting paid</span><span class="meta ml-auto shrink-0">0:34</span></button></li>
+          </ol>
+        </div>
+      </figure>
+'''
+
+TBSPLA_SHOWCASE = '''
+      <!-- TBSP.LA: one job, six steps -->
+      <section class="border-t border-line py-16 lg:py-22">
+        <div class="grid-asym items-end">
+          <div class="md:col-span-3">
+            <p class="label">The job</p>
+          </div>
+          <div class="md:col-span-8 md:col-start-5">
+            <h3 class="display-md reveal">One job, one page, six steps.</h3>
+            <p class="body reveal mt-4 max-w-prose">However a request arrives, it becomes one job with one number. The job page shows where it is, who acts next, and the next step on top.</p>
+          </div>
+        </div>
+      <figure class="reveal mt-12">
         <div class="border border-line p-6 sm:p-10">
           <!-- PROJECT IMAGE SLOT: replace with the TBSP.LA walkthrough video once Ayden sends it -->
           <ol class="grid grid-cols-2 gap-px bg-line sm:grid-cols-3 lg:grid-cols-6" aria-label="One job from request to delivery, with who acts at each step">
@@ -688,8 +730,51 @@ TBSPLA_HERO = '''      <figure class="container-site reveal py-16 lg:py-22">
             <li class="bg-ink p-5 text-canvas"><p class="meta !text-canvas/70">06</p><p class="card-title mt-6 !text-xl !text-canvas">Print &amp; ship</p><p class="meta mt-2 !text-canvas/70">In house or a partner shop</p></li>
           </ol>
         </div>
-        <figcaption class="media-caption"><span>Fig. 01</span><span>One job, one page, six steps · the next step is always on top</span></figcaption>
+        <figcaption class="media-caption"><span>Fig. 02</span><span>One job, one page, six steps · the next step is always on top</span></figcaption>
       </figure>
+      </section>
+
+      <!-- TBSP.LA: inside the app -->
+      <section class="border-t border-line py-16 lg:py-22">
+        <div class="grid-asym items-end">
+          <div class="md:col-span-3">
+            <p class="label">Inside the app</p>
+          </div>
+          <div class="md:col-span-8 md:col-start-5">
+            <h3 class="display-md reveal">Each role sees only its part of the job.</h3>
+            <p class="body reveal mt-4 max-w-prose">The designer's Art desk has no prices and no customer list. The customer approves the proof from a private link. The print shop sees its work orders, due dates and where to ship.</p>
+          </div>
+        </div>
+        <figure class="reveal mt-12">
+          <div class="border border-line bg-ink p-px">
+            <picture>
+              <source srcset="/assets/work/tbsp-la/art-desk.webp" type="image/webp">
+              <img src="/assets/work/tbsp-la/art-desk.jpg" width="1512" height="850" alt="TBSP.LA Art desk for a designer: proof templates at the top, then the queue by stage, Changes asked with the customer's note, Art needed, Proof not sent and Waiting for customer, each order with its garment, quantity and due date" loading="lazy" class="block h-auto w-full">
+            </picture>
+          </div>
+          <figcaption class="media-caption"><span>Fig. 03</span><span>The designer's Art desk · changes asked come first · demo data</span></figcaption>
+        </figure>
+        <div class="mt-12 grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-6 lg:gap-10">
+          <figure class="reveal">
+            <div class="border border-line bg-canvas p-px">
+              <picture>
+                <source srcset="/assets/work/tbsp-la/customer-proof.webp" type="image/webp">
+                <img src="/assets/work/tbsp-la/customer-proof.jpg" width="1512" height="850" alt="Customer proof page: a black tee mockup with the logo on the front, the print details being approved (product, location, artwork size, method and colors) and the size split" loading="lazy" class="block h-auto w-full">
+              </picture>
+            </div>
+            <figcaption class="media-caption"><span>Fig. 04</span><span>The customer's proof page · no account needed</span></figcaption>
+          </figure>
+          <figure class="reveal">
+            <div class="border border-line bg-ink p-px">
+              <picture>
+                <source srcset="/assets/work/tbsp-la/partner-portal.webp" type="image/webp">
+                <img src="/assets/work/tbsp-la/partner-portal.jpg" width="1512" height="850" alt="Partner portal for a print shop: jobs in production with garments, size splits, due dates, ship-to addresses and Mark shipped buttons, one flagged overdue" loading="lazy" class="block h-auto w-full">
+              </picture>
+            </div>
+            <figcaption class="media-caption"><span>Fig. 05</span><span>A partner print shop's portal · overdue jobs turn red</span></figcaption>
+          </figure>
+        </div>
+      </section>
 '''
 
 
@@ -739,7 +824,7 @@ CASES = [
               <!-- ADD METRICS: orders placed online, Max conversations and orders, search clicks before and after launch -->'''),
   ]),
  dict(
-  slug='tbsp-la', num='02', hero=TBSPLA_HERO, name='TBSP.LA', url='https://tbsp.la', domain='tbsp.la',
+  slug='tbsp-la', num='02', hero=TBSPLA_HERO, after_solution=TBSPLA_SHOWCASE, name='TBSP.LA', url='https://tbsp.la', domain='tbsp.la',
   schematic='schematic-cl', fig='',
   title='TBSP.LA case study · Aydin Kalantar',
   desc='How Aydin Kalantar built TBSP.LA, the operating system behind a Los Angeles print shop: AI quoting, art proofs, blank ordering, production and a network of partner print shops in one app.',
@@ -764,7 +849,7 @@ CASES = [
               <h3>Built for the floor</h3>
               <p>The admin installs on a phone like an app, with alerts by role, swipe actions, pull to refresh and barcode scanning to check in boxes of blanks. Work orders carry a QR code for the screen on the press.</p>
               <h3>Training built in</h3>
-              <p>New designers and print shops land on a short set of training videos the first time they sign in, with a tick on each one they've watched.</p>'''),
+              <p>New designers and print shops land on a short set of voiced training films the first time they sign in (six for designers, five for print shops), with a tick on each one they've watched. Most of them are on this page.</p>'''),
    ('Technical solutions', '''<h3>One price engine</h3>
               <p>Every price, whether Max quotes it in a chat, a customer sees it on the website or staff build a quote, comes from the same engine: live blank costs from S&amp;S Activewear, the shop's price grids per method, the ink colors the uploaded art really has, print locations, setup charged once per order, turnaround and sales tax by ship-to state, with tax-exempt certificates on file.</p>
               <h3>Quotes from anywhere</h3>
