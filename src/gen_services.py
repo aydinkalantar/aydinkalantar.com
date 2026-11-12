@@ -18,6 +18,7 @@ AREA_LINE = ('I work remotely with businesses across the United States. I am bas
              'where I built brands and websites for local companies from 2017 to 2020 and still work with clients today.')
 
 CASES = {
+    'tbsp-la': ('TBSP.LA', 'AI operations platform', 'The system behind a Los Angeles print shop: AI turns chats and emails into priced quotes, and background agents move every job forward with a person approving each send.'),
     'tbsp': ('The Best Screen Printing', 'E-commerce · SEO', 'Website rebuild for a Los Angeles print shop: online ordering, a voice agent, and 2,662 old URLs migrated with search traffic intact.'),
     'virtual-fashion': ('Virtual Fashion', 'AI apparel design', 'A browser studio that turns a garment idea into on-model photos and video in seconds.'),
     'catch-lead': ('Catch Lead', 'Conversational AI', 'An AI sales agent that answers website visitors by chat or voice, quotes and books appointments.'),
@@ -143,6 +144,29 @@ SERVICES = [
         ],
     },
     {
+        'slug': 'agentic-engineering',
+        'faq_heading': 'About agentic engineering.',
+        'name': 'Agentic engineering',
+        'short': 'Agentic engineering',
+        'type': 'Agentic AI engineering, AI agent development and multi-agent workflows',
+        'title': 'Agentic Engineering: AI Agents, Multi-Agent Workflows & MCP · Aydin Kalantar',
+        'desc': 'Agentic engineering for businesses across the US: AI agents that use your tools and data, multi-agent workflows, MCP integrations, human-in-the-loop automation and software built with AI coding agents, by Aydin Kalantar.',
+        'headline': 'AI that does the work, not just the talking.',
+        'lede': 'Agentic engineering is building AI that takes real steps: it reads the email, looks up the price, drafts the quote, updates the order and leaves the final click to a person. I design and build these systems for businesses, and I build software every day alongside AI coding agents like Claude Code, so products ship faster without cutting corners.',
+        'card': 'AI agents that use your tools and data, multi-agent workflows and MCP integrations, with a person in the loop.',
+        'for': ['Businesses ready to move from a chatbot to AI that finishes tasks', 'Teams buried in email, quotes and follow-ups that need judgment, not just rules', 'Companies that want AI connected safely to their inbox, CRM, store or database', 'Founders and teams who want to ship software faster with AI coding agents'],
+        'includes': ['Agent design: the goal, the tools, the data it can see and where a person approves', 'Tool-using agents that call your APIs, database and business rules', 'Multi-agent workflows that split a job between planning, doing and reviewing', 'MCP connectors that give AI assistants safe, scoped access to your systems', 'Guardrails: permissions, approvals, logs, retries and cost limits', 'Testing on real cases before an agent goes live', 'Agent-assisted development: specs, code, tests and reviewed pull requests with Claude Code'],
+        'cases': ['tbsp-la', 'catch-lead', 'tbsp'],
+        'faq': [
+            ('What is agentic engineering?', 'It is building AI systems that act, not just answer. An agent gets a goal, a set of tools such as your inbox, database or price list, and rules to follow, then plans and carries out the steps and checks its own results. The engineering is in the tools, the limits and the testing that make it reliable.'),
+            ('How is an AI agent different from a chatbot?', 'A chatbot replies. An agent does the task: it looks up a real price, writes the quote, books the slot and updates the record. Max on The Best Screen Printing site prices orders from the shop\'s live price engine instead of guessing.'),
+            ('Is it safe to let AI act in my business?', 'Yes, when it is built with limits. Each agent only gets the access its task needs, every action is logged, and anything that spends money or reaches a customer waits for a person. In TBSP.LA, AI drafts priced quotes from incoming emails, but nothing goes out until someone presses Send.'),
+            ('What is MCP?', 'The Model Context Protocol is an open standard that lets AI assistants such as Claude connect to tools and data in a consistent way. I connect assistants to business systems through MCP, so they can read and act with the same permissions a person on your team would have.'),
+            ('Do you build software with AI coding agents?', 'Yes, every day. I plan the work and review every change, while coding agents like Claude Code write and test code in parallel, open pull requests and fix what review finds. This website and the TBSP.LA platform were built this way.'),
+            ('Where should a business start with AI agents?', 'With one task that eats hours every week and has a clear right answer, like turning quote requests into priced drafts. We build an agent for that, measure it, and grow from there.'),
+        ],
+    },
+    {
         'slug': 'seo',
         'faq_heading': 'About search.',
         'name': 'SEO, local SEO & AI search',
@@ -219,7 +243,7 @@ ART = {
 HUB_FAQ = [
     ('Do you work with clients outside Ohio?', 'Yes, most of my work is remote, with businesses anywhere in the United States. I am based in Mayfield Heights, near Cleveland, and have worked with Los Angeles companies since 2017.'),
     ('What kinds of businesses do you work with?', 'Mostly small and growing businesses: local services, shops, manufacturers and startups. I have also built and run my own products, so I know the owner\'s side of the table.'),
-    ('Can you handle the whole project?', 'Yes. Brand, website, app, automation, AI, search and ads can all come from one person, so nothing gets lost between agencies.'),
+    ('Can you handle the whole project?', 'Yes. Brand, website, app, automation, AI agents, search and ads can all come from one person, so nothing gets lost between agencies.'),
     ('How do we start?', 'Email hello@aydinkalantar.com or call 216-339-8948 with a few lines about the business and what you need. I reply personally.'),
 ]
 
@@ -389,14 +413,14 @@ def page(s):
 
 def hub():
     rows = SERVICES + [{'slug': None, 'name': ART['name'], 'card': ART['card'], 'url': ART['url']}]
-    cards = '\n'.join(f'''          <a href="{r.get('url') or f"/services/{r['slug']}/"}" class="card group reveal">
-            <span class="meta">0{i}</span>
+    cards = '\n'.join(f'''          <a href="{r.get('url') or f"/services/{r['slug']}/"}" class="card group reveal{' lg:col-span-3' if i == len(rows) and len(rows) % 3 == 1 else ''}">
+            <span class="meta">{i:02d}</span>
             <h2 class="card-title mt-10">{e(r['name'])}</h2>
             <p class="body mb-10 mt-4">{e(r['card'])}</p>
             <span class="meta mt-auto flex items-center justify-between border-t border-line pt-5 group-hover:text-accent"><span>Learn more</span><span class="arrow">→</span></span>
           </a>''' for i, r in enumerate(rows, 1))
     title = 'Services · UI/UX Design, Web & App Development, AI & SEO · Aydin Kalantar'
-    desc = 'UI and UX design, web design, SaaS, web and mobile app development, business automation, AI agents, SEO and local SEO, branding and 3D rendering for businesses across the United States, from Aydin Kalantar, based in Cleveland, Ohio.'
+    desc = 'UI and UX design, web design, SaaS, web and mobile app development, business automation, AI agents and agentic engineering, SEO and local SEO, branding and 3D rendering for businesses across the United States, from Aydin Kalantar, based in Cleveland, Ohio.'
     ld = jsonld([
         {'@type': 'OfferCatalog', '@id': SITE + '/services/#catalog', 'name': 'Services by Aydin Kalantar',
          'itemListElement': [{'@type': 'Offer', 'itemOffered': {'@id': f"{SITE}/services/{s['slug']}/#service"}} for s in SERVICES]},
@@ -411,7 +435,7 @@ def hub():
         <p class="label reveal md:col-span-3">Services</p>
         <div class="md:col-span-9">
           <h1 class="display-xl reveal">Design, code and growth for your business.</h1>
-          <p class="lede reveal mt-8 max-w-prose">I help businesses across the United States get found, look the part and turn visitors into customers. One person from UX and brand to website, app, automation and search, so nothing gets lost in a handoff.</p>
+          <p class="lede reveal mt-8 max-w-prose">I help businesses across the United States get found, look the part and turn visitors into customers. One person from UX and brand to website, app, AI agents, automation and search, so nothing gets lost in a handoff.</p>
           <div class="reveal mt-12 flex flex-col gap-3 sm:flex-row">
             <a href="{mailto('New project')}" class="btn-primary group">Start a project <span aria-hidden="true" class="arrow">↗</span></a>
             <a href="tel:+12163398948" class="btn-secondary">Call 216-339-8948</a>
@@ -545,7 +569,7 @@ INDUSTRIES = [
             ('Users sign up and disappear', 'A UX audit of onboarding and the first session, then redesigned screens that get users to value faster.'),
             ('You need AI in the product', 'Generation, chat, voice and automation features built in, as in all three of my products.'),
         ],
-        'services': ['ui-ux-design', 'app-development', 'web-design', 'ai-agents', 'branding'],
+        'services': ['ui-ux-design', 'app-development', 'web-design', 'agentic-engineering', 'ai-agents', 'branding'],
         'cases': ['virtual-fashion', 'catch-lead', 'auto-alpha'],
         'faq': [
             ('Can you build our MVP?', 'Yes. I plan the first version with you, design it and build it, including accounts, payments and an admin panel.'),
