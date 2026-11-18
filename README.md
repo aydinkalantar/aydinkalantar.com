@@ -58,3 +58,7 @@ Type: headings use Space Grotesk 700 with `tracking-tight`; body and UI text use
 Classes: `container-site`, `section`, `grid-asym` (12-column asymmetric grid), `hairline-grid` (cells share one 1px rule), `heading`, `display-xl/lg/md`, `body`, `lede`, `label`, `meta`, `link`, `nav-link`, `btn-primary`, `btn-secondary`, `btn-inverse`, `card`, `card-title`, `tag`, `frame` + `frame-marks` (hairline image frame with corner marks), `surface-ink`, `blueprint`.
 
 Shadows are disabled in the theme on purpose; use 1px `border-line` instead.
+
+## Resume and CV
+
+The PDFs at `/aydin-kalantar-resume.pdf` and `/aydin-kalantar-cv.pdf` are rendered from `src/resume/resume.html` and `src/resume/cv.html` (fonts bundled in `src/resume/fonts/`). Cloudflare's build has no browser, so after editing run `node src/gen_resume.js` (needs Playwright) and commit the PDFs.
