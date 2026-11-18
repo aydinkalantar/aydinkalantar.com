@@ -1,6 +1,6 @@
 """Generates src/pages/pricing.html: packages and starting prices.
 
-Prices confirmed by Ayden on 2026-11-18. Change them here, then run `python3 src/gen_pricing.py` and `npm run build`.
+Prices confirmed by Ayden on 2026-11-18. Change them here, then run `python3 src/gen_pricing.py`, `python3 src/gen_price_sheet.py` (needs Playwright) and `npm run build`.
 """
 import html
 import json
@@ -184,7 +184,10 @@ def build():
         <div class="hairline-grid lg:grid-cols-3">
 {cards}
         </div>
-        <p class="meta reveal mt-6">Monthly plans: 3-month minimum, then month to month. Setup: half to start, half at launch. Prices in USD.</p>
+        <div class="reveal mt-6 flex flex-col gap-3 sm:flex-row sm:items-baseline sm:justify-between">
+          <p class="meta">Monthly plans: 3-month minimum, then month to month. Setup: half to start, half at launch. Prices in USD.</p>
+          <a class="link text-[0.9375rem] text-ink" href="/files/aydin-kalantar-price-sheet.pdf" download>Download price sheet (PDF)</a>
+        </div>
       </div>
     </section>
 
@@ -215,5 +218,6 @@ def build():
 '''
 
 
-OUT.write_text(build())
-print(f'wrote {OUT}')
+if __name__ == '__main__':
+    OUT.write_text(build())
+    print(f'wrote {OUT}')
