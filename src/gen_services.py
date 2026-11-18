@@ -71,7 +71,7 @@ SERVICES = [
         'includes': ['Site plan, page structure and copy guidance', 'Custom design, desktop and mobile', 'Hand-written code on fast hosting (Cloudflare)', 'Online ordering, payments and booking', 'Redesigns and platform moves that keep your rankings, with every old URL redirected', 'Search setup on launch: Search Console, Bing, sitemaps and structured data'],
         'cases': ['tbsp', 'virtual-fashion', 'catch-lead'],
         'faq': [
-            ('How much does a website cost?', 'It depends on the number of pages and features, such as online ordering or booking. After a short call you get the scope and price in writing, so you know what you are paying for before anything starts.'),
+            ('How much does a website cost?', 'Starter websites of up to 5 pages start at $2,500, and business websites with SEO and booking start at $4,500. The exact price depends on pages and features, such as online ordering. After a short call you get the scope and price in writing, so you know what you are paying for before anything starts. See the pricing page for packages.'),
             ('Will I lose my Google rankings if I redesign my site?', 'Not if the move is planned. On The Best Screen Printing rebuild, every one of 2,662 old addresses was kept, redirected or retired on purpose, and the pages that were kept carry 96% of the clicks the old site earned.'),
             ('Can I edit the site myself?', 'Yes. I set the site up so the things you change often, like prices, products or photos, are easy to update, and I show you how.'),
             ('Do you work with businesses outside Cleveland?', 'Yes. I am based in Mayfield Heights and happy to meet locally, and I work remotely with clients anywhere in the United States.'),
@@ -440,7 +440,7 @@ def hub():
             <a href="{mailto('New project')}" class="btn-primary group">Start a project <span aria-hidden="true" class="arrow">↗</span></a>
             <a href="tel:+12163398948" class="btn-secondary">Call 216-339-8948</a>
           </div>
-          <p class="reveal mt-8"><a class="link" href="/industries/">See how I help your industry</a></p>
+          <p class="reveal mt-8 flex flex-wrap gap-x-8 gap-y-3"><a class="link" href="/pricing/">See packages and prices</a><a class="link" href="/industries/">See how I help your industry</a></p>
         </div>
       </div>
     </section>
